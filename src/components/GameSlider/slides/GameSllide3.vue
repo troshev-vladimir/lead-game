@@ -8,6 +8,8 @@
 import { onMounted, ref } from 'vue'
 // eslint-disable-next-line no-undef
 // const emit = defineEmits(['nextSlide'])
+
+
 const video = ref(null)
 
 onMounted(() => {
@@ -17,6 +19,6 @@ onMounted(() => {
 
 <style lang="scss">
 video {
-    height: 100%;
+    // height: 100%;
 }
 </style>

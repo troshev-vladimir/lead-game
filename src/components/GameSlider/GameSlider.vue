@@ -1,13 +1,13 @@
 <template>
-<div class="slider">
-  <component :is="currentSlide" @next-slide="navigation.stepForward"></component>
+<div class="slider" :class="{'phone-slider': isPhone}">
+  <component :is-phone="isPhone" :is="currentSlide" @next-slide="navigation.stepForward"></component>
 </div>
 </template>
 
 <script setup>
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 const navigation = useNavigationStore()
 const {currentStep} = storeToRefs(navigation)
@@ -15,11 +15,29 @@ const {currentStep} = storeToRefs(navigation)
 const currentSlide = computed(() => {
     return  'GameSllide' + currentStep.value
 })
+
+const isPhone = ref(false)
+
+const setDevice = () => {
+  let w = screen.width;
+  let h = screen.height;
+  console.log((w / h));
+  isPhone.value = (w / h) < 0.6
+} 
+
+onMounted(() => {
+  setDevice()
+
+  window.addEventListener('resize', () => {
+    setDevice()
+  })
+})
 </script>
 <script>
 import GameSllide1 from './slides/GameSllide1.vue'
 import GameSllide2 from './slides/GameSllide2.vue'
 import GameSllide3 from './slides/GameSllide3.vue'
+
 export default {
     components: { GameSllide1, GameSllide2, GameSllide3 }
 }
@@ -42,5 +60,8 @@ export default {
   }
 }
 
+.phone-slider {
+  
+}
 
 </style>
