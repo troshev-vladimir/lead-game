@@ -1,6 +1,6 @@
 <template>
   <GameSlider></GameSlider>
-  <NavigationMap class="navigation" :class="{hidden: !controls}"></NavigationMap>
+  <NavigationMap class="navigation" :class="{hidden: !controls}" @click="navigation.stepForward"></NavigationMap>
   <NextButton class="next-btn" :class="{hidden: !controls}"></NextButton>
 </template>
 
@@ -19,10 +19,16 @@ const { currentStep } = storeToRefs(navigation)
 
 watch(currentStep, () => {
   controls.value = false
-
-  setTimeout(() => {
-    controls.value = true
-  }, 2000)
+  if (currentStep.value == 6) {
+    setTimeout(() => {
+      controls.value = true
+    }, 20000)
+  } else {
+    setTimeout(() => {
+      controls.value = true
+    }, 3000)
+  }
+  
 }, {immediate: true})
 </script>
 

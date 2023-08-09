@@ -42,9 +42,10 @@ import GameSllide3 from './slides/GameSllide3.vue'
 import GameSllide4 from './slides/GameSllide4.vue'
 import GameSllide5 from './slides/GameSllide5.vue'
 import GameSllide6 from './slides/GameSllide6.vue'
+import GameSllide7 from './slides/GameSllide7.vue'
 
 export default {
-    components: { GameSllide1, GameSllide2, GameSllide3, GameSllide4, GameSllide5, GameSllide6}
+    components: { GameSllide1, GameSllide2, GameSllide3, GameSllide4, GameSllide5, GameSllide6, GameSllide7}
 }
 </script>
 
@@ -76,6 +77,11 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 
 </style>
