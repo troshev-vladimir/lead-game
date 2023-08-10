@@ -4,7 +4,6 @@
       class="ansver"
       v-for="ansver in currentStepAnswers"
       :key="ansver"
-      @click="emit('click')"
     >
       <span>{{ansver}}</span>
     </div>
@@ -15,9 +14,6 @@
 import { useNavigationStore } from '@/store/navigation'
 import { computed } from 'vue';
 const navigation = useNavigationStore()
-
-// eslint-disable-next-line no-undef
-const emit = defineEmits('click')
 
 const currentStepAnswers = computed(() => {
   switch (navigation.currentStep) {
@@ -31,14 +27,22 @@ const currentStepAnswers = computed(() => {
       return [
         '«Да»',
       ]
-
+    case 6:
+      return [
+        '«Добрый день Виталий, пойдемте»',
+        '«Да! Мне не терпится начать!»'
+      ]
     case 7:
       return [
         '«Да, я программировал на 1С»',
         '«Да, я программировал на других языках, не на 1С»',
         '«Нет, у меня нет опыта в программировании»',
       ]
-        
+    case 9:
+      return [
+        '«Удивительно!»',
+      ]
+
     default:
       return null;
   }

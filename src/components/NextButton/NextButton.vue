@@ -22,6 +22,7 @@ import { useNavigationStore } from '@/store/navigation'
 import { computed } from 'vue';
 import imageUrl2 from '@/assets/next-btn-img/2-slide.jpg'
 import imageUrl6 from '@/assets/next-btn-img/6-slide.jpg'
+import imageUrl10 from '@/assets/next-btn-img/10-slide.jpg'
 
 const navigation = useNavigationStore()
 
@@ -36,7 +37,18 @@ const currentStepButton = computed(() => {
       return {
         image: imageUrl6,
         text: 'В комнату переговоров'
-      }      
+      } 
+    case 9:
+      return {
+        image: imageUrl6,
+        text: 'Следовать за наставником'
+      }  
+      
+    case 10:
+      return {
+        image: imageUrl10,
+        text: 'Следовать за наставником'
+      }     
     default:
       return null;
   }

@@ -47,12 +47,5 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
-[id|=text] {
-    opacity: 0;
-}
 
-.visible {
-    transition: all ease .5s;
-    opacity: 1 !important;
-}
 </style>

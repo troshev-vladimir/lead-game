@@ -1,7 +1,12 @@
 <template>
 <div class="slider" :class="{'phone-slider': isPhone}">
-  <Transition name="fade" mode="out-in">
-    <component :is="currentSlide" @next-slide="navigation.stepForward"></component>
+  <Transition name="fade" :mode="mode">
+    <component
+      ref="slide"
+      :is="currentSlide"
+      @next-slide="navigation.stepForward"
+      @continue="emit('continue')"
+    />
   </Transition>
 </div>
 </template>
@@ -11,11 +16,30 @@ import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
 import { computed, onMounted, ref } from "vue";
 
+// eslint-disable-next-line no-undef
+const emit = defineEmits(['continue']) 
+
+const slide = ref(null)
+
+const mode = computed(() => {
+  const fukedSlides = [7, 9, 10, 11]
+  if (fukedSlides.includes(currentStep.value) ) {
+    return ''
+  }
+  return 'out-in'
+})
+
+// eslint-disable-next-line no-undef
+defineExpose({
+  slide
+})
+
 const navigation = useNavigationStore()
 const { currentStep } = storeToRefs(navigation)
 
 const currentSlide = computed(() => {
-    return  'GameSllide' + currentStep.value
+    console.log('GameSllide' + currentStep.value);
+    return 'GameSllide' + currentStep.value
 })
 
 const isPhone = ref(false)
@@ -43,9 +67,27 @@ import GameSllide4 from './slides/GameSllide4.vue'
 import GameSllide5 from './slides/GameSllide5.vue'
 import GameSllide6 from './slides/GameSllide6.vue'
 import GameSllide7 from './slides/GameSllide7.vue'
+import GameSllide8 from './slides/GameSllide8.vue'
+import GameSllide9 from './slides/GameSllide9.vue'
+import GameSllide10 from './slides/GameSllide10.vue'
+import GameSllide11 from './slides/GameSllide11.vue'
+import GameSllide12 from './slides/GameSllide12.vue'
 
 export default {
-    components: { GameSllide1, GameSllide2, GameSllide3, GameSllide4, GameSllide5, GameSllide6, GameSllide7}
+    components: { 
+      GameSllide1,
+      GameSllide2,
+      GameSllide3,
+      GameSllide4,
+      GameSllide5,
+      GameSllide6,
+      GameSllide7,
+      GameSllide8,
+      GameSllide9,
+      GameSllide10,
+      GameSllide11,
+      GameSllide12
+    }
 }
 </script>
 
@@ -79,9 +121,5 @@ export default {
   opacity: 0;
 }
 
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
-}
 
 </style>

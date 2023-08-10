@@ -32,32 +32,15 @@ onMounted(async () => {
     await nextTick()
 
     const text1 = document.querySelector('#text-1')
-    
+    console.log(text1);
     setTimeout(() => {
+        console.log(text1);
         text1.classList.add('visible')
-
     }, 1500)
 
 })
 </script>
 
 <style lang="scss">
-#next-slide {
-    cursor: pointer;
 
-    &:hover {
-        transition: all ease .4s;
-        #hover {
-            fill: blue;
-            stroke: blue;
-        }
-    }
-}
-#text-field:hover {
-    cursor: pointer;
-
-    #hover {
-        opacity: 1;
-    }
-}
 </style>

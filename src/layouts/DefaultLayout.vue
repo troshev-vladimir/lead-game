@@ -1,7 +1,7 @@
 <template>
-  <GameSlider></GameSlider>
-  <NavigationMap class="navigation" :class="{hidden: !controls}" @click="navigation.stepForward"></NavigationMap>
-  <NextButton class="next-btn" :class="{hidden: !controls}"></NextButton>
+  <GameSlider ref="slider" @continue="nextBtnControl = true"></GameSlider>
+  <NavigationMap class="navigation" :class="{hidden: !navigationMapControl}" @click="navigationCallback"></NavigationMap>
+  <NextButton class="next-btn" :class="{hidden: !nextBtnControl}"></NextButton>
 </template>
 
 <script setup>
@@ -13,22 +13,62 @@ import GameSlider from '@/components/GameSlider'
 import NavigationMap from '@/components/NavigationMap'
 import NextButton from '@/components/NextButton'
 
-const controls = ref(false)
 const navigation = useNavigationStore()
 const { currentStep } = storeToRefs(navigation)
 
+const navigationMapControl = ref(false)
+const nextBtnControl = ref(false)
+const slider = ref(null)
+let navigationCallback = () => {
+  navigation.stepForward()
+}
+
 watch(currentStep, () => {
-  controls.value = false
-  if (currentStep.value == 6) {
-    setTimeout(() => {
-      controls.value = true
-    }, 20000)
-  } else {
-    setTimeout(() => {
-      controls.value = true
-    }, 3000)
-  }
+  navigationMapControl.value = false
+  nextBtnControl.value = false
+
+  switch (currentStep.value) {
+    case 6:
+      setTimeout(() => {
+        navigationMapControl.value = true
+      }, 5000)
+      navigationCallback = () => {
+        slider.value.slide.nextStep()
+        navigationMapControl.value = false
+      }
+
+      break;
+
+    case 7:
+      setTimeout(() => {
+        navigationMapControl.value = true
+      }, 3000)
+      navigationCallback = () => {
+        slider.value.slide.nextStep()
+        navigationMapControl.value = false
+      }
+    
+      break;
+
+    case 9:
+      setTimeout(() => {
+        navigationMapControl.value = true
+      }, 3000)
+
+      navigationCallback = () => {
+        slider.value.slide.nextStep()
+        navigationMapControl.value = false
+      }
+    
+      break;
   
+    default:
+      setTimeout(() => {
+        nextBtnControl.value = true
+        navigationMapControl.value = true
+      }, 3000)
+      break;
+  }
 }, {immediate: true})
 </script>
 

@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 export const useNavigationStore = defineStore("navigation", () => {
 	const currentStep = ref(1);
-	const totalSteps = 7;
+	const totalSteps = 12;
 
 	function stepForward() {
 		if (currentStep.value === totalSteps) return;
