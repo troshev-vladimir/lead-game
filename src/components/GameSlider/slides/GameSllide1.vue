@@ -23,8 +23,15 @@
     </defs>
 </svg>
 
+<!-- <iframe class="iframe" src="http://max43.ru:9444/IntroProduct?N=Задачи&C=Задача1" width="100%" height="100%" scrolling="auto"> </iframe>
 
 
+<div class="tips">
+
+    <div class="tip">
+        Я подсказка
+    </div>
+</div> -->
 </template>
 
 <script setup>
@@ -47,5 +54,26 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
+.iframe {
+    position: relative;
+    z-index: 1;
+}
+
+.tips {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    background-color: #666;
+    width: 400px;
+    height: 600px;
+    padding: 20px;
+
+    .tip {
+        width: 100%;
+        height: 20px;
+        border: 1px solid #000;
+    }
+}
 
 </style>
