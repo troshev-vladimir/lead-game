@@ -22,11 +22,12 @@ const emit = defineEmits(['continue'])
 const slide = ref(null)
 
 const mode = computed(() => {
-  const fukedSlides = [7, 9, 10, 11]
-  if (fukedSlides.includes(currentStep.value) ) {
-    return ''
-  }
-  return 'out-in'
+  // const fukedSlides = [7, 9]
+  // if (fukedSlides.includes(currentStep.value) ) {
+  //   return ''
+  // }
+  // return 'out-in' // for prod
+  return ''
 })
 
 // eslint-disable-next-line no-undef

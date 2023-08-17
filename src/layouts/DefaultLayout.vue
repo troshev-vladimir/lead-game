@@ -28,6 +28,17 @@ watch(currentStep, () => {
   nextBtnControl.value = false
 
   switch (currentStep.value) {
+    case 5:
+      setTimeout(() => {
+        nextBtnControl.value = true
+        navigationMapControl.value = true
+      }, 3000)
+      navigationCallback = () => {
+        navigationMapControl.value = false
+        navigation.stepForward()
+      }
+
+      break;
     case 6:
       setTimeout(() => {
         navigationMapControl.value = true

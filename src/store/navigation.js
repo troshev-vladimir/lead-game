@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useNavigationStore = defineStore("navigation", () => {
-	const currentStep = ref(1);
+	const currentStep = ref(6);
 	const totalSteps = 12;
 
 	function stepForward() {

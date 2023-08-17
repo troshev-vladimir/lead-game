@@ -1,18 +1,14 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-    <Transition name="fade" mode="out-in">
+    <transition-group name="fade" mode="out-in">
         <firstStep v-show="step >= 0" :user-name="userName" />
-    </Transition>
 
-    <Transition name="fade" mode="out-in">
         <secondStep v-show="step >= 1" :user-name="userName" />
-    </Transition>
 
-    <Transition name="fade" mode="out-in">
         <thirdStep v-show="step >= 2" :user-name="userName" />
-    </Transition>
 
-    <fourthStep v-show="step >= 3" :user-name="userName"/>
+        <fourthStep v-show="step >= 3" :user-name="userName"/>
+    </transition-group>
 </template>
 
 <script setup>
@@ -51,6 +47,10 @@ const nextStep = () => {
     setTimeout(() => { // Яна
         text4.classList.add('visible')
     }, 4000)
+
+    setTimeout(() => { // Яна
+        text4.classList.remove('visible')
+    }, 4500)
 
     setTimeout(() => { // Пошли работать
         text5.classList.add('visible')
