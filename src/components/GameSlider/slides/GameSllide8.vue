@@ -1,6 +1,6 @@
 <template>
 <video ref="video" controls >
-    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+    <source src="https://dl.dropboxusercontent.com/s/ufu1ofthqk5pjpusijup3/5.mp4?rlkey=tekcxjjuwuqsdg8oll6xm4b5k&dl=0" type="video/mp4">
 </video>
 </template>
 

@@ -84,7 +84,7 @@ const currentStepButton = computed(() => {
         text: 'Следовать за наставником'
       }
     
-    case 18:
+    case 19:
       return {
         image: imageUrl14,
         text: 'Учебный центр',
@@ -93,7 +93,13 @@ const currentStepButton = computed(() => {
         }
       }
       
-    case 19:
+    case 20:
+      return {
+        image: imageUrl14,
+        text: 'Учебный центр',
+      }
+
+    case 21:
       return {
         image: imageUrl14,
         text: 'Учебный центр',

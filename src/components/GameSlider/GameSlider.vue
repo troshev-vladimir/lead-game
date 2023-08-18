@@ -6,6 +6,7 @@
       :is="currentSlide"
       @next-slide="navigation.stepForward"
       @continue="emit('continue')"
+      @show-cash-counter="emit('showCashCounter')"
       @question="emit('question')"
     />
   </Transition>
@@ -18,7 +19,7 @@ import { storeToRefs } from 'pinia';
 import { computed, onMounted, ref } from "vue";
 
 // eslint-disable-next-line no-undef
-const emit = defineEmits(['continue']) 
+const emit = defineEmits(['continue', 'showCashCounter']) 
 
 const slide = ref(null)
 
@@ -77,10 +78,12 @@ import GameSllide12 from './slides/GameSllide12.vue'
 import GameSllide13 from './slides/GameSllide13.vue'
 import GameSllide14 from './slides/GameSllide14.vue'
 import GameSllide15 from './slides/GameSllide15.vue'
-import GameSllide16 from './slides/GameSllide16.vue'
+import GameSllide16 from './slides/GameSllide16.vue' // 1с
 import GameSllide17 from './slides/GameSllide17.vue'
 import GameSllide18 from './slides/GameSllide18.vue'
 import GameSllide19 from './slides/GameSllide19.vue'
+import GameSllide20 from './slides/GameSllide20.vue'
+import GameSllide21 from './slides/GameSllide21.vue'
 
 export default {
     components: { 
@@ -102,12 +105,17 @@ export default {
       GameSllide16,
       GameSllide17,
       GameSllide18,
-      GameSllide19
+      GameSllide19,
+      GameSllide20,
+      GameSllide21
     }
 }
 </script>
 
 <style lang="scss">
+#further-btn {
+  cursor: pointer;
+}
 
 .slider{
   width: 100vw;

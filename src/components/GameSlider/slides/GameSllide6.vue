@@ -96,11 +96,11 @@ onMounted(async () => {
         }
     })
 
-    text1 = document.querySelector('#text-1')
-    text2 = document.querySelector('#text-2')
-    text3 = document.querySelector('#text-3')
-    text4 = document.querySelector('#text-4')
-    text5 = document.querySelector('#text-5')
+    text1 = document.querySelector('#text-61')
+    text2 = document.querySelector('#text-62')
+    text3 = document.querySelector('#text-63')
+    text4 = document.querySelector('#text-65')
+    text5 = document.querySelector('#text-64')
     
     setTimeout(() => { // первый текст
         text1.classList.add('visible')
