@@ -24,10 +24,10 @@ const emit = defineEmits(['continue', 'showCashCounter'])
 const slide = ref(null)
 
 const mode = computed(() => {
-  // const fukedSlides = [7, 9]
-  // if (fukedSlides.includes(currentStep.value) ) {
-  //   return ''
-  // }
+  const fukingSlides = [7, 17]
+  if (fukingSlides.includes(currentStep.value) ) {
+    return ''
+  }
   return 'out-in' // for prod
   // return '' // for dev
 })
