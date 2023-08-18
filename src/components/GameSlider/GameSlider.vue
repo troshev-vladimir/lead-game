@@ -28,8 +28,8 @@ const mode = computed(() => {
   // if (fukedSlides.includes(currentStep.value) ) {
   //   return ''
   // }
-  // return 'out-in' // for prod
-  return '' // for dev
+  return 'out-in' // for prod
+  // return '' // for dev
 })
 
 // eslint-disable-next-line no-undef
@@ -63,6 +63,7 @@ onMounted(() => {
 })
 </script>
 <script>
+import GameSllide0 from './slides/GameSllide0.vue'
 import GameSllide1 from './slides/GameSllide1.vue'
 import GameSllide2 from './slides/GameSllide2.vue'
 import GameSllide3 from './slides/GameSllide3.vue'
@@ -87,6 +88,7 @@ import GameSllide21 from './slides/GameSllide21.vue'
 
 export default {
     components: { 
+      GameSllide0,
       GameSllide1,
       GameSllide2,
       GameSllide3,
