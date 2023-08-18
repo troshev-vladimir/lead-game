@@ -171,7 +171,7 @@ onMounted(async () => {
     }
 }
 
-#text-field:hover {
+[id|=interactive]:hover {
     cursor: pointer;
 
     #hover {

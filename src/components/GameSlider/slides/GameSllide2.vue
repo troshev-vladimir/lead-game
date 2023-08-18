@@ -32,9 +32,7 @@ onMounted(async () => {
     await nextTick()
 
     const text1 = document.querySelector('#text-1')
-    console.log(text1);
     setTimeout(() => {
-        console.log(text1);
         text1.classList.add('visible')
     }, 1500)
 

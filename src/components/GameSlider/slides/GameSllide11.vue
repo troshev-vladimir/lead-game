@@ -30,29 +30,45 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted } from 'vue'
+import { nextTick, onMounted, ref, watch} from 'vue'
 
+const replicStep = ref(0)
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide'])
 
+let text1
+let text2
+
+watch(replicStep, (value) => {
+    switch (value) {
+        case 1:
+            text1.classList.remove('visible')
+            text2.classList.add('visible')
+            break;
+
+        case 2:
+            emit('nextSlide')
+            break;
+
+        default:
+            break;
+    }
+})
+
 onMounted(async () => {
     await nextTick()
-    
-    const text1 = document.querySelector('#text-1')
-    const text2 = document.querySelector('#text-2')
+
+    document.addEventListener('nextReplic', () => {
+        replicStep.value += 1
+    })
+
+
+    text1 = document.querySelector('#text-1')
+    text2 = document.querySelector('#text-2')
     
     setTimeout(() => {
         text1.classList.add('visible')
-    }, 1500)
-
-    setTimeout(() => {
-        text1.classList.remove('visible')
-        text2.classList.add('visible')
-    }, 3000)
-
-    setTimeout(() => {
-        emit('nextSlide')
-    }, 5000)
+    }, 500)
 })
 </script>
 

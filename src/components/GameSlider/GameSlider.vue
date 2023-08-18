@@ -6,6 +6,7 @@
       :is="currentSlide"
       @next-slide="navigation.stepForward"
       @continue="emit('continue')"
+      @question="emit('question')"
     />
   </Transition>
 </div>
@@ -27,7 +28,7 @@ const mode = computed(() => {
   //   return ''
   // }
   // return 'out-in' // for prod
-  return ''
+  return '' // for dev
 })
 
 // eslint-disable-next-line no-undef
@@ -73,6 +74,13 @@ import GameSllide9 from './slides/GameSllide9.vue'
 import GameSllide10 from './slides/GameSllide10.vue'
 import GameSllide11 from './slides/GameSllide11.vue'
 import GameSllide12 from './slides/GameSllide12.vue'
+import GameSllide13 from './slides/GameSllide13.vue'
+import GameSllide14 from './slides/GameSllide14.vue'
+import GameSllide15 from './slides/GameSllide15.vue'
+import GameSllide16 from './slides/GameSllide16.vue'
+import GameSllide17 from './slides/GameSllide17.vue'
+import GameSllide18 from './slides/GameSllide18.vue'
+import GameSllide19 from './slides/GameSllide19.vue'
 
 export default {
     components: { 
@@ -87,7 +95,14 @@ export default {
       GameSllide9,
       GameSllide10,
       GameSllide11,
-      GameSllide12
+      GameSllide12,
+      GameSllide13,
+      GameSllide14,
+      GameSllide15,
+      GameSllide16,
+      GameSllide17,
+      GameSllide18,
+      GameSllide19
     }
 }
 </script>

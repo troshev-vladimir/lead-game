@@ -1,17 +1,17 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-    <transition-group name="fade" mode="out-in">
-        <firstStep v-if="step === 0" />
-        <secondStep v-if="step === 1" />
-        <thirdStep v-if="step === 2" />
-        <fourthStep v-if="step === 3"/>
+    <transition-group class="trancition" name="fade" mode="out-in">
+        <firstStep v-if="imageStep === 0" />
+        <secondStep v-if="imageStep === 1" />
+        <thirdStep v-if="imageStep === 2" />
+        <fourthStep v-if="imageStep === 3"/>
     </transition-group>
 
     <TextsComponent :user-name="userName"></TextsComponent>
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
 import firstStep from '@/components/slide6steps/firstStep.vue'
@@ -23,7 +23,9 @@ import TextsComponent from '@/components/slide6steps/TextsComponent.vue'
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue']) 
 
-const step = ref(0)
+const imageStep = ref(0)
+const replicStep = ref(0)
+const replicStepAskWaiting = ref(false)
 const user = useUserStore()
 const { userName } = storeToRefs(user)
 
@@ -34,41 +36,65 @@ let text4
 let text5 
 
 const nextStep = () => {
-    
-    text2.classList.remove('visible')
-
-    setTimeout(() => { // Мужик назад
-        step.value++
-    }, 1000)  
-    
-    setTimeout(() => { // Представила Яну
-        text3.classList.add('visible')
-    }, 2000)
-
-    setTimeout(() => { // Представила Яну
-        text3.classList.remove('visible')
-    }, 2500)
-
-    setTimeout(() => { // Подсветили Яну
-        step.value++
-    }, 3000)
-
-    setTimeout(() => { // Яна
-        text5.classList.add('visible')
-    }, 4000)
-
-    setTimeout(() => { // Яна
-        text5.classList.remove('visible')
-    }, 4500)
-
-    setTimeout(() => { // Пошли работать
-        text4.classList.add('visible')
-        emit('continue')
-    }, 5000)
+    replicStepAskWaiting.value = false
+    replicStep.value += 1
 }
+
+watch(replicStep, (value) => {
+    switch (value) {
+        case 1:
+            text1.classList.remove('visible')
+            imageStep.value++
+            break;
+        case 2:
+            text2.classList.add('visible')
+            break;
+
+        case 3:
+            emit('question')
+            replicStepAskWaiting.value = true
+            break;
+
+        case 4:
+            text2.classList.remove('visible')
+            text3.classList.add('visible')
+            imageStep.value++
+            break;
+
+        case 5:
+            text3.classList.remove('visible')
+            text5.classList.add('visible')
+            imageStep.value++
+
+            break;
+
+        case 6:
+            text5.classList.remove('visible')
+            text4.classList.add('visible')
+            break;
+
+        case 7:
+            emit('continue')
+            break;
+
+        case 8:
+            break;
+
+        default:
+            break;
+    }
+})
+
+
 
 onMounted(async () => {
     await nextTick()
+
+    document.addEventListener('nextReplic', () => {
+        if (!replicStepAskWaiting.value) {
+            replicStep.value += 1
+        }
+    })
 
     text1 = document.querySelector('#text-1')
     text2 = document.querySelector('#text-2')
@@ -78,21 +104,7 @@ onMounted(async () => {
     
     setTimeout(() => { // первый текст
         text1.classList.add('visible')
-    }, 1500)
-
-    setTimeout(() => { // первый текст
-        text1.classList.remove('visible')
-    }, 3000)
-
-    setTimeout(() => { // Мужик появился
-        step.value++
-    }, 3500)
-
-    setTimeout(() => { // Мужик реплика
-        text2.classList.add('visible')
-    }, 4500)
-
-    // Ждём выбора
+    }, 500)
 })
 
 // eslint-disable-next-line no-undef

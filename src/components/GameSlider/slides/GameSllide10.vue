@@ -21,11 +21,11 @@ import { nextTick, onMounted } from 'vue'
 onMounted(async () => {
     await nextTick()
 
-    const text1 = document.querySelector('#text-1')
+    // const text1 = document.querySelector('#text-1')
     
-    setTimeout(() => {
-        text1.classList.add('visible')
-    }, 1500)
+    // setTimeout(() => {
+    //     text1.classList.add('visible')
+    // }, 1500)
 })
 </script>
 
