@@ -93,38 +93,30 @@ const replicStep = ref(0)
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
-            text1.classList.add('visible')
-            break;
-
-        case 2:
-            emit('question')
-            replicStepAskWaiting.value = true
-            break;
-
-        case 3:
             text1.classList.remove('visible')
             text2.classList.add('visible')
             break;
 
-        case 4:
+        case 2:
             text2.classList.remove('visible')
             text3.classList.add('visible')
             emit('showCashCounter')
             break;
 
-        case 5:
-            text3.classList.remove('visible')
+        case 3:
             text4.classList.add('visible')
             break;
 
-        case 6:
+        case 4:
+            text3.classList.remove('visible')
             text4.classList.remove('visible')
             text5.classList.add('visible')
-            break;
-        case 7:
-            emit('continue')
-            break;
 
+            setTimeout(() => {
+                emit('continue')
+            }, 500)
+
+            break;
         default:
             break;
     }
@@ -144,6 +136,16 @@ onMounted(async () => {
     text3 = document.querySelector('#text-3')
     text4 = document.querySelector('#text-41')
     text5 = document.querySelector('#text-5')
+
+    
+    setTimeout(() => {
+        text1.classList.add('visible')
+    }, 500)
+
+    setTimeout(() => {
+        emit('question')
+        replicStepAskWaiting.value = true
+    }, 1500)
 })
 
 // eslint-disable-next-line no-undef

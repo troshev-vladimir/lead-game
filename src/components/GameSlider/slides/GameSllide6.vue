@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-    <transition-group name="fade">
+    <transition-group name="fade" mode="out-in">
         <firstStep v-if="imageStep === 0" />
         <secondStep v-if="imageStep === 1" />
         <thirdStep v-if="imageStep === 2" />
@@ -46,39 +46,36 @@ watch(replicStep, (value) => {
         case 1:
             text1.classList.remove('visible')
             imageStep.value++
+            text2.classList.add('visible')
+
+            setTimeout(() => {
+                emit('question')
+                replicStepAskWaiting.value = true
+            }, 1500)
+            
             break;
         case 2:
-            text2.classList.add('visible')
-            break;
-
-        case 3:
-            emit('question')
-            replicStepAskWaiting.value = true
-            break;
-
-        case 4:
             text2.classList.remove('visible')
             text3.classList.add('visible')
             imageStep.value++
             break;
 
-        case 5:
+        case 3:
             text3.classList.remove('visible')
             text5.classList.add('visible')
             imageStep.value++
+            
 
             break;
 
-        case 6:
-            text5.classList.remove('visible')
+        case 4:
             text4.classList.add('visible')
-            break;
+            text5.classList.remove('visible')
 
-        case 7:
-            emit('continue')
-            break;
-
-        case 8:
+            setTimeout(() => {
+                emit('continue')
+            }, 1000)
+            
             break;
 
         default:

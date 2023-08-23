@@ -31,7 +31,7 @@
 <script setup>
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 import GameSlider from '@/components/GameSlider'
 import CashCounter from '@/components/CashCounter'
@@ -110,14 +110,14 @@ watch(currentStep, () => {
 
   switch (currentStep.value) {
     case 5:
-      setTimeout(() => {
-        nextBtnControl.value = true
-        navigationMapControl.value = true
-      }, 2000)
-      navigationCallback = () => {
-        navigationMapControl.value = false
-        navigation.stepForward()
-      }
+      // setTimeout(() => {
+      //   nextBtnControl.value = true
+      //   navigationMapControl.value = true
+      // }, 2000)
+      // navigationCallback = () => {
+      //   navigationMapControl.value = false
+      //   navigation.stepForward()
+      // }
 
       break;
     case 6:
@@ -140,10 +140,10 @@ watch(currentStep, () => {
       break;
 
     case 9:
-      navigationCallback = () => {
-        slider.value.slide.nextStep()
-        navigationMapControl.value = false
-      }
+      // navigationCallback = () => {
+      //   slider.value.slide.nextStep()
+      //   navigationMapControl.value = false
+      // }
     
       break;
 
@@ -177,8 +177,13 @@ watch(currentStep, () => {
       break;
 
     case 17:
+      navigationCallback = () => {
+        slider.value.slide.nextStep()
+        navigationMapControl.value = false
+      }
       break;
-
+    case 18:
+      break;
     case 19:
       setTimeout(() => {
         nextBtnControl.value = true
@@ -206,6 +211,16 @@ watch(currentStep, () => {
       break;
   }
 }, {immediate: true})
+
+onMounted(() => { //для дева
+  document.addEventListener('keydown', (event) => {
+    if (event.code == 'ArrowRight') {
+      navigation.stepForward()
+    } else if (event.code == 'ArrowLeft') {
+      navigation.stepBackward()
+    }
+  })
+})
 </script>
 
 <style>

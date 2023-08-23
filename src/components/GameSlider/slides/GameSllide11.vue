@@ -61,7 +61,6 @@ let text2
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
-            text1.classList.remove('visible')
             text2.classList.add('visible')
             break;
 

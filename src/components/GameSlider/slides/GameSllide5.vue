@@ -116,18 +116,21 @@ import { nextTick, onMounted } from 'vue'
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
 
+// eslint-disable-next-line no-undef
+const emit = defineEmits(['skip'])
 const user = useUserStore()
 const { userName } = storeToRefs(user)
 
 onMounted(async () => {
     await nextTick()
 
+    emit('skip')
+
     const text1 = document.querySelector('#text-1')
     
     setTimeout(() => {
         text1.classList.add('visible')
     }, 1000)
-
 })
 </script>
 

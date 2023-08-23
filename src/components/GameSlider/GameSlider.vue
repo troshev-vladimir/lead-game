@@ -8,6 +8,7 @@
       @continue="emit('continue')"
       @show-cash-counter="emit('showCashCounter')"
       @question="emit('question')"
+      @skip="skipSlide"
     />
   </Transition>
 </div>
@@ -32,6 +33,8 @@ const mode = computed(() => {
   // return '' // for dev
 })
 
+
+
 // eslint-disable-next-line no-undef
 defineExpose({
   slide
@@ -44,6 +47,10 @@ const currentSlide = computed(() => {
     console.log('GameSllide' + currentStep.value);
     return 'GameSllide' + currentStep.value
 })
+
+const skipSlide = () => {
+  navigation.stepForward()
+}
 
 const isPhone = ref(false)
 
@@ -137,15 +144,16 @@ export default {
   }
 }
 
-.fade-enter-active,
+.fade-enter-active {
+  transition: opacity 0.6s linear;
+}
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.2s linear;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
-
 
 </style>

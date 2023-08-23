@@ -58,11 +58,6 @@ const replicStep = ref(0)
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
-            text1.classList.add('visible')
-            break;
-
-        case 2:
-            emit('continue')
             break;
 
         default:
@@ -78,6 +73,14 @@ onMounted(async () => {
     })
 
     text1 = document.querySelector('#text-131')
+
+    setTimeout(() => {
+        text1.classList.add('visible')
+    }, 500)
+
+    setTimeout(() => {
+        emit('continue')
+    }, 1500)
 })
 </script>
 

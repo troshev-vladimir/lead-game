@@ -122,8 +122,7 @@ import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
 
 // eslint-disable-next-line no-undef
-const emit = defineEmits(['continue', 'question'])
-
+const emit = defineEmits(['continue', 'question', 'skip'])
 const user = useUserStore()
 const { userName } = storeToRefs(user)
 const replicStep = ref(0)
@@ -161,7 +160,7 @@ const nextStep = () => {
 
 onMounted(async () => {
     await nextTick()
-
+    emit('skip')
     document.addEventListener('nextReplic', () => {
         if (replicStepAskWaiting.value === true) return 
         replicStep.value += 1
