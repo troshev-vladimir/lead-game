@@ -3,12 +3,16 @@
 </template>
 
 <style lang='scss'>
-@import url('https://fonts.cdnfonts.com/css/gogh');
+@font-face {
+    font-family: "Gogh";
+    src: url("/src/assets/fonts/Gogh-Medium.ttf");
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Gogh', sans-serif;
+  font-weight: 800;
 }
 
 [id|=text] {

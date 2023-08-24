@@ -1,11 +1,11 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-    <transition-group name="fade" mode="out-in">
+    <!-- <transition-group name="fade"> -->
         <firstStep v-if="imageStep === 0" />
         <secondStep v-if="imageStep === 1" />
         <thirdStep v-if="imageStep === 2" />
         <fourthStep v-if="imageStep === 3"/>
-    </transition-group>
+    <!-- </transition-group> -->
     
 
     <TextsComponent :user-name="userName"></TextsComponent>
@@ -34,7 +34,6 @@ let text1
 let text2 
 let text3 
 let text4 
-let text5 
 
 const nextStep = () => {
     replicStepAskWaiting.value = false
@@ -47,10 +46,11 @@ watch(replicStep, (value) => {
             text1.classList.remove('visible')
             imageStep.value++
             text2.classList.add('visible')
-
+                
+            replicStepAskWaiting.value = true
             setTimeout(() => {
                 emit('question')
-                replicStepAskWaiting.value = true
+                
             }, 1500)
             
             break;
@@ -62,20 +62,15 @@ watch(replicStep, (value) => {
 
         case 3:
             text3.classList.remove('visible')
-            text5.classList.add('visible')
             imageStep.value++
             
-
-            break;
-
-        case 4:
-            text4.classList.add('visible')
-            text5.classList.remove('visible')
+            setTimeout(() => {
+                text4.classList.add('visible')
+            }, 500)
 
             setTimeout(() => {
                 emit('continue')
-            }, 1000)
-            
+            }, 1500)
             break;
 
         default:
@@ -97,8 +92,7 @@ onMounted(async () => {
     text1 = document.querySelector('#text-61')
     text2 = document.querySelector('#text-62')
     text3 = document.querySelector('#text-63')
-    text4 = document.querySelector('#text-65')
-    text5 = document.querySelector('#text-64')
+    text4 = document.querySelector('#text-64')
     
     setTimeout(() => { // первый текст
         text1.classList.add('visible')

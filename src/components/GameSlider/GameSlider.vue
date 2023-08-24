@@ -1,6 +1,6 @@
 <template>
 <div class="slider" :class="{'phone-slider': isPhone}">
-  <Transition name="fade" :mode="mode">
+  <transition name="fade" :mode="mode">
     <component
       ref="slide"
       :is="currentSlide"
@@ -10,7 +10,7 @@
       @question="emit('question')"
       @skip="skipSlide"
     />
-  </Transition>
+  </transition>
 </div>
 </template>
 
@@ -25,12 +25,12 @@ const emit = defineEmits(['continue', 'showCashCounter'])
 const slide = ref(null)
 
 const mode = computed(() => {
-  const fukingSlides = [7, 17]
+  const fukingSlides = [6, 7, 17]
   if (fukingSlides.includes(currentStep.value) ) {
     return ''
   }
-  return 'out-in' // for prod
-  // return '' // for dev
+  // return 'out-in' // for prod
+  return '' // for dev
 })
 
 
@@ -136,11 +136,22 @@ export default {
   align-items: center;
   background-color: #000;
 
-  svg, video {
-    width: 100%;
+  img {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  svg, video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
   }
 }
 
