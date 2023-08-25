@@ -29,8 +29,8 @@ const mode = computed(() => {
   if (fukingSlides.includes(currentStep.value) ) {
     return ''
   }
-  // return 'out-in' // for prod
-  return '' // for dev
+  return 'out-in' // for prod
+  // return '' // for dev
 })
 
 
