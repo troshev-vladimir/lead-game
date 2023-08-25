@@ -28,10 +28,14 @@
 import { useNavigationStore } from '@/store/navigation'
 import { computed } from 'vue';
 import imageUrl2 from '@/assets/next-btn-img/2-slide.jpg'
-import imageUrl6 from '@/assets/next-btn-img/6-slide.jpg'
+import imageUrl5 from '@/assets/next-btn-img/5-slide.jpg'
+import imageUrl8 from '@/assets/next-btn-img/8-slide.jpg'
 import imageUrl10 from '@/assets/next-btn-img/10-slide.jpg'
-import imageUrl13 from '@/assets/next-btn-img/13-slide.jpg'
-import imageUrl14 from '@/assets/next-btn-img/14-slide.jpg'
+import imageUrl12 from '@/assets/next-btn-img/12-slide.jpg'
+
+
+import imageAccounter from '@/assets/next-btn-img/accounter.jpg'
+import imageUrlLearning from '@/assets/next-btn-img/learning.jpg'
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['next'])
@@ -55,14 +59,14 @@ const currentStepButton = computed(() => {
         image: imageUrl2,
         text: 'Супер! Давай скорее начнем'
       }
-    case 6:
+    case 5:
       return {
-        image: imageUrl6,
+        image: imageUrl5,
         text: 'В комнату переговоров'
       } 
-    case 9:
+    case 8:
       return {
-        image: imageUrl6,
+        image: imageUrl8,
         text: 'Следовать за наставником'
       }  
       
@@ -70,38 +74,33 @@ const currentStepButton = computed(() => {
       return {
         image: imageUrl10,
         text: 'Следовать за наставником'
-      }   
+      } 
       
-    case 13:
+    case 11:
       return {
-        image: imageUrl13,
+        image: imageUrl10,
         text: 'Следовать за наставником'
-      }   
+      } 
       
-    case 14:
+    case 12:
       return {
-        image: imageUrl14,
+        image: imageUrl12,
         text: 'Следовать за наставником'
       }
     
-    case 19:
+    case 16:
       return {
-        image: imageUrl14,
+        image: imageUrlLearning,
         text: 'Учебный центр',
         prev: {
+          image: imageAccounter,
           text: "Бухгалтерия"
         }
       }
       
-    case 20:
+    case 18:
       return {
-        image: imageUrl14,
-        text: 'Учебный центр',
-      }
-
-    case 21:
-      return {
-        image: imageUrl14,
+        image: imageUrl10,
         text: 'Учебный центр',
       }
     default:
@@ -110,7 +109,7 @@ const currentStepButton = computed(() => {
 })
 
 const imageName = computed(() => {
-  return currentStepButton.value.image
+  return props.prev ? currentStepButton.value.prev.image : currentStepButton.value.image
 })
 
 

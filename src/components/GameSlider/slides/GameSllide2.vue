@@ -16,8 +16,10 @@
 
 <script setup>
 import bg2 from "@/assets/slides-images/second/bg.webp"
-
 import { nextTick, onMounted } from 'vue'
+
+// eslint-disable-next-line no-undef
+const emit = defineEmits(['continue'])
 
 onMounted(async () => {
     await nextTick()
@@ -25,6 +27,10 @@ onMounted(async () => {
     const text1 = document.querySelector('#text-2')
     setTimeout(() => {
         text1.classList.add('visible')
+    }, 500)
+
+    setTimeout(() => {
+        emit('continue')
     }, 1500)
 })
 </script>

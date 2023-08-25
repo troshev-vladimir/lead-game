@@ -89,9 +89,6 @@ import GameSllide15 from './slides/GameSllide15.vue'
 import GameSllide16 from './slides/GameSllide16.vue' // 1с
 import GameSllide17 from './slides/GameSllide17.vue'
 import GameSllide18 from './slides/GameSllide18.vue'
-import GameSllide19 from './slides/GameSllide19.vue'
-import GameSllide20 from './slides/GameSllide20.vue'
-import GameSllide21 from './slides/GameSllide21.vue'
 
 export default {
     components: { 
@@ -114,9 +111,6 @@ export default {
       GameSllide16,
       GameSllide17,
       GameSllide18,
-      GameSllide19,
-      GameSllide20,
-      GameSllide21
     }
 }
 </script>

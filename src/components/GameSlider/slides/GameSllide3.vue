@@ -128,7 +128,7 @@ onMounted(async () => {
     
     setTimeout(() => {
         text1.classList.add('visible')
-
+        interactiveArea.classList.add('active')
         interactiveArea.addEventListener('click', () => {
             emit('nextSlide')
         })
@@ -143,10 +143,14 @@ onMounted(async () => {
     position: relative;
     z-index: 2;
     animation: 3s blinker ease infinite;
-
+    display: none;
     &:hover {
         animation: none;
         opacity: 1;
+    }
+
+    &.active {
+        display: block;
     }
 }
 

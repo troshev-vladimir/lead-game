@@ -2,7 +2,7 @@
   <GameSlider 
     id='slider' 
     ref="slider" 
-    @continue="nextBtnControl = true" 
+    @continue="nextBtnControl = true, prevBtnControl = true" 
     @click="dispatchEvent"
     @question="showNavigationMap"
     @show-cash-counter="showCashCounter"
@@ -23,7 +23,7 @@
     class="prev-btn"
     :class="{hidden: !prevBtnControl}"
     @click="prevButtonCallback"
-    v-if="[19].includes(currentStep)"
+    v-if="[16].includes(currentStep)"
   ></NextButton>
   <CashCounter v-if="isCashCounter" class="cash-counter"></CashCounter>
 </template>
@@ -84,7 +84,9 @@ watch(currentStep, (value) => {
   prevBtnControl.value = false
 
   switch (value) {
-    case 19:
+    case 2:
+      break;
+    case 16:
       nextButtonCallback = () => {
         console.log("Пошли в Учебку");
       }
@@ -94,7 +96,7 @@ watch(currentStep, (value) => {
       }
       break;
 
-    case 21:
+    case 18:
       nextButtonCallback = () => {
         console.log("Пошли в Учебку");
       }
@@ -109,7 +111,7 @@ watch(currentStep, () => {
   navigationMapControl.value = false
 
   switch (currentStep.value) {
-    case 5:
+    case 4:
       // setTimeout(() => {
       //   nextBtnControl.value = true
       //   navigationMapControl.value = true
@@ -120,7 +122,7 @@ watch(currentStep, () => {
       // }
 
       break;
-    case 6:
+    case 5:
       navigationCallback = () => {
         slider.value.slide.nextStep()
         navigationMapControl.value = false
@@ -128,7 +130,7 @@ watch(currentStep, () => {
 
       break;
 
-    case 7:
+    case 6:
       setTimeout(() => {
         navigationMapControl.value = true
       }, 3000)
@@ -140,26 +142,23 @@ watch(currentStep, () => {
       break;
 
     case 9:
-      // navigationCallback = () => {
-      //   slider.value.slide.nextStep()
-      //   navigationMapControl.value = false
-      // }
-    
+      break;
+    case 10:
       break;
 
     case 11:
-      break;
-    case 12:
-      break;
-
-    case 13:
       navigationCallback = () => {
-        navigation.stepForward()
+        slider.value.slide.nextStep()
         navigationMapControl.value = false
       }
     
       break;
     
+    case 12:
+      
+    
+      break;
+
     case 14:
       navigationCallback = () => {
         slider.value.slide.nextStep()
@@ -168,12 +167,14 @@ watch(currentStep, () => {
     
       break;
 
-    case 16:
+    case 15:
       navigationCallback = () => {
         slider.value.slide.nextStep()
         navigationMapControl.value = false
       }
-    
+      break;
+    case 16:
+       
       break;
 
     case 17:
@@ -181,26 +182,10 @@ watch(currentStep, () => {
         slider.value.slide.nextStep()
         navigationMapControl.value = false
       }
+    
       break;
+
     case 18:
-      break;
-    case 19:
-      setTimeout(() => {
-        nextBtnControl.value = true
-        prevBtnControl.value = true
-      }, 500)
-    
-      break;
-
-    case 20:
-      navigationCallback = () => {
-        slider.value.slide.nextStep()
-        navigationMapControl.value = false
-      }
-    
-      break;
-
-    case 21:
       break;
 
     default:
