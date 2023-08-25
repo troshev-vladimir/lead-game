@@ -31,7 +31,7 @@ onMounted(async () => {
 
     setTimeout(() => {
         emit('continue')
-    }, 1500)
+    }, 1000)
 })
 </script>
 

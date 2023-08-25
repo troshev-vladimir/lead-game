@@ -132,7 +132,7 @@ onMounted(async () => {
         interactiveArea.addEventListener('click', () => {
             emit('nextSlide')
         })
-    }, 1500)
+    }, 1000)
 
 })
 </script>

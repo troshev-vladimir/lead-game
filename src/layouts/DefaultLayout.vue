@@ -111,6 +111,8 @@ watch(currentStep, () => {
   navigationMapControl.value = false
 
   switch (currentStep.value) {
+    case 1:
+      break;
     case 4:
       // setTimeout(() => {
       //   nextBtnControl.value = true

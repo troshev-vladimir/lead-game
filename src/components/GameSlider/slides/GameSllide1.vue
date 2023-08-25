@@ -22,6 +22,9 @@ import bg from "@/assets/slides-images/first/bg.webp"
 const user = useUserStore()
 const { userName } = storeToRefs(user)
 
+// eslint-disable-next-line no-undef
+const emit = defineEmits(['question'])
+
 onMounted(async () => {
     await nextTick()
 
@@ -29,7 +32,11 @@ onMounted(async () => {
     
     setTimeout(() => {
         text1.classList.add('visible')
-    }, 1500)
+    }, 500)
+
+    setTimeout(() => {
+        emit('question')
+    }, 1000)
 })
 </script>
 
