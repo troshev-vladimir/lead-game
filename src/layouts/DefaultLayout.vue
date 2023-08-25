@@ -88,11 +88,11 @@ watch(currentStep, (value) => {
       break;
     case 16:
       nextButtonCallback = () => {
-        console.log("Пошли в Учебку");
+        navigation.stepForward()
       }
 
       prevButtonCallback = () => {
-        navigation.stepForward()
+        console.log("Пошли в Учебку");
       }
       break;
 

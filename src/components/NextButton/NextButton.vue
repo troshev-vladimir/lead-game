@@ -90,17 +90,17 @@ const currentStepButton = computed(() => {
     
     case 16:
       return {
-        image: imageUrlLearning,
-        text: 'Учебный центр',
+        image: imageAccounter,
+        text: "Бухгалтерия",
         prev: {
-          image: imageAccounter,
-          text: "Бухгалтерия"
+          image: imageUrlLearning,
+          text: 'Учебный центр',
         }
       }
       
     case 18:
       return {
-        image: imageUrl10,
+        image: imageUrlLearning,
         text: 'Учебный центр',
       }
     default:

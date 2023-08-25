@@ -1,11 +1,11 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-    <!-- <transition-group name="fade"> -->
+    <transition-group name="fade" mode="">
         <firstStep v-if="imageStep === 0" />
         <secondStep v-if="imageStep === 1" />
         <thirdStep v-if="imageStep === 2" />
         <fourthStep v-if="imageStep === 3"/>
-    <!-- </transition-group> -->
+    </transition-group>
     
 
     <TextsComponent :user-name="userName"></TextsComponent>

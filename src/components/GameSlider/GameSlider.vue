@@ -33,8 +33,6 @@ const mode = computed(() => {
   // return '' // for dev
 })
 
-
-
 // eslint-disable-next-line no-undef
 defineExpose({
   slide

@@ -137,7 +137,7 @@ onMounted(async () => {
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 [id|=interactive] {
     cursor: pointer;
     position: relative;
