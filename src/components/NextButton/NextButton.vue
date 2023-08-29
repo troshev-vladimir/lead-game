@@ -29,6 +29,7 @@ import { useNavigationStore } from '@/store/navigation'
 import { computed } from 'vue';
 import imageUrl2 from '@/assets/next-btn-img/2-slide.jpg'
 import imageUrl5 from '@/assets/next-btn-img/5-slide.jpg'
+import imageUrl7 from '@/assets/next-btn-img/6-slide.jpg'
 import imageUrl8 from '@/assets/next-btn-img/8-slide.jpg'
 import imageUrl10 from '@/assets/next-btn-img/10-slide.jpg'
 import imageUrl12 from '@/assets/next-btn-img/12-slide.jpg'
@@ -54,16 +55,21 @@ const navigation = useNavigationStore()
 
 const currentStepButton = computed(() => {
   switch (navigation.currentStep) {
-    case 2:
+    case 1:
       return {
         image: imageUrl2,
         text: 'Супер! Давай скорее начнем'
       }
-    case 5:
+    case 4:
       return {
         image: imageUrl5,
         text: 'В комнату переговоров'
       } 
+    case 7:
+      return {
+        image: imageUrl7,
+        text: 'Следовать за наставником'
+      }  
     case 8:
       return {
         image: imageUrl8,

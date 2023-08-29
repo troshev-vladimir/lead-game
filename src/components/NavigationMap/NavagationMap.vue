@@ -17,16 +17,16 @@ const navigation = useNavigationStore()
 
 const currentStepAnswers = computed(() => {
   switch (navigation.currentStep) {
-    case 1:
+    case 0:
       return [
         'Привет!',
       ]
-    case 5:
+    case 4:
       return [
         'Добрый день Виталий, пойдемте',
         'Да! Мне не терпится начать!'
       ]
-    case 6:
+    case 5:
       return [
         'Да, я программировал на 1С',
         'Да, я программировал на других языках, не на 1С',

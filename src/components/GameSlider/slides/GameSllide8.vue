@@ -25,7 +25,7 @@ onMounted(async () => {
     
     setTimeout(() => {
         text1.classList.add('visible')
-    }, 500)
+    }, 1000)
 })
 </script>
 

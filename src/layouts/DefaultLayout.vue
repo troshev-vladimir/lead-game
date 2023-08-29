@@ -114,17 +114,6 @@ watch(currentStep, () => {
     case 1:
       break;
     case 4:
-      // setTimeout(() => {
-      //   nextBtnControl.value = true
-      //   navigationMapControl.value = true
-      // }, 2000)
-      // navigationCallback = () => {
-      //   navigationMapControl.value = false
-      //   navigation.stepForward()
-      // }
-
-      break;
-    case 5:
       navigationCallback = () => {
         slider.value.slide.nextStep()
         navigationMapControl.value = false
@@ -132,7 +121,7 @@ watch(currentStep, () => {
 
       break;
 
-    case 6:
+    case 5:
       setTimeout(() => {
         navigationMapControl.value = true
       }, 3000)
@@ -142,7 +131,8 @@ watch(currentStep, () => {
       }
     
       break;
-
+    case 7:
+      break;
     case 9:
       break;
     case 10:
@@ -157,8 +147,10 @@ watch(currentStep, () => {
       break;
     
     case 12:
-      
-    
+      navigationCallback = () => {
+        slider.value.slide.nextStep()
+        navigationMapControl.value = false
+      }
       break;
 
     case 14:

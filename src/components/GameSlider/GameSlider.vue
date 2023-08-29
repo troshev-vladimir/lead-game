@@ -25,7 +25,7 @@ const emit = defineEmits(['continue', 'showCashCounter'])
 const slide = ref(null)
 
 const mode = computed(() => {
-  const fukingSlides = [6, 7, 17]
+  const fukingSlides = [4, 7, 17]
   if (fukingSlides.includes(currentStep.value) ) {
     return ''
   }
@@ -42,7 +42,11 @@ const navigation = useNavigationStore()
 const { currentStep } = storeToRefs(navigation)
 
 const currentSlide = computed(() => {
-    console.log('GameSllide' + currentStep.value);
+    console.log('GameSllide' + ' ' + currentStep.value);
+
+    if (currentStep.value === -1 ) {
+      return 'initialSlide'
+    }
     return 'GameSllide' + currentStep.value
 })
 
@@ -68,6 +72,7 @@ onMounted(() => {
 })
 </script>
 <script>
+import initialSlide from './slides/initialSlide.vue'
 import GameSllide0 from './slides/GameSllide0.vue'
 import GameSllide1 from './slides/GameSllide1.vue'
 import GameSllide2 from './slides/GameSllide2.vue'
@@ -90,6 +95,7 @@ import GameSllide18 from './slides/GameSllide18.vue'
 
 export default {
     components: { 
+      initialSlide,
       GameSllide0,
       GameSllide1,
       GameSllide2,

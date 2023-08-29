@@ -62,7 +62,7 @@ const emit = defineEmits(['continue', 'question', 'showCashCounter'])
 
 const user = useUserStore()
 const { userName } = storeToRefs(user)
-const replicStepAskWaiting = ref(false)
+const replicStepAskWaiting = ref(true)
 
 const nextStep = () => {
     replicStepAskWaiting.value = false
@@ -126,7 +126,6 @@ onMounted(async () => {
 
     setTimeout(() => {
         emit('question')
-        replicStepAskWaiting.value = true
     }, 1500)
 })
 

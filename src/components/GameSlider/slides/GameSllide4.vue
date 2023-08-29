@@ -1,30 +1,111 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <template>
-<!-- controls -->
-<video ref="video" >
-    <source src="https://dl.dropboxusercontent.com/s/t6w9pil8yhkkc9i32atjv/22.mp4?rlkey=5r6uh0ge3m7vmy82g2943jydm&dl=0" type="video/mp4">
-</video>
+    <transition-group name="fade" mode="">
+        <firstStep v-if="imageStep === 0" />
+        <secondStep v-if="imageStep === 1" />
+        <thirdStep v-if="imageStep === 2" />
+        <fourthStep v-if="imageStep === 3"/>
+    </transition-group>
+    
+
+    <TextsComponent :user-name="userName"></TextsComponent>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
+import { useUserStore } from '@/store/user'
+import { storeToRefs } from 'pinia'
+import firstStep from '@/components/slide6steps/firstStep.vue'
+import secondStep from '@/components/slide6steps/secondStep.vue'
+import thirdStep from '@/components/slide6steps/thirdStep.vue'
+import fourthStep from '@/components/slide6steps/fourthStep.vue'
+import TextsComponent from '@/components/slide6steps/TextsComponent.vue'
+
 // eslint-disable-next-line no-undef
-const emit = defineEmits(['nextSlide'])
+const emit = defineEmits(['continue']) 
+
+const imageStep = ref(0)
+const replicStep = ref(0)
+const replicStepAskWaiting = ref(false)
+const user = useUserStore()
+const { userName } = storeToRefs(user)
+
+let text1 
+let text2 
+let text3 
+let text4 
+
+const nextStep = () => {
+    replicStepAskWaiting.value = false
+    replicStep.value += 1
+}
+
+watch(replicStep, (value) => {
+    switch (value) {
+        case 1:
+            text1.classList.remove('visible')
+            imageStep.value++
+            text2.classList.add('visible')
+                
+            replicStepAskWaiting.value = true
+            setTimeout(() => {
+                emit('question')
+                
+            }, 1500)
+            
+            break;
+        case 2:
+            text2.classList.remove('visible')
+            text3.classList.add('visible')
+            imageStep.value++
+            break;
+
+        case 3:
+            text3.classList.remove('visible')
+            imageStep.value++
+            
+            setTimeout(() => {
+                text4.classList.add('visible')
+            }, 500)
+
+            setTimeout(() => {
+                emit('continue')
+            }, 1500)
+            break;
+
+        default:
+            break;
+    }
+})
 
 
-const video = ref(null)
 
-onMounted(() => {
-    video.value.play()
+onMounted(async () => {
+    await nextTick()
 
-    video.value.addEventListener('ended', () => {
-        console.log('adsasd');
-        emit('nextSlide')
-    });
-}) 
+    document.addEventListener('nextReplic', () => {
+        if (!replicStepAskWaiting.value) {
+            replicStep.value += 1
+        }
+    })
+
+    text1 = document.querySelector('#text-61')
+    text2 = document.querySelector('#text-62')
+    text3 = document.querySelector('#text-63')
+    text4 = document.querySelector('#text-64')
+    
+    setTimeout(() => { // первый текст
+        text1.classList.add('visible')
+    }, 500)
+})
+
+// eslint-disable-next-line no-undef
+defineExpose({
+  nextStep
+})
+
 </script>
 
 <style lang="scss">
-video {
-    // height: 100%;
-}
+
 </style>
