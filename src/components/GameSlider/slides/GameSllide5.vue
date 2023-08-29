@@ -136,10 +136,10 @@ onMounted(async () => {
     setTimeout(() => {
         text1.classList.add('visible')
     }, 1500)
+    
     setTimeout(() => {
         emit('question')
     }, 2500)
-    
 })
 
 </script>

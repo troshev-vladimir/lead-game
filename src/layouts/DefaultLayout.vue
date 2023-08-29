@@ -202,7 +202,7 @@ onMounted(() => { //для дева
 })
 </script>
 
-<style>
+<style lang="scss">
 .no-continue-button #further-btn{
   display: none;
 }
@@ -213,6 +213,10 @@ onMounted(() => { //для дева
   transform: translate(-50%, 0);
   right: 0;
   transition: all ease .4s;
+
+  @media screen and (max-width: 900px) {
+    bottom: 10px;
+  }
 }
 
 .next-btn {
@@ -220,6 +224,11 @@ onMounted(() => { //для дева
   bottom: 20px;
   right: 90px;
   transition: all ease .4s;
+
+  @media screen and (max-width: 900px) {
+    bottom: 10px;
+    right: 10px;
+  }
 }
 
 .prev-btn {

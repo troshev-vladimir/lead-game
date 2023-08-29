@@ -129,6 +129,11 @@ const imageName = computed(() => {
   overflow: hidden;
   cursor: pointer;
 
+  @media screen and (max-width: 900px) {
+    border-radius: 5px;
+    width: 140px;
+  }
+
   &:hover {
     .text {
       color: #0075EB;
@@ -141,15 +146,30 @@ const imageName = computed(() => {
       transform: rotate(180deg);
       margin-right: 25px;
       margin-left: 0;
-    }
 
+      @media screen and (max-width: 900px) {
+        margin-right: 10px;
+      }
+    }
     span {
+    }
+  }
+
+  .arrow {
+    svg {
+      @media screen and (max-width: 900px) {
+        width: 30px;
+      }
     }
   }
 
   &:not(.next-button--prev) {
     .arrow {
       margin-left: 25px;
+
+      @media screen and (max-width: 900px) {
+        margin-left: 10px;
+      }
     }
   }
 
@@ -162,7 +182,11 @@ const imageName = computed(() => {
   .image {
     width: 100%;
     height: 250px;
-    background-size: contain;
+
+    @media screen and (max-width: 900px) {
+      object-fit: cover;
+      height: 80px;
+    }
   }
 
   .text {
@@ -175,6 +199,11 @@ const imageName = computed(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (max-width: 900px) {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
   }
 }
 </style>

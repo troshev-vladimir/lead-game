@@ -68,6 +68,11 @@ const currentStepAnswers = computed(() => {
   border-radius: 20px;
   overflow: hidden;
 
+  @media screen and (max-width: 900px) {
+    border-radius: 10px;
+    width: 300px;
+  }
+
   .ansver {
     padding: 30px 50px;
     font-size: 22px;
@@ -79,6 +84,11 @@ const currentStepAnswers = computed(() => {
     border: 1px solid #CCC;
     border-bottom: none;
     cursor: pointer;
+
+    @media screen and (max-width: 900px) {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
 
     &:hover {
       color: #0075EB;
