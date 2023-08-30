@@ -34,6 +34,7 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 // import { useUserStore } from '@/store/user'
 // import { storeToRefs } from 'pinia'
 import bg7 from "@/assets/slides-images/seven/bg.webp"
+import useFurtherButton from '../composables/useFurtherButton'
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue']) 
 const replicStep = ref(0)
@@ -42,7 +43,7 @@ const replicStepAskWaiting = ref(true)
 
 let text3
 let text4
-
+useFurtherButton()
 watch(replicStep, (value) => {
     switch (value) {
         case 1:

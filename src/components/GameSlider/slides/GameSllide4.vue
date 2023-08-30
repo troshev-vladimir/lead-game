@@ -20,6 +20,7 @@ import secondStep from '@/components/slide6steps/secondStep.vue'
 import thirdStep from '@/components/slide6steps/thirdStep.vue'
 import fourthStep from '@/components/slide6steps/fourthStep.vue'
 import TextsComponent from '@/components/slide6steps/TextsComponent.vue'
+import useFurtherButton from '../composables/useFurtherButton'
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue']) 
@@ -29,7 +30,7 @@ const replicStep = ref(0)
 const replicStepAskWaiting = ref(false)
 const user = useUserStore()
 const { userName } = storeToRefs(user)
-
+useFurtherButton()
 let text1 
 let text2 
 let text3 

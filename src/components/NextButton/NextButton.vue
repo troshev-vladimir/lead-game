@@ -73,25 +73,25 @@ const currentStepButton = computed(() => {
     case 8:
       return {
         image: imageUrl8,
-        text: 'Следовать за наставником'
+        text: 'Поговорить с разработчиками'
       }  
       
     case 10:
       return {
         image: imageUrl10,
-        text: 'Следовать за наставником'
+        text: 'Пройти на инструктаж'
       } 
       
     case 11:
       return {
         image: imageUrl10,
-        text: 'Следовать за наставником'
+        text: 'Пройти на инструктаж '
       } 
       
     case 12:
       return {
         image: imageUrl12,
-        text: 'Следовать за наставником'
+        text: 'Приступить к  заданиям'
       }
     
     case 16:

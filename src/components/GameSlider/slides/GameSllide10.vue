@@ -26,10 +26,11 @@
 <script setup>
 import bg10 from "@/assets/slides-images/twalve/bg.webp"
 import { nextTick, onMounted } from 'vue'
+import useFurtherButton from '../composables/useFurtherButton'
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide'])
-
+useFurtherButton()
 onMounted(async () => {
     await nextTick()
 

@@ -25,7 +25,9 @@
     @click="prevButtonCallback"
     v-if="[16].includes(currentStep)"
   ></NextButton>
-  <CashCounter v-if="isCashCounter" class="cash-counter"></CashCounter>
+  <transition name="fade">
+    <CashCounter v-if="isCashCounter" class="cash-counter"></CashCounter>
+  </transition>
 </template>
 
 <script setup>
@@ -73,12 +75,30 @@ const dispatchEvent = () => {
 }
 
 const showCashCounter = () => {
-  isCashCounter.value = true
+  setTimeout(() => {
+    isCashCounter.value = true
+  }, 1000)
+  setTimeout(() => {
+    isCashCounter.value = false
+  }, 1500)
+
+  setTimeout(() => {
+    isCashCounter.value = true
+  }, 2000)
+
+  setTimeout(() => {
+    isCashCounter.value = false
+  }, 2500)
+
+  setTimeout(() => {
+    isCashCounter.value = true
+  }, 3000)
 }
 
 const showNavigationMap = () => {
   navigationMapControl.value = true
 }
+
 watch(currentStep, (value) => {
   nextBtnControl.value = false
   prevBtnControl.value = false
@@ -205,6 +225,16 @@ onMounted(() => { //для дева
 <style lang="scss">
 .no-continue-button #further-btn{
   display: none;
+}
+#further-btn{
+  visibility: hidden;
+  opacity: 0;
+  transition: all ease .2s;
+}
+
+#further-btn.visible{
+  opacity: 1;
+  visibility: visible;
 }
 .navigation {
   position: absolute;
