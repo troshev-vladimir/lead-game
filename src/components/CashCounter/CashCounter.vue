@@ -23,6 +23,10 @@ import CoinImage from '@/assets/coin.png'
     align-items: center;
     background-color: #fff;
 
+    @media screen and (max-width: 900px) {
+      border-radius: 5px;
+    }
+
     .image {
         padding: 5px 15px;
         transform: rotate(-6.24deg);
@@ -30,9 +34,18 @@ import CoinImage from '@/assets/coin.png'
         display: flex;
         align-items: center;
 
+        @media screen and (max-width: 900px) {
+            padding: 2px 6px;
+        }
+
         img {
             width: 45px;
             height: 45px;
+
+            @media screen and (max-width: 900px) {
+                width: 25px;
+                height: 25px;
+            }
         }
     }
 
@@ -45,6 +58,11 @@ import CoinImage from '@/assets/coin.png'
         font-weight: 500;
         line-height: 100%;
         background: #F2F2F2;
+
+        @media screen and (max-width: 900px) {
+            font-size: 16px;
+            padding: 5px;
+        }
     }
 }
 </style>

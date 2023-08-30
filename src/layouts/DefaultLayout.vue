@@ -249,5 +249,10 @@ onMounted(() => { //для дева
   top: 90px;
   left: 90px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
+
+  @media screen and (max-width: 900px) {
+    top: 10px;
+    left: 10px;
+  }
 }
 </style>
