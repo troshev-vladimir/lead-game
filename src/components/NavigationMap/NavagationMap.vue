@@ -86,7 +86,7 @@ const currentStepAnswers = computed(() => {
     cursor: pointer;
 
     @media screen and (max-width: 900px) {
-      padding: 5px 10px;
+      padding: 8px;
       font-size: 12px;
     }
 

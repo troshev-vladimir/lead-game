@@ -24,7 +24,7 @@ import CoinImage from '@/assets/coin.png'
     background-color: #fff;
 
     @media screen and (max-width: 900px) {
-      border-radius: 5px;
+        border-radius: 5px;
     }
 
     .image {
