@@ -1,6 +1,6 @@
 <template>
-    <iframe class="screen" src="http://max43.ru:9444/IntroProduct?N=Задачи&C=Задача1" width="100%" height="100%" scrolling="auto"> </iframe>
-    <iframe class="editor" src="https://lk.itseducation.ru/editor/edd/" width="100%" height="100%" scrolling="auto"> </iframe>
+    <iframe class="screen" src="https://max43.ru:9445/IntroProduct?N=Задачи&C=Задача1" width="100%" height="100%" scrolling="auto"> </iframe>
+    <iframe class="editor" src="https://lk.itseducation.ru/lid-game/editor/edd/" width="100%" height="100%" scrolling="auto"> </iframe>
 </template>
 
 <script setup>

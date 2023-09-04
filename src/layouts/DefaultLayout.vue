@@ -99,6 +99,10 @@ const showNavigationMap = () => {
   navigationMapControl.value = true
 }
 
+const goToConfigurator = () => {
+  window.location.replace("https://lk.itseducation.ru/configurator/");
+}
+
 watch(currentStep, (value) => {
   nextBtnControl.value = false
   prevBtnControl.value = false
@@ -112,13 +116,13 @@ watch(currentStep, (value) => {
       }
 
       prevButtonCallback = () => {
-        console.log("Пошли в Учебку");
+        goToConfigurator()
       }
       break;
 
     case 18:
       nextButtonCallback = () => {
-        console.log("Пошли в Учебку");
+        goToConfigurator()
       }
     
       break;
