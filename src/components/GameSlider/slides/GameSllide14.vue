@@ -1,5 +1,5 @@
 <template>
-    <iframe class="iframe" src="https://max43.ru:9444/IntroProduct?N=Задачи&C=Задача1" width="100%" height="100%" scrolling="auto"> </iframe>
+    <iframe class="iframe" src="http://max43.ru:9444/IntroProduct?N=Задачи&C=Задача1" width="100%" height="100%" scrolling="auto"> </iframe>
 
 
     <div class="tips">
