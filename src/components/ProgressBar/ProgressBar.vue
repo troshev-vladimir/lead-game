@@ -1,0 +1,66 @@
+<template>
+  <div class="progress-bar">
+    <div 
+      class="progress-bar__segment" 
+      :class="{'progress-bar__segment--filled': isFilled(i)}" 
+      v-for="i in 4" 
+      :key="i"
+    ></div>
+  </div>
+  <button class="go-to-configuretor">
+    Завершить досрочно
+  </button>
+</template>
+
+<script setup>
+// eslint-disable-next-line no-undef
+const props = defineProps({
+  completed: {
+    type: Number,
+    default: 2
+  }
+})
+  const isFilled = (current) => {
+    return props.completed >= current
+  }
+</script>
+
+<style lang="scss" scoped>
+.progress-bar {
+  margin-bottom: 14px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  height: 32px;
+  width: 100%;
+
+  &__segment {
+    border: 0.5px solid rgba(204, 204, 204, 0.80);
+    background: #F2F2F2;
+    flex-grow: 1;
+    height: 100%;
+
+    &--filled {
+      background-color: #0075EB;
+    }
+  }
+}
+
+.go-to-configuretor {
+    color: #808080;
+    whitespace: nowrap;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    text-decoration-line: underline;
+    cursor: pointer;
+    background-color:transparent;
+    border: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+}
+</style>

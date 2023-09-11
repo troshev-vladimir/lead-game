@@ -15,7 +15,7 @@ import CoinImage from '@/assets/coin.png'
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .cash-counter {
     border-radius: 16px;
     overflow: hidden;

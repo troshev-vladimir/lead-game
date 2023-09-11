@@ -1,7 +1,7 @@
 <template>
   <div class="timer">
     <div class="image">
-        <img :src="TimerImage" alt="coin">
+        <img :src="CoinImage" alt="coin">
     </div>
 
     <div class="count">
@@ -11,37 +11,37 @@
 </template>
 
 <script setup>
-import TimerImage from '@/assets/timer.png'
+import CoinImage from '@/assets/timer.png'
 
 </script>
 
-<style lang="scss">
-.cash-counter {
+<style lang="scss" >
+.timer {
     border-radius: 16px;
     overflow: hidden;
     display: flex;
     align-items: center;
     background-color: #fff;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
 
     @media screen and (max-width: 900px) {
         border-radius: 5px;
     }
 
     .image {
-        padding: 5px 15px;
+        margin: 5px 15px;
         transform: rotate(-6.24deg);
         flex-shrink: 0;
         display: flex;
         align-items: center;
+        width: 45px;
+        height: 45px;
 
         @media screen and (max-width: 900px) {
-            padding: 2px 6px;
+            margin: 2px 6px;
         }
 
         img {
-            width: 45px;
-            height: 45px;
-
             @media screen and (max-width: 900px) {
                 width: 25px;
                 height: 25px;

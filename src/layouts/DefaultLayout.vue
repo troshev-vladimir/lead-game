@@ -133,6 +133,7 @@ watch(currentStep, (value) => {
 
 watch(currentStep, () => {
   navigationMapControl.value = false
+  isCashCounter.value = isCashCounter.value || navigation.currentStep > 13
 
   switch (currentStep.value) {
     case 1:
@@ -223,6 +224,7 @@ onMounted(() => { //для дева
       navigation.stepBackward()
     }
   })
+
 })
 </script>
 
