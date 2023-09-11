@@ -1,9 +1,11 @@
 <template>
-    <iframe class="screen" src="https://max43.ru:9445/IntroProduct?N=Задачи&C=Задача1" width="100%" height="100%" scrolling="auto"> </iframe>
-    <iframe class="editor" src="https://lk.itseducation.ru/lid-game/editor/edd/" width="100%" height="100%" scrolling="auto"> </iframe>
+    <div class="task">
+        <UserQuiz></UserQuiz>
+    </div>
 </template>
 
 <script setup>
+import UserQuiz from '../../UserQuiz'
 </script>
 
 <style>
@@ -16,5 +18,11 @@
     width: 50vw;
     height: 100%;
     padding: 0;
+}
+
+.task {
+    background-color: #ccc;
+    width: 100vw;
+    height: 100vh;
 }
 </style>
