@@ -1,25 +1,46 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <div class="customer-modal-task">
-        <img src="@/assets/task/customer-task.jpg" alt="task">
+        <video ref="video" >
+            <source src="https://dl.dropboxusercontent.com/s/t6w9pil8yhkkc9i32atjv/22.mp4?rlkey=5r6uh0ge3m7vmy82g2943jydm&dl=0" type="video/mp4">
+        </video>
         <div class="customer-modal-task__text">
-            <p>Добрый день! У меня есть задача для тебя.</p>
-            <p>Мои менеджеры заполняют карточки клиентов вручную и часто делают ошибки в номерах телефонов и электронных почтах. Возникает путаница: сотрудники вносят данные в разных форматах, делают опечатки, вводят много символов или мало!</p>
-            <p>Мои менеджеры заполняют карточки клиентов вручную и часто делают ошибки в номерах телефонов и электронных почтах. Возникает путаница: сотрудники вносят данные в разных форматах, делают опечатки, вводят много символов или мало!</p>
-            <p>Мои менеджеры заполняют карточки клиентов вручную и часто делают ошибки в номерах телефонов и электронных почтах. Возникает путаница: сотрудники вносят данные в разных форматах, делают опечатки, вводят много символов или мало!</p>
-            <p>Мои менеджеры заполняют карточки клиентов вручную и часто делают ошибки в номерах телефонов и электронных почтах. Возникает путаница: сотрудники вносят данные в разных форматах, делают опечатки, вводят много символов или мало!</p>
+            <slot/>
         </div>
-        <button>
+        <button :disabled="!isAwailablebutton" @click="goFurther">
             Погнали
         </button>
     </div>
 </template>
 
-<script>
+<script setup>
+import { defineEmits, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
+const emit = defineEmits(['further'])
+const video = ref(null)
+const isAwailablebutton = ref(true)
+
+const goFurther = () => {
+    emit('further')
+}
+
+const videoEndHandler = () => {
+    isAwailablebutton.value = true
+}
+
+onMounted(() => {
+    video.value.play()
+    video.value.addEventListener('ended', videoEndHandler);
+})
+
+onBeforeUnmount(() => {
+    video.value.pause()
+    video.value.removeEventListener('ended', videoEndHandler);
+})
 
 </script>
 <style lang="scss" scoped>
 .customer-modal-task {
+    z-index: 10;
     overflow: hidden;
     border-radius: 16px;
     max-width: 850px;
@@ -33,8 +54,7 @@
     display: flex;
     flex-direction: column;
 
-
-    img {
+    video {
         width: 100%;
         position: static;
         transform: none;
@@ -70,6 +90,10 @@
         border-top: 1px solid #CCC;
         cursor: pointer;
         transition: all ease .2s;
+
+        &:disabled {
+            pointer-events: none;
+        }
 
         &:hover {
             background-color: #bbb5b5;

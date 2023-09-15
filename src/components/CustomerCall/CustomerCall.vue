@@ -28,11 +28,19 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import { onMounted,defineEmits } from 'vue';
+const emit = defineEmits(['further'])
 
+onMounted(() => {
+    document.querySelector("#button-accept").addEventListener('click', () => {
+        emit('further')
+    })
+}) 
 </script>
 <style lang="scss">
 .customer-call {
+    z-index: 1000;
     svg {
         height: 80vh;
     }
