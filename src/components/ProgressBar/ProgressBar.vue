@@ -3,21 +3,24 @@
     <div 
       class="progress-bar__segment" 
       :class="{'progress-bar__segment--filled': isFilled(i)}" 
-      v-for="i in 4" 
+      v-for="i in total" 
       :key="i"
     ></div>
   </div>
-  <button class="go-to-configuretor">
+  <button class="go-to-configuretor" @click="emit('skip')">
     Завершить досрочно
   </button>
 </template>
 
 <script setup>
-// eslint-disable-next-line no-undef
+import {defineEmits, defineProps} from 'vue'
+const emit = defineEmits(['skip']);
 const props = defineProps({
   completed: {
     type: Number,
-    default: 2
+  },
+  total: {
+    type: Number,
   }
 })
   const isFilled = (current) => {

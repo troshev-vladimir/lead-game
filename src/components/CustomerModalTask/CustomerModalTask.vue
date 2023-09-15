@@ -1,24 +1,35 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <div class="customer-modal-task">
-        <video ref="video" >
-            <source src="https://dl.dropboxusercontent.com/s/t6w9pil8yhkkc9i32atjv/22.mp4?rlkey=5r6uh0ge3m7vmy82g2943jydm&dl=0" type="video/mp4">
+        <video ref="video" preload autoplay>
+            <source :src="videoLink" type="video/mp4">
         </video>
-        <div class="customer-modal-task__text">
-            <slot/>
-        </div>
+        <div class="customer-modal-task__text" v-html="text"></div>
         <button :disabled="!isAwailablebutton" @click="goFurther">
-            Погнали
+            {{isCongrates ? "Спасибо, я старался" : "Погнали"}}
         </button>
     </div>
 </template>
 
 <script setup>
-import { defineEmits, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
+import { defineEmits,defineProps, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
 const emit = defineEmits(['further'])
 const video = ref(null)
-const isAwailablebutton = ref(true)
-
+const isAwailablebutton = ref(true) // false
+const props = defineProps({
+    isCongrates: {
+        type: Boolean,
+        required: true
+    },
+    text: {
+        type: String,
+        required: true
+    },
+    videoLink: {
+        type: String,
+        required: true
+    },
+})
 const goFurther = () => {
     emit('further')
 }
@@ -40,7 +51,7 @@ onBeforeUnmount(() => {
 </script>
 <style lang="scss" scoped>
 .customer-modal-task {
-    z-index: 10;
+    z-index: 1000;
     overflow: hidden;
     border-radius: 16px;
     max-width: 850px;
@@ -60,6 +71,7 @@ onBeforeUnmount(() => {
         transform: none;
         height: 30vh;
         object-fit: cover;
+        background-color: #333;
         height: 851px;
     }
 

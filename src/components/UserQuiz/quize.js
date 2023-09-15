@@ -1,13 +1,16 @@
 export const quize = [
   {
+    summ: 5000,
     task: {
-      video: "",
-      text: "task1",
+      video:
+        "https://dl.dropbox.com/s/s6tvsxqx0j5sics073u3x/8-2.mp4?rlkey=s25k42bevziovo1zmi3l2jamm&dl=0",
+      text: "<p>Добрый день! У меня есть задача для тебя.</p><p>Мои менеджеры заполняют карточки клиентов вручную и часто делают ошибки в номерах телефонов и электронных почтах. <br />Возникает путаница: сотрудники вносят данные в разных форматах, делают опечатки, вводят много символов или мало!</p><p>Я так устал от этого. Чувствую, что мы просто теряем часть нашей прибыли!</p><p>Хочется, чтобы клиенты получали рассылки про наши акции, при отправке счета доходили до адресатов, а при передаче клиента новому менеджеру он точно смог позвонить по корректному номеру или отправить ему коммерческое предложение.</p><p>Если ты сможешь мне помочь, я заплачу 5000 рублей.</p>",
     },
     content: {
       taskDescription: {
-        video: "",
-        text: "taskDescription #1",
+        video:
+          "https://dl.dropbox.com/s/8pdq6kmxmjv38k71iuvvr/3-2.mp4?rlkey=6p0g9y8g9sti3au3zrh3zcz1p&dl=0",
+        text: "<p>Чтобы выполнить эту задачу тебе понадобится понять что в системе есть поле ввода, которое имеет такой тип как строка и к данному типу поля ввода можно применить маску для ввода данных &mdash; эта функция отвечает за формирование внешнего вида вводимой пользователем в строку информации и за ее количество.</p><p>Именно эту функцию ты должен будешь использовать.</p><p>Для Маски существует набор символов ограничителей, сейчас тебе пригодятся следующие:</p><p>9 &ndash; вводиться могут только цифры;</p><p># - вводиться могут все цифры, пробел и знаки &laquo;+&raquo; и &laquo;-&raquo;;</p><p>@ - вводиться могут буквенные символы, при этом все они будут становиться верхним регистром;</p><p>X &ndash; вводиться могут любые символы латиницы.</p>",
       },
 
       quest: [
@@ -15,103 +18,44 @@ export const quize = [
           question: "#1 asdasdasdasdsa asd asd asd as as",
           answers: [
             {
-              text: "asd asd asd as das dd12123  1",
+              text: "+7(@@@) @@@ @@ @@",
               isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
+              explanation:
+                'Подумай еще немного, в выбранном тобой ответе присутствует символ "@" который позволяет вводить буквенные символы верхнего регистра.',
               isChecked: false,
             },
             {
-              text: "asdasd asd asd sad asda ssd ",
+              text: "+9(999)9999999",
               isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
+              explanation:
+                'Подумай еще немного, в выбранном тобой ответе второй символ это "9", что позволит пользователю вместо кода страны &laquo;+7&raquo; ввести любую цифру.',
               isChecked: false,
             },
             {
-              text: "isRight",
+              text: "+7(999) 999 99 99",
               isRight: true,
-              explanation: "isRight",
               isChecked: false,
             },
-          ],
-        },
-        {
-          question: "#2",
-          answers: [
             {
-              text: "asd asd asd as das dd12123  1",
+              text: "+9(XXX)@@@ @@ @@",
               isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
               isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#3",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#4",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
+              explanation:
+                "<p>Отлично, спасибо тебе огромное! </p><p>Наконец-то все работает так, как должно: номера телефонов клиентов в нашей базе теперь имеют единый формат и вводятся менеджерами безошибочно. Ты очень мне помог, оплата уже переведена на твой счет. Думаю, мы с тобой еще обязательно поработаем!</p>",
             },
           ],
         },
       ],
     },
     congrates: {
-      video: "",
-      text: "Congrates 1 ",
+      video:
+        "https://dl.dropbox.com/s/8pdq6kmxmjv38k71iuvvr/3-2.mp4?rlkey=6p0g9y8g9sti3au3zrh3zcz1p&dl=0",
+      text: "Отлично, спасибо тебе огромное!",
     },
   },
 
   {
+    summ: 5000,
     task: {
       video: "",
       text: "task 2 ",
@@ -141,7 +85,6 @@ export const quize = [
             {
               text: "isRight",
               isRight: true,
-              explanation: "isRight",
               isChecked: false,
             },
           ],
@@ -164,7 +107,6 @@ export const quize = [
             {
               text: "isRight",
               isRight: true,
-              explanation: "isRight",
               isChecked: false,
             },
           ],
@@ -187,7 +129,6 @@ export const quize = [
             {
               text: "isRight",
               isRight: true,
-              explanation: "isRight",
               isChecked: false,
             },
           ],
@@ -210,7 +151,6 @@ export const quize = [
             {
               text: "isRight",
               isRight: true,
-              explanation: "isRight",
               isChecked: false,
             },
           ],
@@ -224,14 +164,15 @@ export const quize = [
   },
 
   {
+    summ: 5000,
     task: {
       video: "",
-      text: "",
+      text: "task 3",
     },
     content: {
       taskDescription: {
         video: "",
-        text: "",
+        text: "taskDescription 3",
       },
 
       quest: [
@@ -281,169 +222,11 @@ export const quize = [
             },
           ],
         },
-        {
-          question: "#3",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#4",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
       ],
     },
     congrates: {
       video: "",
-      text: "",
-    },
-  },
-
-  {
-    task: {
-      video: "",
-      text: "",
-    },
-    content: {
-      taskDescription: {
-        video: "",
-        text: "",
-      },
-
-      quest: [
-        {
-          question: "#1 asdasdasdasdsa asd asd asd as as",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#2",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#3",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#4",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
-            },
-          ],
-        },
-      ],
-    },
-    congrates: {
-      video: "",
-      text: "",
+      text: "congrates 3",
     },
   },
 ];

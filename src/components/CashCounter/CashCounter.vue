@@ -5,14 +5,15 @@
     </div>
 
     <div class="count">
-        <span>30 000</span>
+        <span>{{user.many}}</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import CoinImage from '@/assets/coin.png'
-
+import { useUserStore } from '@/store/user';
+const user = useUserStore()
 </script>
 
 <style lang="scss" scoped>

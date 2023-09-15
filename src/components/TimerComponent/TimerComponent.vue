@@ -5,14 +5,30 @@
     </div>
 
     <div class="count">
-        <span>00:00</span>
+        <span>{{minutes}}:{{seconds}}</span>
     </div>
   </div>
 </template>
 
 <script setup>
+import {computed, defineProps} from 'vue'
 import CoinImage from '@/assets/timer.png'
+const props = defineProps({
+    time: {
+        type: Number,
+        required: true
+    }
+})
 
+const seconds = computed(() => {
+    const value = props.time % 60
+    return value.toString().length < 2 ? `0${value}` : value
+})
+
+const minutes = computed(() => {
+    const value = Math.floor(props.time / 60) 
+    return value.toString().length < 2 ? '0' + value : value
+})
 </script>
 
 <style lang="scss" >
@@ -50,7 +66,8 @@ import CoinImage from '@/assets/timer.png'
     }
 
     .count {
-        padding: 15px 60px 15px 45px;
+        padding: 15px 5px 15px 5px;
+        width: 200px;
         color: #000;
         font-family: Gogh;
         font-size: 30px;

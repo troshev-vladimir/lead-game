@@ -2,15 +2,13 @@
     <div class="user-quiz">
         <div class="content" :class="{'content--hidden': !isShowedQuestion}">
             <button v-if="!isShowedQuestion && isUserCanBegin" class="start-task-btn" @click="startTask">
-                startTask
+                Начать выполнение
             </button>
-            <TimerComponent class="timer"></TimerComponent>
+            <TimerComponent class="timer" :time="time"></TimerComponent>
             <div class="progress-bar">
-                <ProgressBar :completed="taskStep" ></ProgressBar>
+                <ProgressBar :completed="taskStep" :total="totalQuizeStep" @skip="isSkipModal = true"></ProgressBar>
             </div>
-            <div class="question" v-if="isShowedQuestion">
-                {{currentTaskStep.question}}
-            </div>
+            <div class="question" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
 
             <div class="answers" v-if="isShowedQuestion">
                 <div 
@@ -21,26 +19,37 @@
                     :class="getAnswerStyle(answer)"
                 >{{ answer.text }}</div>
             </div>  
+
+            <div class="explanation" v-if="currentExplanation" v-html="currentExplanation">
+            </div>
         </div>    
 
         <div class="user-quiz__tips">
-            <video ref="video" controls>
-                <source src="https://dl.dropboxusercontent.com/s/t6w9pil8yhkkc9i32atjv/22.mp4?rlkey=5r6uh0ge3m7vmy82g2943jydm&dl=0" type="video/mp4">
-            </video>
-            <div class="user-quiz__tip-text">
-                {{currentQuizeStep.content.taskDescription.text}}
+            <div class="video-wrapper">
+                <video ref="video" controls preload controlslist="nodownload noremoteplayback noplaybackrate">
+                    <source :src="currentQuizeStep.content.taskDescription.video" type="video/mp4">
+                </video>
             </div>
+            
+            <div class="user-quiz__tip-text" v-html="currentQuizeStep.content.taskDescription.text"></div>
         </div>
 
         <transition-group name="fade" mode="out-in">
+            <div class="overlay" v-if="isCustomerCall || isCustomerTask || isSkipModal"></div>
             <CustomerCall v-if="isCustomerCall" @further="showTask" />
             <CustomerModalTask 
                 v-if="isCustomerTask" 
+                :is-congrates="isCongrates"
                 @further="showQuizeDescription"
-                :video="isCongrates ? currentQuizeStep.congrates.video : currentQuizeStep.task.video"
+                :video-link="isCongrates ? currentQuizeStep.congrates.video : currentQuizeStep.task.video"
+                :text="isCongrates ? currentQuizeStep.congrates.text : currentQuizeStep.task.text"
             >
-             {{ isCongrates ? currentQuizeStep.congrates.text : currentQuizeStep.task.text }}
             </CustomerModalTask>
+            <SkipQuizeModal 
+                v-if="isSkipModal" 
+                @accept="navigation.stepForward"
+                @cancle="isSkipModal = false"
+            ></SkipQuizeModal>
         </transition-group>
     </div>
 </template>
@@ -50,16 +59,32 @@
     import CustomerModalTask from '../CustomerModalTask'
     import TimerComponent from '../TimerComponent'
     import ProgressBar from '../ProgressBar'
+    import SkipQuizeModal from '../SkipQuizeModal'
     import { computed, ref, reactive } from 'vue';
     import { quize } from './quize'
+    import { useNavigationStore } from '@/store/navigation';
+    import { useUserStore } from '@/store/user';
+    
+    const navigation = useNavigationStore()
+    const user = useUserStore()
+
+    const penalty = 30
 
     const quizeReactive = reactive(quize)
     const quizeStep = ref(0)
+
     const taskStep = ref(0)
+    const time = ref(0)
+    let timer
+    const currentExplanation = ref('')
 
     const currentQuizeStep = computed(() => {
         const step = quizeStep.value
         return quizeReactive[step]
+    })
+
+    const totalQuizeStep = computed(() => {
+        return currentQuizeStep.value.content.quest.length
     })
 
     const currentTaskStep = computed(() => {
@@ -72,6 +97,7 @@
     const isShowedQuestion = ref(false)
     const isCongrates = ref(false)
     const isUserCanBegin = ref(false)
+    const isSkipModal = ref(false)
     const video = ref(false)
 
     const showTask = () => {
@@ -81,6 +107,11 @@
 
     const showQuizeDescription = () => {
         isCustomerTask.value = false
+
+        if (quizeStep.value + 1 === quizeReactive.length && isCongrates.value) { 
+            // последний таск после позравлений
+            navigation.stepForward()
+        }
 
         if (isCongrates.value) {
             isCongrates.value = false
@@ -92,39 +123,68 @@
             isUserCanBegin.value = true
             video.value.play()
         }
-        
     }
 
     const startTask = () => {
         video.value.pause()
         isShowedQuestion.value = true
+        startTimer()
     }
 
     const increaseQuizeStep = () => {
         if(quizeStep.value + 1 < quizeReactive.length) {
-            
             isCustomerCall.value = true
             isCongrates.value = true
 
         } else {
-            console.log('Конец');
+            isCustomerCall.value = true
+            isCongrates.value = true
+            // navigation.stepForward()
         }
+    }
+
+    const startTimer = () => {
+        timer = setInterval(() => {
+            time.value++;
+        }, 1000);
+    }
+
+    const stopTimer = () => {
+        let manyAmount
+
+        if (time.value < 60 * currentQuizeStep.value.content.quest.length) {
+            manyAmount = currentQuizeStep.value.summ
+        } else if (time.value < 60 * 2 * currentQuizeStep.value.content.quest.length) {
+            manyAmount = currentQuizeStep.value.summ * 0.75
+        } else {
+            manyAmount = currentQuizeStep.value.summ * 0.5
+        }
+
+        user.addMany(manyAmount)
+        time.value = 0
+        clearInterval(timer)
     }
 
     const increaseTaskStep = () => {
         if(taskStep.value + 1 < currentQuizeStep.value.content.quest.length) {
-            taskStep.value++
+            setTimeout(() => {
+                currentExplanation.value = ''
+                taskStep.value++
+            }, 500)
         } else {
             taskStep.value = 0
+            stopTimer()
             increaseQuizeStep()
         }
     }
 
     const checkAnswer = (answer) => {
         answer.isChecked = true
-
+        currentExplanation.value = answer.explanation
         if (answer.isRight) {
             increaseTaskStep()
+        } else {
+            time.value += penalty
         }
     }
 
@@ -137,6 +197,7 @@
 <style lang="scss" scoped>
 .user-quiz {
     display: flex;
+    width: 100%;
     
     .start-task-btn {
         position: absolute;
@@ -144,14 +205,37 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 100;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        border-radius: 16px;
+        background: #26A669;
+        padding: 20px 20px;
+        color: #FFF;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 130%;
+    }
+
+    .overlay {
+        z-index: 100;
+        background-color: #fff;
+        backdrop-filter: blur(100px);
+        opacity: 0.7;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block;
     }
     .content {
-        flex-grow: 1;
         display: flex;
         flex-direction: column;
         position: relative;
         height: 100vh;
         padding: 0 90px;
+        flex: 1 1 auto;
 
         &--hidden {
             &::after {
@@ -188,7 +272,7 @@
             border-radius: 16px;
             padding: 30px 45px;
             margin-bottom: 70px;
-            min-height: 200px;
+            min-height: 50px;
             overflow: auto;
             flex: 0 1 auto;
 
@@ -239,6 +323,13 @@
                 }
             }
         }
+        .explanation {
+            border-radius: 16px;
+            padding: 30px 45px 45px 45px;
+            margin-top: 50px;
+            border: 1px solid #F00;
+            background: #FFF1F1;
+        }
     }
 
     &__tips {
@@ -248,15 +339,25 @@
         display: flex;
         flex-direction: column;
         padding: 0;
-        flex: 1 0 35%;
+        flex: 0 0 35%;
 
+        .video-wrapper {
+            width: 100%;
+            position: relative;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
         video {
             width: 100%;
-            position: static;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             transform: none;
-            height: 30vh;
             object-fit: cover;
-            height: 523px;
+            background-color: #333;
         }
     }
 
@@ -270,13 +371,17 @@
         line-height: 130%;
         text-align: left;
 
-        p:not(:last-child) {
-            padding-bottom: 20px;
-        }
+        
     }
 
     
 }
 
 
+</style>
+
+<style>
+.user-quiz__tip-text > p, .customer-modal-task__text > p {
+    margin-bottom: 20px;
+}
 </style>
