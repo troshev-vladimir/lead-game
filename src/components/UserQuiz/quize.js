@@ -58,12 +58,14 @@ export const quize = [
   {
     summ: 5000,
     task: {
-      video: "",
+      video:
+        "https://dl.dropbox.com/s/v5gacsfdpyzsclve8q9df/1-1.mp4?rlkey=teiogplfp1c6rhywwha5tpbht&dl=0",
       text: "task 2 ",
     },
     content: {
       taskDescription: {
-        video: "",
+        video:
+          "https://dl.dropbox.com/s/v5gacsfdpyzsclve8q9df/1-1.mp4?rlkey=teiogplfp1c6rhywwha5tpbht&dl=0",
         text: "taskDescription 2",
       },
 
@@ -159,7 +161,8 @@ export const quize = [
       ],
     },
     congrates: {
-      video: "",
+      video:
+        "https://dl.dropbox.com/s/v5gacsfdpyzsclve8q9df/1-1.mp4?rlkey=teiogplfp1c6rhywwha5tpbht&dl=0",
       text: "congrates 2 ",
     },
   },
