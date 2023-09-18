@@ -88,6 +88,15 @@ onBeforeUnmount(() => {
         p:not(:last-child) {
             padding-bottom: 20px;
         }
+
+        @media screen and (max-width: 1200px) {
+            p:not(:last-child) {
+                padding-bottom: 8px;
+            }
+            
+            font-size: 16px;
+            padding: 16px;
+        }
     }
 
     button {
@@ -109,6 +118,11 @@ onBeforeUnmount(() => {
 
         &:hover {
             background-color: #bbb5b5;
+        }
+
+        @media screen and (max-width: 1200px) {
+            font-size: 16px;
+            padding: 16px;
         }
     }
 }

@@ -1,4 +1,7 @@
 <template>
+  <metainfo>
+    <template v-slot:title="{ content }">{{ content }} | ITS</template>
+  </metainfo>
   <GameSlider 
     id='slider' 
     ref="slider" 
@@ -250,7 +253,7 @@ onMounted(() => { //для дева
   right: 0;
   transition: all ease .4s;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     bottom: 10px;
   }
 }
@@ -261,7 +264,7 @@ onMounted(() => { //для дева
   right: 90px;
   transition: all ease .4s;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     bottom: 10px;
     right: 10px;
   }
@@ -286,9 +289,9 @@ onMounted(() => { //для дева
   left: 90px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
 
-  @media screen and (max-width: 900px) {
-    top: 10px;
-    left: 10px;
-  }
+  // @media screen and (max-width: 1200px) {
+  //   top: 10px;
+  //   left: 10px;
+  // }
 }
 </style>

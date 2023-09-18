@@ -288,7 +288,7 @@ onMounted(async () => {
         width: 95%;
         transform: translate(-50%, -50%);
 
-		@media screen and (max-width: 900px) {
+		@media screen and (max-width: 1200px) {
 			height: 70%;
 		}
     }

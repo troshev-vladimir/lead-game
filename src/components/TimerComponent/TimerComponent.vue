@@ -40,9 +40,9 @@ const minutes = computed(() => {
     background-color: #fff;
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
 
-    @media screen and (max-width: 900px) {
-        border-radius: 5px;
-    }
+    // @media screen and (max-width: 1200px) {
+    //     border-radius: 5px;
+    // }
 
     .image {
         margin: 5px 15px;
@@ -53,15 +53,15 @@ const minutes = computed(() => {
         width: 45px;
         height: 45px;
 
-        @media screen and (max-width: 900px) {
-            margin: 2px 6px;
-        }
+        // @media screen and (max-width: 1200px) {
+        //     margin: 2px 6px;
+        // }
 
         img {
-            @media screen and (max-width: 900px) {
-                width: 25px;
-                height: 25px;
-            }
+            // @media screen and (max-width: 1200px) {
+            //     width: 25px;
+            //     height: 25px;
+            // }
         }
     }
 
@@ -76,10 +76,10 @@ const minutes = computed(() => {
         line-height: 100%;
         background: #F2F2F2;
 
-        @media screen and (max-width: 900px) {
-            font-size: 16px;
-            padding: 5px;
-        }
+        // @media screen and (max-width: 1200px) {
+        //     font-size: 16px;
+        //     padding: 5px;
+        // }
     }
 }
 </style>

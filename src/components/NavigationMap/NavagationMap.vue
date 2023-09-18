@@ -68,9 +68,9 @@ const currentStepAnswers = computed(() => {
   border-radius: 20px;
   overflow: hidden;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     border-radius: 10px;
-    width: 300px;
+    width: 400px;
   }
 
   .ansver {
@@ -85,9 +85,9 @@ const currentStepAnswers = computed(() => {
     border-bottom: none;
     cursor: pointer;
 
-    @media screen and (max-width: 900px) {
-      padding: 8px;
-      font-size: 12px;
+    @media screen and (max-width: 1200px) {
+      padding: 16px;
+      font-size: 14px;
     }
 
     &:hover {

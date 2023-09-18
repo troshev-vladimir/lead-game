@@ -24,9 +24,9 @@ const user = useUserStore()
     align-items: center;
     background-color: #fff;
 
-    @media screen and (max-width: 900px) {
-        border-radius: 5px;
-    }
+    // @media screen and (max-width: 1200px) {
+    //     border-radius: 5px;
+    // }
 
     .image {
         padding: 5px 15px;
@@ -35,18 +35,18 @@ const user = useUserStore()
         display: flex;
         align-items: center;
 
-        @media screen and (max-width: 900px) {
-            padding: 2px 6px;
-        }
+        // @media screen and (max-width: 1200px) {
+        //     padding: 2px 6px;
+        // }
 
         img {
             width: 45px;
             height: 45px;
 
-            @media screen and (max-width: 900px) {
-                width: 25px;
-                height: 25px;
-            }
+            // @media screen and (max-width: 1200px) {
+            //     width: 25px;
+            //     height: 25px;
+            // }
         }
     }
 
@@ -60,10 +60,10 @@ const user = useUserStore()
         line-height: 100%;
         background: #F2F2F2;
 
-        @media screen and (max-width: 900px) {
-            font-size: 16px;
-            padding: 5px;
-        }
+        // @media screen and (max-width: 1200px) {
+        //     font-size: 16px;
+        //     padding: 5px;
+        // }
     }
 }
 </style>

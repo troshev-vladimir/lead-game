@@ -1,27 +1,29 @@
 <template>
     <div class="user-quiz">
-        <div class="content" :class="{'content--hidden': !isShowedQuestion}">
-            <button v-if="!isShowedQuestion && isUserCanBegin" class="start-task-btn" @click="startTask">
-                Начать выполнение
-            </button>
-            <TimerComponent class="timer" :time="time"></TimerComponent>
-            <div class="progress-bar">
-                <!-- {{ completedPersentage }} % -->
-                <ProgressBar :completed="completedPersentage" :total="totalQuizeStep" @skip="isSkipModal = true"></ProgressBar>
-            </div>
-            <div class="question" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
+        <div class="content-wrapper">
+            <div class="content" :class="{'content--hidden': !isShowedQuestion}">
+                <button v-if="!isShowedQuestion && isUserCanBegin" class="start-task-btn" @click="startTask">
+                    Начать выполнение
+                </button>
+                <TimerComponent class="timer" :time="time"></TimerComponent>
+                <div class="progress-bar">
+                    <!-- {{ completedPersentage }} % -->
+                    <ProgressBar :completed="completedPersentage" :total="totalQuizeStep" @skip="isSkipModal = true"></ProgressBar>
+                </div>
+                <div class="question" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
 
-            <div class="answers" v-if="isShowedQuestion">
-                <div 
-                    class="answer" 
-                    v-for="(answer, idx) in currentTaskStep.answers" 
-                    @click="checkAnswer(answer)"
-                    :key="idx"
-                    :class="getAnswerStyle(answer)"
-                >{{ answer.text }}</div>
-            </div>  
+                <div class="answers" v-if="isShowedQuestion">
+                    <div 
+                        class="answer" 
+                        v-for="(answer, idx) in currentTaskStep.answers" 
+                        @click="checkAnswer(answer)"
+                        :key="idx"
+                        :class="getAnswerStyle(answer)"
+                    >{{ answer.text }}</div>
+                </div>  
 
-            <div class="explanation" v-if="currentExplanation" v-html="currentExplanation">
+                <div class="explanation" v-if="currentExplanation" v-html="currentExplanation">
+                </div>
             </div>
         </div>    
 
@@ -65,6 +67,15 @@
     import { quize } from './quize'
     import { useNavigationStore } from '@/store/navigation';
     import { useUserStore } from '@/store/user';
+    import { useMeta } from 'vue-meta';
+
+    useMeta({
+      title: 'Тестовое задание',
+      meta: {
+        name:"viewport",
+        content:"width=1200"
+      }
+    })
     
     const navigation = useNavigationStore()
     const user = useUserStore()
@@ -216,7 +227,6 @@
 .user-quiz {
     display: flex;
     width: 100%;
-    
     .start-task-btn {
         position: absolute;
         top: 50%;
@@ -247,6 +257,12 @@
         right: 0;
         display: block;
     }
+
+    .content-wrapper {
+        width: 100%;
+        height: 100vh;
+        overflow: auto;
+    }
     .content {
         display: flex;
         flex-direction: column;
@@ -254,6 +270,7 @@
         height: 100vh;
         padding: 0 90px;
         flex: 1 1 auto;
+        padding-top: 180px;
 
         &--hidden {
             &::after {
@@ -277,10 +294,8 @@
         }
 
         .progress-bar {
-            margin-top: 220px;
             margin-bottom: 25px;
         }
-
             
         .question {
             background-color: #fff;
@@ -349,6 +364,10 @@
             line-height: 130%; 
             // margin-bottom: 20px;
             text-align: left;
+
+            @media screen and (max-width: 1200px) {
+                font-size: 16px;
+            }
         }
     }
 
@@ -390,11 +409,7 @@
         font-weight: 500;
         line-height: 130%;
         text-align: left;
-
-        
     }
-
-    
 }
 
 

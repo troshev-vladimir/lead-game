@@ -129,9 +129,9 @@ const imageName = computed(() => {
   overflow: hidden;
   cursor: pointer;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     border-radius: 5px;
-    width: 140px;
+    width: 240px;
   }
 
   &:hover {
@@ -147,7 +147,7 @@ const imageName = computed(() => {
       margin-right: 25px;
       margin-left: 0;
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1200px) {
         margin-right: 10px;
       }
     }
@@ -157,7 +157,7 @@ const imageName = computed(() => {
 
   .arrow {
     svg {
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1200px) {
         width: 30px;
       }
     }
@@ -167,7 +167,7 @@ const imageName = computed(() => {
     .arrow {
       margin-left: 25px;
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1200px) {
         margin-left: 10px;
       }
     }
@@ -183,9 +183,9 @@ const imageName = computed(() => {
     width: 100%;
     height: 250px;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1200px) {
       object-fit: cover;
-      height: 80px;
+      height: 150px;
     }
   }
 
@@ -200,8 +200,8 @@ const imageName = computed(() => {
     align-items: center;
     justify-content: space-between;
 
-    @media screen and (max-width: 900px) {
-      padding: 5px 10px;
+    @media screen and (max-width: 1200px) {
+      padding: 12px;
       font-size: 12px;
     }
   }
