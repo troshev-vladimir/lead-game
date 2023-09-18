@@ -6,7 +6,7 @@
         </video>
         <div class="customer-modal-task__text" v-html="text"></div>
         <button :disabled="!isAwailablebutton" @click="goFurther">
-            {{isCongrates ? "Спасибо, я старался" : "Погнали"}}
+            {{isCongrates ? "Спасибо, я старался" : "Приступить к выполнению"}}
         </button>
     </div>
 </template>

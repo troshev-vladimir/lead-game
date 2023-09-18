@@ -6,7 +6,8 @@
             </button>
             <TimerComponent class="timer" :time="time"></TimerComponent>
             <div class="progress-bar">
-                <ProgressBar :completed="taskStep" :total="totalQuizeStep" @skip="isSkipModal = true"></ProgressBar>
+                <!-- {{ completedPersentage }} % -->
+                <ProgressBar :completed="completedPersentage" :total="totalQuizeStep" @skip="isSkipModal = true"></ProgressBar>
             </div>
             <div class="question" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
 
@@ -36,7 +37,7 @@
 
         <transition-group name="fade" mode="out-in">
             <div class="overlay" v-if="isCustomerCall || isCustomerTask || isSkipModal"></div>
-            <CustomerCall v-if="isCustomerCall" @further="showTask" />
+            <CustomerCall :customer="quizeStep%2" v-if="isCustomerCall" @further="showTask" />
             <CustomerModalTask 
                 v-if="isCustomerTask" 
                 :is-congrates="isCongrates"
@@ -83,8 +84,25 @@
         return quizeReactive[step]
     })
 
-    const totalQuizeStep = computed(() => {
+    const totalCurrentQuizeStep = computed(() => {
         return currentQuizeStep.value.content.quest.length
+    })
+
+    let totalQuizeStep = 0
+    quize.forEach(step => {
+        totalQuizeStep += step.content.quest.length
+    })
+
+    const completedQuizeSteps = computed(() => {
+        const completedQuize = quize.slice(0, quizeStep.value)
+        return completedQuize.reduce((acc, cur) => {
+            return acc += cur.content.quest.length
+        }, 0)
+    }) 
+
+    const completedPersentage = computed(() => {
+        // return Math.round((completedQuizeSteps.value + taskStep.value) / totalQuizeStep * 100)
+        return completedQuizeSteps.value + taskStep.value
     })
 
     const currentTaskStep = computed(() => {
@@ -259,31 +277,26 @@
         }
 
         .progress-bar {
-            position: absolute;
-            left: 50%;
-            top: 90px;
-            transform: translate(-50%, 0);
-            width: 293px;
+            margin-top: 220px;
+            margin-bottom: 25px;
         }
+
             
         .question {
-            margin-top: 220px;
             background-color: #fff;
             border-radius: 16px;
             padding: 30px 45px;
-            margin-bottom: 70px;
+            margin-bottom: 25px;
             min-height: 50px;
             overflow: auto;
             flex: 0 1 auto;
 
-            p {
-                color: #000;
-                font-size: 22px;
-                font-weight: 500;
-                line-height: 130%; 
-                margin-bottom: 20px;
-                text-align: left;
-            }   
+            color: #000;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 130%; 
+            // margin-bottom: 20px;
+            text-align: left;
         }
 
         .answers {
@@ -329,6 +342,13 @@
             margin-top: 50px;
             border: 1px solid #F00;
             background: #FFF1F1;
+
+            color: #000;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 130%; 
+            // margin-bottom: 20px;
+            text-align: left;
         }
     }
 

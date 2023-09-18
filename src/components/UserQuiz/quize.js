@@ -15,7 +15,8 @@ export const quize = [
 
       quest: [
         {
-          question: "#1 asdasdasdasdsa asd asd asd as as",
+          question:
+            "Выбери, как должна выглядеть верная маска для ввода стандартного мобильного номера телефона:",
           answers: [
             {
               text: "+7(@@@) @@@ @@ @@",
