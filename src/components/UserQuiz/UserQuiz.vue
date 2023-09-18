@@ -71,10 +71,6 @@
 
     useMeta({
       title: 'Тестовое задание',
-      meta: {
-        name:"viewport",
-        content:"width=1200"
-      }
     })
     
     const navigation = useNavigationStore()
@@ -84,6 +80,7 @@
 
     const quizeReactive = reactive(quize)
     const quizeStep = ref(0)
+    let currentMistakes = 0
 
     const taskStep = ref(0)
     const time = ref(0)
@@ -179,19 +176,26 @@
     }
 
     const stopTimer = () => {
-        let manyAmount
+        // let manyAmount
 
-        if (time.value < 60 * currentQuizeStep.value.content.quest.length) {
-            manyAmount = currentQuizeStep.value.summ
-        } else if (time.value < 60 * 2 * currentQuizeStep.value.content.quest.length) {
-            manyAmount = currentQuizeStep.value.summ * 0.75
-        } else {
-            manyAmount = currentQuizeStep.value.summ * 0.5
-        }
+        // if (time.value < 60 * currentQuizeStep.value.content.quest.length) {
+        //     manyAmount = currentQuizeStep.value.summ
+        // } else if (time.value < 60 * 2 * currentQuizeStep.value.content.quest.length) {
+        //     manyAmount = currentQuizeStep.value.summ * 0.75
+        // } else {
+        //     manyAmount = currentQuizeStep.value.summ * 0.5
+        // }
 
-        user.addMany(manyAmount)
+        // user.addMany(manyAmount)
         time.value = 0
         clearInterval(timer)
+    }
+
+    const addMany = () => {
+        const summPerAnswer = currentQuizeStep.value.summ / totalCurrentQuizeStep.value
+        const many = summPerAnswer - (currentMistakes * 0.25 * summPerAnswer)
+        user.addMany(many)
+        currentMistakes = 0
     }
 
     const increaseTaskStep = () => {
@@ -211,9 +215,11 @@
         answer.isChecked = true
         currentExplanation.value = answer.explanation
         if (answer.isRight) {
+            addMany()
             increaseTaskStep()
         } else {
-            time.value += penalty
+            // time.value += penalty
+            currentMistakes += 1
         }
     }
 
@@ -247,7 +253,7 @@
 
     .overlay {
         z-index: 100;
-        background-color: #fff;
+        background-color: #c5d0e4;
         backdrop-filter: blur(100px);
         opacity: 0.7;
         position: absolute;
@@ -262,14 +268,15 @@
         width: 100%;
         height: 100vh;
         overflow: auto;
+        display: flex;
     }
+    
     .content {
         display: flex;
         flex-direction: column;
         position: relative;
-        height: 100vh;
         padding: 0 90px;
-        flex: 1 1 auto;
+        flex: 1 1 100%;
         padding-top: 180px;
 
         &--hidden {
