@@ -1,4 +1,5 @@
 <template>
+  <p class="title">Прогресс прохождения</p>
   <div class="progress-bar">
     <div 
       class="progress-bar__segment" 
@@ -29,6 +30,16 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+
+.title {
+  color: #000;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 100%;
+  margin-bottom: 16px;
+}
+
 .progress-bar {
   margin-bottom: 14px;
   border-radius: 16px;
