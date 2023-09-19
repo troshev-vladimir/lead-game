@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <div class="customer-call">
-        <svg v-if="customer%2" width="644" height="1034" viewBox="0 0 644 1034" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg v-if="customer" width="644" height="1034" viewBox="0 0 644 1034" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="Frame 106">
 <rect x="0.5" y="1" width="643" height="1032" rx="15.5" fill="#101010"/>
 <path id="Intersect" fill-rule="evenodd" clip-rule="evenodd" d="M322 564.5C455.653 564.5 564 456.153 564 322.5C564 188.847 455.653 80.5 322 80.5C188.347 80.5 80 188.847 80 322.5C80 456.153 188.347 564.5 322 564.5Z" fill="url(#pattern0)"/>
@@ -73,11 +73,14 @@ onMounted(() => {
         emit('further')
     })
 
-    document.addEventListener('mousemove', () => {
-        if(ringingRef.value) {
-            ringingRef.value.play()
+    const promise = ringingRef.value.play();
+        if (promise !== undefined) {
+            promise.then(_ => {
+                console.log(_);
+            }).catch(error => {
+                console.log(error);
+            });
         }
-    })
 }) 
 </script>
 <style lang="scss">

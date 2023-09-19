@@ -63,7 +63,7 @@
     import TimerComponent from '../TimerComponent'
     import ProgressBar from '../ProgressBar'
     import SkipQuizeModal from '../SkipQuizeModal'
-    import { computed, ref, reactive } from 'vue';
+    import { computed, ref, reactive, onMounted } from 'vue';
     import { quize } from './quize'
     import { useNavigationStore } from '@/store/navigation';
     import { useUserStore } from '@/store/user';
@@ -118,7 +118,7 @@
         return currentQuizeStep.value.content.quest[step]
     })
 
-    const isCustomerCall = ref(true)
+    const isCustomerCall = ref(false)
     const isCustomerTask = ref(false)
     const isShowedQuestion = ref(false)
     const isCongrates = ref(false)
@@ -227,6 +227,12 @@
         if (!answer.isChecked) return ''
         return answer.isRight ? 'answer--right' : 'answer--wrong'
     }
+
+    onMounted(() => {
+        setTimeout(() => {
+            isCustomerCall.value = true
+        }, 1000)
+    }) 
 </script>
 
 <style lang="scss" scoped>
