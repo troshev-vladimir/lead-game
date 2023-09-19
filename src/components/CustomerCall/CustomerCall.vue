@@ -93,7 +93,7 @@ onMounted(() => {
 
     #button-accept {
         cursor: pointer;
-        animation: ringing ease 0.8s infinite;
+        // animation: ringing ease 1s infinite;
         border-radius: 16px;
         display: block;
         

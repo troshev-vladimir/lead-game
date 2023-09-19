@@ -6,7 +6,7 @@
         </video>
         <div class="customer-modal-task__text" v-html="text"></div>
         <button :disabled="!isAwailablebutton" @click="goFurther">
-            {{isCongrates ? "Спасибо, я старался" : "Приступить к выполнению"}}
+            {{isCongrates ? "Перейти к следующему заданию" : "Приступить к выполнению"}}
         </button>
     </div>
 </template>
@@ -111,13 +111,14 @@ onBeforeUnmount(() => {
         border-top: 1px solid #CCC;
         cursor: pointer;
         transition: all ease .2s;
+        font-family: inherit;
 
         &:disabled {
             pointer-events: none;
         }
 
         &:hover {
-            background-color: #bbb5b5;
+            color: #0075EB;
         }
 
         @media screen and (max-width: 1200px) {
