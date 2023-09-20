@@ -140,11 +140,15 @@
         }
 
         if (isCongrates.value) {
-            isCongrates.value = false
+            // после поздравлений
             quizeStep.value++
             isUserCanBegin.value = false
-            isShowedQuestion.value = false
-            isCustomerCall.value = true
+
+            setTimeout(() => {
+                isShowedQuestion.value = false
+                isCongrates.value = false
+                isCustomerCall.value = true
+            }, 2000)
         } else {
             isUserCanBegin.value = true
             video.value.play()
@@ -216,7 +220,9 @@
         currentExplanation.value = answer.explanation
         if (answer.isRight) {
             addMany()
-            increaseTaskStep()
+            setTimeout(() => {
+                increaseTaskStep()
+            }, 1000)
         } else {
             // time.value += penalty
             currentMistakes += 1
