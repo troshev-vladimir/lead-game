@@ -58,7 +58,7 @@
 
 <script setup>
 import { onMounted, defineEmits, defineProps, ref } from 'vue';
-import ringing from '@/assets/ringing.mp3';
+import ringing from '@/assets/audio/ringing.mp3';
 const emit = defineEmits(['further']);
 const ringingRef = ref(null)
 const props = defineProps({

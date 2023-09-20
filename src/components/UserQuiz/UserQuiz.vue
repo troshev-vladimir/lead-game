@@ -1,7 +1,10 @@
 <template>
     <div class="user-quiz">
+        <audio ref="manySoundRef" :src="manySound"> </audio>
+        <audio ref="failSoundRef" :src="failSound"> </audio>
+        <audio ref="rightSoundRef" :src="rightSound"> </audio>
         <div class="content-wrapper">
-            <div class="content" :class="{'content--hidden': !isShowedQuestion}">
+            <div class="content" :class="{'content--hidden': !isShowedQuestion && isUserCanBegin}">
                 <button v-if="!isShowedQuestion && isUserCanBegin" class="start-task-btn" @click="startTask">
                     Начать выполнение
                 </button>
@@ -68,7 +71,10 @@
     import { useNavigationStore } from '@/store/navigation';
     import { useUserStore } from '@/store/user';
     import { useMeta } from 'vue-meta';
-
+    import manySound from '@/assets/audio/many.mp3';
+    import failSound from '@/assets/audio/fail.mp3';
+    import rightSound from '@/assets/audio/right.mp3';
+    
     useMeta({
       title: 'Тестовое задание',
     })
@@ -125,6 +131,9 @@
     const isUserCanBegin = ref(false)
     const isSkipModal = ref(false)
     const video = ref(false)
+    const manySoundRef = ref(null)
+    const failSoundRef = ref(null)
+    const rightSoundRef = ref(null)
 
     const showTask = () => {
         isCustomerCall.value = false
@@ -143,9 +152,9 @@
             // после поздравлений
             quizeStep.value++
             isUserCanBegin.value = false
+            isShowedQuestion.value = false
 
             setTimeout(() => {
-                isShowedQuestion.value = false
                 isCongrates.value = false
                 isCustomerCall.value = true
             }, 2000)
@@ -199,19 +208,25 @@
         const summPerAnswer = currentQuizeStep.value.summ / totalCurrentQuizeStep.value
         const many = summPerAnswer - (currentMistakes * 0.25 * summPerAnswer)
         user.addMany(many)
+        manySoundRef.value.play()
+        rightSoundRef.value.play()
         currentMistakes = 0
     }
 
     const increaseTaskStep = () => {
         if(taskStep.value + 1 < currentQuizeStep.value.content.quest.length) {
+            // Закончили вопрос 
             setTimeout(() => {
                 currentExplanation.value = ''
                 taskStep.value++
             }, 500)
         } else {
-            taskStep.value = 0
-            stopTimer()
-            increaseQuizeStep()
+            // Закончили задание 
+            setTimeout(() => {
+                taskStep.value = 0
+                stopTimer()
+                increaseQuizeStep()
+            }, 2000)
         }
     }
 
@@ -222,10 +237,11 @@
             addMany()
             setTimeout(() => {
                 increaseTaskStep()
-            }, 1000)
+            }, 500)
         } else {
             // time.value += penalty
             currentMistakes += 1
+            failSoundRef.value.play()
         }
     }
 
