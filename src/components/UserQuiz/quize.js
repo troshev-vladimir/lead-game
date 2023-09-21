@@ -59,102 +59,46 @@ export const quize = [
     summ: 5000,
     task: {
       video:
-        "https://dl.dropbox.com/s/v5gacsfdpyzsclve8q9df/1-1.mp4?rlkey=teiogplfp1c6rhywwha5tpbht&dl=0",
-      text: "task 2 ",
+        "https://dl.dropbox.com/s/i5mehb7a8mi4sml6xgsvr/2.mp4?rlkey=xcvdk4btze8uy7a4r2cpg5nf4&dl=0",
+      text: "<p>Добрый день! Мне нужна твоя помощь.</p><p>Мы&nbsp;занимаемся торговлей спортивным инвентарем и&nbsp;делаем акции со&nbsp;скидками на&nbsp;группы товаров.<br />Сейчас менеджеры ставят скидки в&nbsp;платежных документах вручную и&nbsp;иногда ошибаются.<br />Из-за ошибок нам приходится объяснять клиентам, что цена с&nbsp;такой скидкой неверная&nbsp;&mdash; это ошибка менеджера.</p><p>Нам нужно сделать так, чтобы скидка, сделанная менеджером, не&nbsp;могла быть больше, чем определенное ее&nbsp;значение на&nbsp;группу товаров.<br />Помоги мне решить эту проблему. Я&nbsp;готов заплатить за&nbsp;это 5000&nbsp;рублей.</p>",
     },
     content: {
       taskDescription: {
         video:
-          "https://dl.dropbox.com/s/v5gacsfdpyzsclve8q9df/1-1.mp4?rlkey=teiogplfp1c6rhywwha5tpbht&dl=0",
-        text: "taskDescription 2",
+          "https://dl.dropbox.com/s/08gl29umsb5fa5d7glq6j/2.mp4?rlkey=cf6w4z8jun228mpqwg7og6o5n&dl=0",
+        text: "<p>Получается, когда менеджер вводит значение скидки, система должна проинформировать его, если введенная скидка больше разрешенной. Только после того, как менеджер исправит ее&nbsp;значение, документ может быть проведен.</p><p>Расчет скидки&nbsp;&mdash; процесс простой, но&nbsp;нам нужно точно определить момент, когда система должна осуществить проверку.</p><p>При работе в&nbsp;документе в&nbsp;системе происходит множество событий.<br />Опишем некоторые их&nbsp;типы:</p><p>ПриОткрытии&nbsp;&mdash; последний этап при открытии документа, когда можно отказаться от&nbsp;открытия.</p><p>ПередЗаписью&nbsp;&mdash; анализ готовности изменений документа для их&nbsp;записи.</p><p>ПриЗаписи&nbsp;&mdash; все данные документа уже записаны, выполняются дополнительные обработки в&nbsp;системе.</p><p>ПослеЗаписи&nbsp;&mdash; взаимодействия с&nbsp;пользователем, объект гарантированно записан.</p><p>Выбери событие, где нужно применить нашу проверку. И&nbsp;помни, ошибаться нельзя, как и&nbsp;в&nbsp;прошлый раз, твой гонорар будет уменьшен при совершении первой ошибки на&nbsp;1250₽ и&nbsp;также при совершении второй.</p>",
       },
 
       quest: [
         {
-          question: "#22222 asdasdasdasdsa asd asd asd as as",
+          question:
+            "<p>Выбери событие, где нужно применить проверку правильности, введенной менеджером скидки.</p>",
           answers: [
             {
-              text: "asd asd asd as das dd12123  1",
+              text: "ПриОткрытии",
               isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
+              explanation:
+                "<p>Подумай еще немного. В&nbsp;выбранном тобой ответе документ, в&nbsp;который пользователь должен внести скидку, еще не&nbsp;открыт.</p>",
               isChecked: false,
             },
             {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
+              text: "ПередЗаписью",
               isRight: true,
               isChecked: false,
             },
-          ],
-        },
-        {
-          question: "#22222",
-          answers: [
             {
-              text: "asd asd asd as das dd12123  1",
+              text: "ПриЗаписи",
               isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
+              explanation:
+                "<p>Подумай еще немного. В&nbsp;выбранном тобой ответе запись данных, в&nbsp;том числе о&nbsp;скидке, уже произошла.</p>",
               isChecked: false,
             },
             {
-              text: "asdasd asd asd sad asda ssd ",
+              text: "ПослеЗаписи",
               isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
               isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#223",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              isChecked: false,
-            },
-          ],
-        },
-        {
-          question: "#224",
-          answers: [
-            {
-              text: "asd asd asd as das dd12123  1",
-              isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
-              isChecked: false,
-            },
-            {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              isChecked: false,
+              explanation:
+                "<p>Подумай еще немного. В&nbsp;выбранном тобой ответе запись данных, в&nbsp;том числе о&nbsp;скидке, уже произошла.</p>",
             },
           ],
         },
@@ -162,75 +106,64 @@ export const quize = [
     },
     congrates: {
       video:
-        "https://dl.dropbox.com/s/v5gacsfdpyzsclve8q9df/1-1.mp4?rlkey=teiogplfp1c6rhywwha5tpbht&dl=0",
-      text: "congrates 2 ",
+        "https://dl.dropbox.com/s/ig137vko4hmfumrq82q3a/.mp4?rlkey=4lxnhjdb7ebl0myh1mnf8na9u&dl=0",
+      text: "<p>Отлично, ты&nbsp;мне очень помог, еще поработаем вместе!</p>",
     },
   },
 
   {
     summ: 5000,
     task: {
-      video: "",
-      text: "task 3",
+      video:
+        "https://dl.dropbox.com/s/okxdc51p1lvtmfmok9emw/3.mp4?rlkey=z5c8wf3pngzlmx2hol351vv6w&dl=0",
+      text: "<p>Здравствуй! <br />В&nbsp;прошлый раз ты&nbsp;отлично поработал. Наши рекламные акции стали более эффективны, мы&nbsp;больше не&nbsp;теряем клиентов из-за ошибок в&nbsp;номерах телефонов. </p><p>Благодаря твоей работе прибыль компании выросла на&nbsp;15% и&nbsp;мы&nbsp;вышли на&nbsp;международный рынок.</p><p>Сейчас мне снова нужна твоя помощь! Теперь нам необходимо всегда правильно вводить и&nbsp;зарубежные номера.</p><p>Помоги мне с&nbsp;решением этой задачи, и&nbsp;я&nbsp;заплачу тебе ещё 5000&nbsp;рублей.</p>",
     },
     content: {
       taskDescription: {
-        video: "",
-        text: "taskDescription 3",
+        video:
+          "https://dl.dropbox.com/s/43staam1bjad1llys6eem/3.mp4?rlkey=wcadhs26gyxjey7enkzyyk4yz&dl=0",
+        text: "<p>Итак, ты&nbsp;уже знаешь, что для корректного ввода номера телефона нужно определить общее количество символов в&nbsp;нем и&nbsp;присвоить маску, исходя из&nbsp;того, какие это должны быть символы.</p><p>Однако международные номера телефонов могут быть очень разными, и&nbsp;фиксированного кода страны&nbsp;&mdash; &laquo;+7&raquo; там уже не&nbsp;будет. Но&nbsp;по-прежнему все номера должны начинаться со&nbsp;знака &laquo;+&raquo;.</p><p>Выбери одну из&nbsp;масок, которую нам нужно использовать для решения данной задачи. И&nbsp;помни, ошибаться нельзя. Как и&nbsp;в&nbsp;прошлый раз, твой гонорар будет уменьшен при совершении первой ошибки на&nbsp;1250&nbsp;₽ и&nbsp;на&nbsp;такую&nbsp;же сумму при второй.</p>",
       },
 
       quest: [
         {
-          question: "#1 asdasdasdasdsa asd asd asd as as",
+          question:
+            "<p>Выбери корректную маску для международного номера телефона.</p>",
           answers: [
             {
-              text: "asd asd asd as das dd12123  1",
+              text: "+@@@@(@@@)@@-@@",
               isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
+              explanation:
+                "<p>Подумай еще немного. В&nbsp;выбранном тобой ответе присутствует символ &laquo;@&raquo; который позволяет вводить буквенные символы верхнего регистра.</p>",
               isChecked: false,
             },
             {
-              text: "asdasd asd asd sad asda ssd ",
-              isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
-              isChecked: false,
-            },
-            {
-              text: "isRight",
+              text: "+9999(999)99-99",
               isRight: true,
-              explanation: "isRight",
               isChecked: false,
             },
-          ],
-        },
-        {
-          question: "#2",
-          answers: [
             {
-              text: "asd asd asd as das dd12123  1",
+              text: "+7999(999)99-99",
               isRight: false,
-              explanation: "asd asd asd as das dd12123  1",
+              explanation:
+                "<p>Подумай еще немного. В&nbsp;твоем ответе присутствует фиксированный символ &laquo;+7&raquo;, а&nbsp;ведь коды стран могут начинаться и&nbsp;с&nbsp;других цифр.</p>",
               isChecked: false,
             },
             {
-              text: "asdasd asd asd sad asda ssd ",
+              text: "+X999(999)99-99",
               isRight: false,
-              explanation: "asdasd asd asd sad asda ssd ",
               isChecked: false,
-            },
-            {
-              text: "isRight",
-              isRight: true,
-              explanation: "isRight",
-              isChecked: false,
+              explanation:
+                "<p>Подумай еще немного, в&nbsp;выбранном тобой ответе присутствует символ &laquo;X&raquo; который обозначает, что вводиться могут любые символы латиницы.</p>",
             },
           ],
         },
       ],
     },
     congrates: {
-      video: "",
-      text: "congrates 3",
+      video:
+        "https://dl.dropbox.com/s/o4i4g8k06g2u13t4rkz3j/3.mp4?rlkey=eem80de16marizicq1do3otiy&dl=0",
+      text: "<p>Отлично, ты&nbsp;как всегда на&nbsp;высоте, теперь мы&nbsp;сможем эффективно работать с&nbsp;нашими заказчиками за&nbsp;рубежом и&nbsp;вырастем еще больше! Приятно иметь с&nbsp;тобой дело, еще увидимся!</p>",
     },
   },
 ];

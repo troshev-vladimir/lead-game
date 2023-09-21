@@ -7,10 +7,12 @@ export const useUserStore = defineStore("user", () => {
 
   function addMany(amount) {
     let i = 0;
+    const iterations = 10;
+
     let interval = window.setInterval(() => {
       i++;
-      if (i === 10) clearInterval(interval);
-      let change = amount / 10;
+      if (i === iterations) clearInterval(interval);
+      let change = amount / iterations;
       change = change >= 0 ? Math.ceil(change) : Math.floor(change);
       many.value += change;
     }, 50);
