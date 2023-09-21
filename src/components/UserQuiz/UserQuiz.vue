@@ -17,8 +17,8 @@
 
                 <div class="answers" v-if="isShowedQuestion">
                     <div 
-                        class="answer" 
-                        v-for="(answer, idx) in currentTaskStep.answers" 
+                        class="answer"
+                        v-for="(answer, idx) in currentTaskStep.answers"
                         @click="checkAnswer(answer)"
                         :key="idx"
                         :class="getAnswerStyle(answer)"
@@ -347,6 +347,10 @@
             line-height: 130%; 
             // margin-bottom: 20px;
             text-align: left;
+
+            @media screen and (max-width: 1200px) {
+                padding: 16px;
+            }
         }
 
         .answers {
@@ -366,11 +370,17 @@
                 font-weight: 500;
                 line-height: 130%; 
 
+                @media screen and (max-width: 1200px) {
+                    padding: 16px;
+                }
+
                 &:hover {
-                    background-color: #eee;
-                    transition: all ease .2s;
-                    color: #0075EB;
-                    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.30);
+                    @media not (hover: none) {
+                        background-color: #eee;
+                        transition: all ease .2s;
+                        color: #0075EB;
+                        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.30);
+                    }
                 }
 
                 &--right, &--wrong {
@@ -420,6 +430,11 @@
             position: relative;
             height: 0;
             padding-bottom: 56.25%;
+            margin-bottom: 32px;
+
+            @media screen and (max-width: 1200px) {
+                margin-bottom: 16px;
+            }
         }
         video {
             width: 100%;
@@ -437,6 +452,7 @@
 
     &__tip-text {
         padding: 32px 48px;
+        padding-top: 0;
         overflow: auto;
 
         color: #010101;
@@ -444,6 +460,10 @@
         font-weight: 500;
         line-height: 130%;
         text-align: left;
+
+        @media screen and (max-width: 1200px) {
+            padding: 16px;
+        }
     }
 }
 

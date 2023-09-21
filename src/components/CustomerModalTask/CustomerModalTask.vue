@@ -69,10 +69,13 @@ onBeforeUnmount(() => {
         width: 100%;
         position: static;
         transform: none;
-        height: 30vh;
         object-fit: cover;
         background-color: #333;
         height: 851px;
+
+        @media screen and (max-width: 1200px) {
+            height: 450px;
+        }
     }
 
     &__text {

@@ -97,6 +97,10 @@ onMounted(() => {
         animation: ringing ease 1s infinite;
         border-radius: 16px;
         display: block;
+
+        @media screen and (max-width: 1200px) {
+            border-radius: 8px;
+        }
         
         &:hover {
             transition: all ease .2s;
