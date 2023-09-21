@@ -23,6 +23,7 @@ const user = useUserStore()
     display: flex;
     align-items: center;
     background-color: #fff;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
 
     // @media screen and (max-width: 1200px) {
     //     border-radius: 5px;
@@ -42,7 +43,8 @@ const user = useUserStore()
         img {
             width: 45px;
             height: 45px;
-
+            position: static;
+            transform: none;
             // @media screen and (max-width: 1200px) {
             //     width: 25px;
             //     height: 25px;

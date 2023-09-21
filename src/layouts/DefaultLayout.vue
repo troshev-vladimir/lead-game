@@ -136,7 +136,7 @@ watch(currentStep, (value) => {
 
 watch(currentStep, () => {
   navigationMapControl.value = false
-  isCashCounter.value = isCashCounter.value || navigation.currentStep > 13
+  isCashCounter.value = (isCashCounter.value || navigation.currentStep > 14) &&  navigation.currentStep !== 14
 
   switch (currentStep.value) {
     case 1:
@@ -235,6 +235,7 @@ onMounted(() => { //для дева
 .no-continue-button #further-btn{
   display: none;
 }
+
 #further-btn{
   visibility: hidden;
   opacity: 0;
@@ -245,6 +246,7 @@ onMounted(() => { //для дева
   opacity: 1;
   visibility: visible;
 }
+
 .navigation {
   position: absolute;
   bottom: 90px;
@@ -277,7 +279,6 @@ onMounted(() => { //для дева
   transition: all ease .4s;
 }
 
-
 .hidden {
   opacity: 0;
   visibility: hidden;
@@ -287,7 +288,6 @@ onMounted(() => { //для дева
   position: absolute;
   top: 90px;
   left: 90px;
-  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
 
   // @media screen and (max-width: 1200px) {
   //   top: 10px;

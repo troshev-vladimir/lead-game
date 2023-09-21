@@ -5,13 +5,22 @@
         <audio ref="rightSoundRef" :src="rightSound"> </audio>
         <div class="content-wrapper">
             <div class="content" :class="{'content--hidden': !isShowedQuestion && isUserCanBegin}">
-                <button v-if="!isShowedQuestion && isUserCanBegin" class="start-task-btn" @click="startTask">
+                <button 
+                    v-if="!isShowedQuestion && isUserCanBegin" 
+                    class="start-task-btn" 
+                    @click="startTask"
+                >
                     Начать выполнение
                 </button>
                 <TimerComponent class="timer" :time="time"></TimerComponent>
+                <CashCounter class="cash-counter"></CashCounter>
                 <div class="progress-bar">
                     <!-- {{ completedPersentage }} % -->
-                    <ProgressBar :completed="completedPersentage" :total="totalQuizeStep" @skip="isSkipModal = true"></ProgressBar>
+                    <ProgressBar 
+                        :completed="completedPersentage" 
+                        :total="totalQuizeStep" 
+                        @skip="isSkipModal = true"
+                    ></ProgressBar>
                 </div>
                 <div class="question" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
 
@@ -32,9 +41,13 @@
 
         <div class="user-quiz__tips">
             <div class="video-wrapper">
-                <video ref="video" controls preload controlslist="nodownload noremoteplayback noplaybackrate">
-                    <source :src="currentQuizeStep.content.taskDescription.video" type="video/mp4">
-                </video>
+                <video 
+                    ref="video" 
+                    :src="currentQuizeStep.content.taskDescription.video" 
+                    controls 
+                    preload 
+                    controlslist="nodownload noremoteplayback noplaybackrate"
+                ></video>
             </div>
             
             <div class="user-quiz__tip-text" v-html="currentQuizeStep.content.taskDescription.text"></div>
@@ -74,6 +87,7 @@
     import manySound from '@/assets/audio/many.mp3';
     import failSound from '@/assets/audio/fail.mp3';
     import rightSound from '@/assets/audio/right.mp3';
+    import CashCounter from '@/components/CashCounter'
     
     useMeta({
       title: 'Тестовое задание',
@@ -322,9 +336,17 @@
             }
         }
 
+        
+
         .timer {
             position: absolute;
             right: 90px;
+            top: 90px;
+        }
+
+        .cash-counter {
+            position: absolute;
+            left: 90px;
             top: 90px;
         }
 
