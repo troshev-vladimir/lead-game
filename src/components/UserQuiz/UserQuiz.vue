@@ -30,11 +30,20 @@
                         v-for="(answer, idx) in currentTaskStep.answers"
                         @click="checkAnswer(answer)"
                         :key="idx"
-                        :class="getAnswerStyle(answer)"
+                        :class="[
+                            getAnswerStyle(answer), 
+                            {
+                                'disabled': isButtonDisabled
+                            }
+                        ]"
                     >{{ answer.text }}</div>
                 </div>  
 
-                <div class="explanation" v-if="currentExplanation" v-html="currentExplanation">
+                <div 
+                    class="explanation" 
+                    v-if="currentExplanation" 
+                    v-html="currentExplanation"
+                >
                 </div>
             </div>
         </div>    
@@ -95,7 +104,6 @@
     
     const navigation = useNavigationStore()
     const user = useUserStore()
-
     const penalty = 30
 
     const quizeReactive = reactive(quize)
@@ -144,6 +152,7 @@
     const isCongrates = ref(false)
     const isUserCanBegin = ref(false)
     const isSkipModal = ref(false)
+    const isButtonDisabled = ref(false)
     const video = ref(false)
     const manySoundRef = ref(null)
     const failSoundRef = ref(null)
@@ -233,6 +242,8 @@
             setTimeout(() => {
                 currentExplanation.value = ''
                 taskStep.value++
+                isButtonDisabled.value = false
+
             }, 500)
         } else {
             // Закончили задание 
@@ -240,6 +251,7 @@
                 taskStep.value = 0
                 stopTimer()
                 increaseQuizeStep()
+                isButtonDisabled.value = false
             }, 2000)
         }
     }
@@ -249,6 +261,7 @@
         currentExplanation.value = answer.explanation
         if (answer.isRight) {
             addMany()
+            isButtonDisabled.value = true
             setTimeout(() => {
                 increaseTaskStep()
             }, 500)
@@ -380,6 +393,11 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin-bottom: 10px;
+
+            .answer.disabled {
+                pointer-events: none;   
+            }
+
             .answer {
                 cursor: pointer;
                 border-radius: 16px;
