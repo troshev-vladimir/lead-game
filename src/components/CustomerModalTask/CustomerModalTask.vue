@@ -4,7 +4,7 @@
         <video ref="video" preload autoplay>
             <source :src="videoLink" type="video/mp4">
         </video>
-        <div class="customer-modal-task__text" v-html="text"></div>
+        <div class="customer-modal-task__text styled-scrollbars" v-html="text"></div>
         <button :disabled="!isAwailablebutton" @click="goFurther">
             {{isCongrates ? "Перейти к следующему заданию" : "Приступить к выполнению"}}
         </button>
@@ -50,6 +50,23 @@ onBeforeUnmount(() => {
 
 </script>
 <style lang="scss" scoped>
+.styled-scrollbars {
+  /* плашка-бегунок и фон */
+  scrollbar-color: #999 #ffffff;
+}
+.styled-scrollbars::-webkit-scrollbar {
+  width: 5px; /* в основном для вертикальных полос прокрутки */
+  height: 10px; /* в основном для горизонтальных полос прокрутки */
+  border-radius: 10px;
+}
+.styled-scrollbars::-webkit-scrollbar-thumb { /* плашка-бегунок */
+  border-radius: 10px;
+  background: #c9c9c9;
+}
+.styled-scrollbars::-webkit-scrollbar-track { /* фон */
+  background: #ffffff;
+}
+
 .customer-modal-task {
     z-index: 1000;
     overflow: hidden;

@@ -2,6 +2,29 @@
   <router-view/>
 </template>
 
+<script setup>
+import game from '@/api/game'
+import { onMounted } from "vue";
+import { useNavigationStore } from '@/store/navigation'
+import { storeToRefs } from 'pinia';
+
+const navigation = useNavigationStore()
+const { currentStep } = storeToRefs(navigation)
+
+const getCurrentStep = async () => {
+    try {
+        const step = await game.getCurrentStep() || -1
+        currentStep.value = step 
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+onMounted(() => {
+    getCurrentStep()
+}) 
+</script>
+
 <style lang='scss'>
 @font-face {
     font-family: "Gogh";

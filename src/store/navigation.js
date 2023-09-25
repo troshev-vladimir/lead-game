@@ -1,13 +1,19 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import game from "@/api/game";
 
 export const useNavigationStore = defineStore("navigation", () => {
-  const currentStep = ref(12);
+  const currentStep = ref(13);
   const totalSteps = 18;
 
-  function stepForward() {
+  async function stepForward() {
     if (currentStep.value === totalSteps) return;
     currentStep.value++;
+    try {
+      await game.sendCurrentStep(currentStep.value);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function stepBackward() {
