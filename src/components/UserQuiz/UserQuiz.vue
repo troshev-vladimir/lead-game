@@ -55,17 +55,19 @@
                     :src="currentQuizeStep.content.taskDescription.video" 
                     controls 
                     preload 
+                    poster="@/assets/video-posters/vitaly.jpg"
                     controlslist="nodownload noremoteplayback noplaybackrate"
                 ></video>
             </div>
             
-            <div class="user-quiz__tip-text" v-html="currentQuizeStep.content.taskDescription.text"></div>
+            <div class="user-quiz__tip-text styled-scrollbars" v-html="currentQuizeStep.content.taskDescription.text"></div>
         </div>
 
         <transition-group name="fade" mode="out-in">
             <div class="overlay" v-if="isCustomerCall || isCustomerTask || isSkipModal"></div>
             <CustomerCall :customer="quizeStep%2" v-if="isCustomerCall" @further="showTask" />
             <CustomerModalTask 
+                :customer="quizeStep%2"
                 v-if="isCustomerTask" 
                 :is-congrates="isCongrates"
                 @further="showQuizeDescription"

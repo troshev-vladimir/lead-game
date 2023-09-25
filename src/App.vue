@@ -59,6 +59,23 @@ body {
     }
 }
 
+.styled-scrollbars {
+  /* плашка-бегунок и фон */
+  scrollbar-color: #cccccc #f2f2f2;
+}
+.styled-scrollbars::-webkit-scrollbar {
+  width: 16px; /* в основном для вертикальных полос прокрутки */
+  height: 10px; /* в основном для горизонтальных полос прокрутки */
+  border-radius: 10px;
+}
+.styled-scrollbars::-webkit-scrollbar-thumb { /* плашка-бегунок */
+  border-radius: 10px;
+  background: #cccccc;
+}
+.styled-scrollbars::-webkit-scrollbar-track { /* фон */
+  background: #f2f2f2;
+}
+
 @keyframes blinker {
     from {
         opacity: 0;
