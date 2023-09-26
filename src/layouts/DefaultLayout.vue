@@ -136,9 +136,14 @@ watch(currentStep, (value) => {
 
 watch(currentStep, () => {
   navigationMapControl.value = false
-  isCashCounter.value = (isCashCounter.value || navigation.currentStep > 14) &&  navigation.currentStep !== 14
+  isCashCounter.value = (isCashCounter.value || navigation.currentStep > 14) &&
+    navigation.currentStep !== 14
 
   switch (currentStep.value) {
+    case -1:
+      break;
+    case 0:
+      break;
     case 1:
       break;
     case 4:

@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useUserStore = defineStore("user", () => {
-  const userName = ref("Инокентий");
+  const userName = ref("Иноагентий");
   const many = ref(0);
 
   function addMany(amount) {

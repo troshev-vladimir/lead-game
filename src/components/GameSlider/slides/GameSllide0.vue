@@ -12,35 +12,137 @@
     </g>
     </g>
     </svg>
+
+    <transition name="fade">
+        <div class="name-input" v-show="isInput">
+            <input 
+                placeholder="Введите ваше имя" 
+                type="text"
+                name="name"
+                v-model="userNameInput" 
+                ref="input"
+            >
+            <button @click="goFurther">
+                Продолжить
+                <svg width="50" height="14" viewBox="0 0 50 14" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="6.0083" width="42" height="2"/>
+                    <path d="M49.0586 7.00877L34.8086 13.937L39.5 7.0083L34.8086 0.0805664L49.0586 7.00877Z"/>
+                </svg>
+            </button>
+            <div class="error">
+                {{ userNameInputError }}
+            </div>
+        </div>
+    </transition>
+
+    
 </template>
 
 <script setup>
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, ref } from 'vue'
 import bg from "@/assets/slides-images/first/bg.webp"
+import { useNavigationStore } from '@/store/navigation'
 const user = useUserStore()
 const { userName } = storeToRefs(user)
-
+const navigation = useNavigationStore()
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['question'])
+const userNameInput = ref('')
+const userNameInputError = ref('')
+const input = ref(null)
+const isInput = ref(false)
+
+const goFurther = () => {
+
+    if (userNameInput.value.length > 10 || userNameInput.value.length < 3) {
+        userNameInputError.value = 
+        'Имя должно быть меньше 10 символов и больше 3. Cейчас ' +
+            userNameInput.value.length
+    } else {
+        user.userName = userNameInput.value
+        navigation.stepForward()
+    }
+}
 
 onMounted(async () => {
     await nextTick()
-
     const text1 = document.querySelector('#text-1')
+
+    setTimeout(() => {
+        isInput.value = true
+    }, 1000)
     
     setTimeout(() => {
         text1.classList.add('visible')
     }, 500)
 
-    setTimeout(() => {
-        emit('question')
-    }, 1000)
+    // setTimeout(() => {
+    //     emit('question')
+    // }, 1000)
 })
 </script>
 
 <style lang="scss">
+.name-input {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+
+    input {
+        padding: 20px 24px;
+        outline: none;
+        border-radius: 20px 0px 0px 20px;
+        border: 1px solid #CCC;
+        background: #F2F2F2;
+        width: 200px;
+
+        color: #010101;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 130%;
+    }
+
+    button  {
+        border-radius: 0px 20px 20px 0px;
+        border: 1px solid #CCC;
+        background: #FFF;
+        font-family: Gogh;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            position: static;
+            transform: none;
+            fill: currentColor;
+            display: inline-block;
+            margin-left: 20px;
+            width: 50px;
+        }
+
+        &:hover {
+            transition: all ease .2s;
+            cursor: pointer;
+            color: #0075EB;
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.30);
+        }
+    }
+
+    .error {
+        color: #ff4848;
+        position: absolute;
+        top: 80px;
+        white-space: nowrap
+    }
+}
 .iframe {
     position: relative;
     z-index: 1;

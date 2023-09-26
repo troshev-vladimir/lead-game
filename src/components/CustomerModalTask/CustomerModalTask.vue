@@ -14,7 +14,7 @@
 <script setup>
 import customer1 from '@/assets/video-posters/customer1.jpg'
 import customer2 from '@/assets/video-posters/customer2.jpg'
-import { computed, defineEmits,defineProps, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
+import { defineEmits,defineProps, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
 const emit = defineEmits(['further'])
 const video = ref(null)
 const isAwailablebutton = ref(true) // false
