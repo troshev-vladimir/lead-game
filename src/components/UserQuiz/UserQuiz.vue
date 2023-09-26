@@ -90,7 +90,7 @@
     import TimerComponent from '../TimerComponent'
     import ProgressBar from '../ProgressBar'
     import SkipQuizeModal from '../SkipQuizeModal'
-    import { computed, ref, reactive, onMounted } from 'vue';
+    import { computed, ref, reactive, onMounted, nextTick } from 'vue';
     import { quize } from './quize'
     import { useNavigationStore } from '@/store/navigation';
     import { useUserStore } from '@/store/user';
@@ -258,6 +258,13 @@
         }
     }
 
+    const explanationIntoView = () => {
+        nextTick(() => {
+            const explanation = document.querySelector('.explanation')
+            explanation.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        }) 
+    }
+
     const checkAnswer = (answer) => {
         answer.isChecked = true
         currentExplanation.value = answer.explanation
@@ -269,6 +276,7 @@
             }, 500)
         } else {
             // time.value += penalty
+            explanationIntoView()
             currentMistakes += 1
             failSoundRef.value.play()
         }
@@ -379,7 +387,7 @@
             flex: 0 1 auto;
 
             color: #000;
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 500;
             line-height: 130%; 
             // margin-bottom: 20px;
@@ -408,7 +416,7 @@
                 padding: 30px 50px;
 
                 color: #000;
-                font-size: 22px;
+                font-size: 16px;
                 font-weight: 500;
                 line-height: 130%; 
 
@@ -416,8 +424,9 @@
                     padding: 16px;
                 }
 
-                &:hover {
-                    @media not (hover: none) {
+                
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
                         background-color: #eee;
                         transition: all ease .2s;
                         color: #0075EB;
@@ -446,7 +455,7 @@
             background: #FFF1F1;
 
             color: #000;
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 500;
             line-height: 130%; 
             // margin-bottom: 20px;
@@ -498,7 +507,7 @@
         overflow: auto;
 
         color: #010101;
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 500;
         line-height: 130%;
         text-align: left;
