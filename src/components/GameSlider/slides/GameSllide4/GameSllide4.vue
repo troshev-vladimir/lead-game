@@ -6,13 +6,12 @@
         <thirdStep v-if="imageStep === 2" />
         <fourthStep v-if="imageStep === 3"/>
     </transition-group>
-    
-
+    <audio ref="audio" :src="sound1"></audio>
     <TextsComponent :user-name="userName"></TextsComponent>
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
 import firstStep from '@/components/slide6steps/firstStep.vue'
@@ -20,8 +19,12 @@ import secondStep from '@/components/slide6steps/secondStep.vue'
 import thirdStep from '@/components/slide6steps/thirdStep.vue'
 import fourthStep from '@/components/slide6steps/fourthStep.vue'
 import TextsComponent from '@/components/slide6steps/TextsComponent.vue'
-import useFurtherButton from '../composables/useFurtherButton'
+import useFurtherButton from '../../composables/useFurtherButton'
 
+import sound1 from './assets/test.mp3'
+import sound2 from './assets/test2.mp3'
+import sound3 from './assets/test3.mp3'
+import sound4 from './assets/test4.mp3'
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue']) 
 
@@ -30,11 +33,25 @@ const replicStep = ref(0)
 const replicStepAskWaiting = ref(false)
 const user = useUserStore()
 const { userName } = storeToRefs(user)
+const audio = ref(null)
+const audio2 = new Audio(sound2)
+const audio3 = new Audio(sound3)
+const audio4 = new Audio(sound4)
+
 useFurtherButton()
 let text1 
 let text2 
 let text3 
 let text4 
+
+// const currentSound = computed(() => {
+//     switch (replicStep.value) {
+//         case 1:
+//             return sound2
+//         default:
+//             return sound
+//     }
+// })
 
 const nextStep = () => {
     replicStepAskWaiting.value = false
@@ -44,10 +61,13 @@ const nextStep = () => {
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audio.value.pause()
             text1.classList.remove('visible')
             imageStep.value++
             text2.classList.add('visible')
-                
+            
+            audio2.play()
+
             replicStepAskWaiting.value = true
             setTimeout(() => {
                 emit('question')
@@ -56,17 +76,24 @@ watch(replicStep, (value) => {
             
             break;
         case 2:
+            audio2.pause()
+
             text2.classList.remove('visible')
             text3.classList.add('visible')
+            audio3.play()
+
             imageStep.value++
             break;
 
         case 3:
+            audio3.pause()
+
             text3.classList.remove('visible')
             imageStep.value++
             
             setTimeout(() => {
                 text4.classList.add('visible')
+                audio4.play()
             }, 500)
 
             setTimeout(() => {
@@ -97,7 +124,12 @@ onMounted(async () => {
     
     setTimeout(() => { // первый текст
         text1.classList.add('visible')
-    }, 500)
+        audio.value.play()
+    }, 1500)
+})
+
+onBeforeUnmount(() => {
+    audio4.pause()
 })
 
 // eslint-disable-next-line no-undef
