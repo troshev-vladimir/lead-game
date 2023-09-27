@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <img :src="bg3" alt="slide">
-    <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="1920" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="&#208;&#146;&#208;&#184;&#208;&#180;&#208;&#181;&#208;&#190;">
 <g id="interactive">
 <path id="Vector 14" d="M1619 381.5L1265 400.5L1266.5 606.5L1617.5 603L1619 381.5Z" fill="#D9D9D9" fill-opacity="0.01" stroke="black"/>

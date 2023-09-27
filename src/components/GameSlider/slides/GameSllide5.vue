@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <img :src="bg7" alt="slide">
-    <svg :class="{'no-continue-button': !isContinueBtn}" width="1934" height="1080" viewBox="0 0 1934 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg :class="{'no-continue-button': !isContinueBtn}" width="1934" viewBox="0 0 1934 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="&#208;&#161;&#209;&#134;&#208;&#181;&#208;&#189;&#208;&#176; 104">
 <g id="interactive">
 <path id="Vector 1" d="M700.5 429.5L14 382.5V835.5L695.5 831.5L700.5 429.5Z" fill="black" fill-opacity="0.01" stroke="black" stroke-opacity="0.01"/>
