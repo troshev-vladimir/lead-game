@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
     z-index: 1000;
     overflow: hidden;
     border-radius: 16px;
-    max-width: 400px;
+    
     max-height: 850px;
     height: 80vh;
     background-color: #fff;
@@ -72,6 +72,10 @@ onBeforeUnmount(() => {
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 1200px) {
+        max-width: 400px;
+    }
 
     video {
         width: 100%;

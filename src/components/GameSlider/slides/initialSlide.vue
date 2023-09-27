@@ -219,7 +219,8 @@ onMounted(async () => {
         left: 50%;
         width: 95%;
         transform: translate(-50%, -50%);
-
+		width: fit-content;
+		
 		@media screen and (max-width: 1200px) {
 			height: 70%;
 		}
