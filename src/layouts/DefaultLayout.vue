@@ -233,6 +233,8 @@ onMounted(() => { //для дева
     }
     if (event.code == 'Escape') { // esc
       navigation.currentStep = -1
+      localStorage.setItem("quizeStep", 0)
+      localStorage.setItem("userMany", 0)
     } 
   })
 })

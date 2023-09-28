@@ -82,8 +82,8 @@ onBeforeUnmount(() => {
         position: static;
         transform: none;
         object-fit: cover;
-        background-color: #333;
-        height: 851px;
+        background-color: #000000;
+        // height: 851px;
 
         @media screen and (max-width: 1200px) {
             height: 450px;
@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
     &__text {
         padding: 32px 48px;
         overflow: auto;
-
+        flex-grow: 1;
         color: #010101;
         font-size: 22px;
         font-weight: 500;

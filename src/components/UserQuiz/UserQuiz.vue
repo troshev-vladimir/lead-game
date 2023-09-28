@@ -52,7 +52,7 @@
             <div class="video-wrapper">
                 <video 
                     ref="video" 
-                    :src="currentQuizeStep.content.taskDescription.video" 
+                    :src="currentQuizeStep?.content.taskDescription.video" 
                     controls 
                     preload 
                     poster="@/assets/video-posters/vitaly.jpg"
@@ -60,7 +60,7 @@
                 ></video>
             </div>
             
-            <div class="user-quiz__tip-text styled-scrollbars" v-html="currentQuizeStep.content.taskDescription.text"></div>
+            <div class="user-quiz__tip-text styled-scrollbars" v-html="currentQuizeStep?.content.taskDescription.text"></div>
         </div>
 
         <transition-group name="fade" mode="out-in">
@@ -123,7 +123,11 @@
     })
 
     const totalCurrentQuizeStep = computed(() => {
-        return currentQuizeStep.value.content.quest.length
+        if (currentQuizeStep.value) {
+            return currentQuizeStep.value.content.quest.length
+        } else {
+            return 0
+        }
     })
 
     let totalQuizeStep = 0
@@ -145,7 +149,12 @@
 
     const currentTaskStep = computed(() => {
         const step = taskStep.value
-        return currentQuizeStep.value.content.quest[step]
+
+        if(currentQuizeStep.value) {
+            return currentQuizeStep.value.content.quest[step]
+        } else {
+            return {}
+        }
     })
 
     const isCustomerCall = ref(false)
@@ -163,6 +172,12 @@
     const showTask = () => {
         isCustomerCall.value = false
         isCustomerTask.value = true
+    }
+
+    const saveCurrentQuizeStep = () => {
+        localStorage.setItem('quizeStep', quizeStep.value + 1) 
+        console.log(user.many);
+        localStorage.setItem('userMany', user.many)
     }
 
     const showQuizeDescription = () => {
@@ -252,6 +267,7 @@
             setTimeout(() => {
                 taskStep.value = 0
                 stopTimer()
+                saveCurrentQuizeStep()
                 increaseQuizeStep()
                 isButtonDisabled.value = false
             }, 2000)
@@ -291,6 +307,9 @@
         setTimeout(() => {
             isCustomerCall.value = true
         }, 1000)
+
+        quizeStep.value = +localStorage.getItem('quizeStep') || 0
+        user.addMany(+localStorage.getItem('userMany') || 0)
     }) 
 </script>
 
@@ -507,7 +526,6 @@
         overflow: auto;
 
         color: #010101;
-        font-size: 16px;
         font-weight: 500;
         line-height: 130%;
         text-align: left;

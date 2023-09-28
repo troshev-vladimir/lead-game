@@ -4,7 +4,7 @@
 
 <script setup>
 import game from '@/api/game'
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
 
@@ -15,7 +15,7 @@ const localStep = +localStorage.getItem('step')
 const getCurrentStep = async () => {
     game.getCurrentStep()
         .then(step => {
-            const actualStep = step || localStep
+            const actualStep = 14 //step || localStep
             currentStep.value = actualStep 
             console.log(currentStep.value);
         })
