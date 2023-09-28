@@ -62,7 +62,7 @@ const goFurther = () => {
         'Имя должно быть меньше 10 символов и больше 3. Cейчас ' +
             userNameInput.value.length
     } else {
-        user.userName = userNameInput.value
+        userName.value = userNameInput.value
         navigation.stepForward()
     }
 }
@@ -73,11 +73,19 @@ onMounted(async () => {
 
     setTimeout(() => {
         isInput.value = true
+
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                goFurther()
+            }
+        })
     }, 1000)
     
     setTimeout(() => {
         text1.classList.add('visible')
     }, 500)
+
+
 
     // setTimeout(() => {
     //     emit('question')
