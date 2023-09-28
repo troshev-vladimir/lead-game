@@ -6,12 +6,17 @@
 import game from '@/api/game'
 import { onMounted } from "vue";
 import { useNavigationStore } from '@/store/navigation'
+import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia';
 
+const user = useUserStore()
 const navigation = useNavigationStore()
 const { currentStep } = storeToRefs(navigation)
 const localStep = +localStorage.getItem('step')
+const savedUserName = localStorage.getItem("userName")
+const { userName } = storeToRefs(user)
 
+userName.value = savedUserName
 const getCurrentStep = async () => {
     game.getCurrentStep()
         .then(step => {

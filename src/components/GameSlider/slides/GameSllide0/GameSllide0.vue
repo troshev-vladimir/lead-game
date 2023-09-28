@@ -65,6 +65,7 @@ const goFurther = () => {
             userNameInput.value.length
     } else {
         userName.value = userNameInput.value
+        localStorage.setItem('userName', userNameInput.value)
         audioAnn1.pause()
         navigation.stepForward()
     }
@@ -88,8 +89,6 @@ onMounted(async () => {
         text1.classList.add('visible')
         audioAnn1.play()
     }, 500)
-
-
 
     // setTimeout(() => {
     //     emit('question')

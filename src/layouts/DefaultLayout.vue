@@ -235,6 +235,7 @@ onMounted(() => { //для дева
       navigation.currentStep = -1
       localStorage.setItem("quizeStep", 0)
       localStorage.setItem("userMany", 0)
+      localStorage.setItem('userName', '')
     } 
   })
 })
