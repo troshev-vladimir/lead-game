@@ -174,10 +174,9 @@
         isCustomerTask.value = true
     }
 
-    const saveCurrentQuizeStep = () => {
+    const saveCurrentQuizeStep = (many) => {
         localStorage.setItem('quizeStep', quizeStep.value + 1) 
-        console.log(user.many);
-        localStorage.setItem('userMany', user.many)
+        localStorage.setItem('userMany', many)
     }
 
     const showQuizeDescription = () => {
@@ -248,6 +247,7 @@
         const summPerAnswer = currentQuizeStep.value.summ / totalCurrentQuizeStep.value
         const many = summPerAnswer - (currentMistakes * 0.25 * summPerAnswer)
         user.addMany(many)
+        saveCurrentQuizeStep(many)
         manySoundRef.value.play()
         rightSoundRef.value.play()
         currentMistakes = 0
@@ -267,7 +267,6 @@
             setTimeout(() => {
                 taskStep.value = 0
                 stopTimer()
-                saveCurrentQuizeStep()
                 increaseQuizeStep()
                 isButtonDisabled.value = false
             }, 2000)
@@ -310,6 +309,8 @@
 
         quizeStep.value = +localStorage.getItem('quizeStep') || 0
         user.addMany(+localStorage.getItem('userMany') || 0)
+
+        if (quizeStep.value >= totalQuizeStep) navigation.stepForward()
     }) 
 </script>
 
