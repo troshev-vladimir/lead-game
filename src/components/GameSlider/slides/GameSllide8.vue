@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <img :src="bg10" alt="slide">
-    <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="1920" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="&#208;&#161;&#209;&#134;&#208;&#181;&#208;&#189;&#208;&#176; 13">
     <g id="text-101">
     <g id="Frame 102">

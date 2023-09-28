@@ -66,7 +66,7 @@ const replicStepAskWaiting = ref(true)
 useFurtherButton()
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['question']) 
-const isContinueBtn = ref(true)
+const isContinueBtn = ref(false)
 
 let text1
 let text2
@@ -78,7 +78,6 @@ watch(replicStep, (value) => {
             text2.classList.add('visible')
 
             setTimeout(() => {
-                isContinueBtn.value = false
                 interactive.classList.add('active')
                 interactive.addEventListener('click', () => {
                     navigation.stepForward()

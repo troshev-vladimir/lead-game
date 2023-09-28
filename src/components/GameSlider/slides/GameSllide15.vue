@@ -2,7 +2,7 @@
 <template>
     <img :src="bg17" alt="slide">
 
-    <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="1920" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="&#208;&#161;&#209;&#134;&#208;&#181;&#208;&#189;&#208;&#176; 112">
 <g id="text-1">
 <path id="Vector 17" d="M854 435H834L852.293 416.707L854 415V417.414V435Z" fill="white"/>
