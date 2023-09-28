@@ -15,7 +15,7 @@ const localStep = +localStorage.getItem('step')
 const getCurrentStep = async () => {
     game.getCurrentStep()
         .then(step => {
-            const actualStep = 14 //step || localStep
+            const actualStep = step || localStep
             currentStep.value = actualStep 
             console.log(currentStep.value);
         })
