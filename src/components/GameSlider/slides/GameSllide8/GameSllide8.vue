@@ -15,8 +15,11 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted } from 'vue'
 import bg10 from "@/assets/slides-images/ten/bg.webp"
+import vitaly from './assets/vitaly.mp3'
+
+const audioVitaly1 = new Audio(vitaly)
 
 onMounted(async () => {
     await nextTick()
@@ -24,8 +27,13 @@ onMounted(async () => {
     const text1 = document.querySelector('#text-101')
     
     setTimeout(() => {
+        audioVitaly1.play()
         text1.classList.add('visible')
     }, 1000)
+})
+
+onBeforeUnmount(() => {
+    audioVitaly1.pause()
 })
 </script>
 

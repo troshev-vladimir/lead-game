@@ -37,10 +37,11 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import bg18 from "@/assets/slides-images/eighteen/bg.webp"
-import useFurtherButton from '../composables/useFurtherButton'
-
+import useFurtherButton from '../../composables/useFurtherButton'
+import vitaly from './assets/vitaly.mp3'
+import vitaly2 from './assets/vitaly2.mp3'
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue'])
 useFurtherButton()
@@ -52,12 +53,15 @@ const nextStep = () => {
 }
 
 let text1, text2
-
+const audioVitaly1 = new Audio(vitaly)
+const audioVitaly2 = new Audio(vitaly2)
 const replicStep = ref(0)
 
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audioVitaly1.pause()
+            audioVitaly2.play()
             text2.classList.add('visible')
             break;
 
@@ -83,8 +87,13 @@ onMounted(async () => {
     text2 = document.querySelector('#text-182')
 
     setTimeout(() => {
+        audioVitaly1.play()
         text1.classList.add('visible')
     }, 500)
+})
+
+onBeforeUnmount(() => {
+    audioVitaly2.pause()
 })
 
 // eslint-disable-next-line no-undef

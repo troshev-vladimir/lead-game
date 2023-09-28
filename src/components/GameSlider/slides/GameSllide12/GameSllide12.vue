@@ -52,12 +52,22 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 // import { useUserStore } from '@/store/user'
 // import { storeToRefs } from 'pinia'
 import bg14 from "@/assets/slides-images/fourteen/bg.webp"
-import useFurtherButton from '../composables/useFurtherButton'
+import useFurtherButton from '../../composables/useFurtherButton'
+import vitaly from './assets/vitaly.mp3'
+import vitaly2 from './assets/vitaly2.mp3'
+import vitaly3 from './assets/vitaly3.mp3'
+import vitaly4 from './assets/vitaly4.mp3'
+import vitaly5 from './assets/vitaly5.mp3'
 
+const audioVitaly1 = new Audio(vitaly)
+const audioVitaly2 = new Audio(vitaly2)
+const audioVitaly3 = new Audio(vitaly3)
+const audioVitaly4 = new Audio(vitaly4)
+const audioVitaly5 = new Audio(vitaly5)
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue', 'question', 'showCashCounter'])
 useFurtherButton()
@@ -77,12 +87,16 @@ const replicStep = ref(0)
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audioVitaly1.pause()
             text1.classList.remove('visible')
+            audioVitaly2.play()
             text2.classList.add('visible')
             break;
 
         case 2:
+            audioVitaly2.pause()
             text2.classList.remove('visible')
+            audioVitaly3.play()
             text3.classList.add('visible')
             setTimeout(() => {
                 emit('showCashCounter')
@@ -90,11 +104,15 @@ watch(replicStep, (value) => {
             break;
 
         case 3:
+            audioVitaly3.pause()
             text3.classList.remove('visible')
+            audioVitaly4.play()
             text4.classList.add('visible')
             break;
 
         case 4:
+            audioVitaly4.pause()
+            audioVitaly5.play()
             text5.classList.add('visible')
             setTimeout(() => {
                 emit('continue')
@@ -103,7 +121,6 @@ watch(replicStep, (value) => {
         default:
             break;
     }
-    
 })
 
 onMounted(async () => {
@@ -120,14 +137,18 @@ onMounted(async () => {
     text4 = document.querySelector('#text-4')
     text5 = document.querySelector('#text-5')
 
-    
     setTimeout(() => {
         text1.classList.add('visible')
+        audioVitaly1.play()
     }, 500)
 
     setTimeout(() => {
         emit('question')
     }, 1500)
+})
+
+onBeforeUnmount(() => {
+    audioVitaly5.pause()
 })
 
 // eslint-disable-next-line no-undef

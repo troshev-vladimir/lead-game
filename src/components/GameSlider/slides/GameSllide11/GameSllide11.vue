@@ -16,10 +16,11 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
 import bg13 from "@/assets/slides-images/therteen/bg.webp"
+import vitaly from './assets/vitaly.mp3'
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue'])
@@ -27,7 +28,7 @@ const emit = defineEmits(['continue'])
 const user = useUserStore()
 const { userName } = storeToRefs(user)
 let text1
-
+const audioVitaly1 = new Audio(vitaly)
 const replicStep = ref(0)
 
 watch(replicStep, (value) => {
@@ -51,11 +52,16 @@ onMounted(async () => {
 
     setTimeout(() => {
         text1.classList.add('visible')
+        audioVitaly1.play()
     }, 500)
 
     setTimeout(() => {
         emit('continue')
     }, 1500)
+})
+
+onBeforeUnmount(() => {
+    audioVitaly1.pause()
 })
 </script>
 

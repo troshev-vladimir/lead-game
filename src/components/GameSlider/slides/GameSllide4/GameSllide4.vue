@@ -6,7 +6,6 @@
         <thirdStep v-if="imageStep === 2" />
         <fourthStep v-if="imageStep === 3"/>
     </transition-group>
-    <audio ref="audio" :src="sound1"></audio>
     <TextsComponent :user-name="userName"></TextsComponent>
 </template>
 
@@ -22,7 +21,7 @@ import TextsComponent from '@/components/slide6steps/TextsComponent.vue'
 import useFurtherButton from '../../composables/useFurtherButton'
 
 import sound1 from './assets/test.mp3'
-import sound2 from './assets/test2.mp3'
+import vitaly1 from './assets/vitaly1.mp3'
 import sound3 from './assets/test3.mp3'
 import sound4 from './assets/test4.mp3'
 // eslint-disable-next-line no-undef
@@ -33,8 +32,8 @@ const replicStep = ref(0)
 const replicStepAskWaiting = ref(false)
 const user = useUserStore()
 const { userName } = storeToRefs(user)
-const audio = ref(null)
-const audio2 = new Audio(sound2)
+const audio = new Audio(sound1)
+const audioVitaly1 = new Audio(vitaly1)
 const audio3 = new Audio(sound3)
 const audio4 = new Audio(sound4)
 
@@ -61,12 +60,12 @@ const nextStep = () => {
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
-            audio.value.pause()
+            audio.pause()
             text1.classList.remove('visible')
             imageStep.value++
             text2.classList.add('visible')
             
-            audio2.play()
+            audioVitaly1.play()
 
             replicStepAskWaiting.value = true
             setTimeout(() => {
@@ -76,7 +75,7 @@ watch(replicStep, (value) => {
             
             break;
         case 2:
-            audio2.pause()
+            audioVitaly1.pause()
 
             text2.classList.remove('visible')
             text3.classList.add('visible')
@@ -124,7 +123,7 @@ onMounted(async () => {
     
     setTimeout(() => { // первый текст
         text1.classList.add('visible')
-        audio.value.play()
+        audio.play()
     }, 1500)
 })
 

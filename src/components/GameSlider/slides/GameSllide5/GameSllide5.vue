@@ -50,15 +50,18 @@
 </filter>
 </defs>
     </svg>
+    <audio ref="audio" :src="audioVitaly1"></audio>
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 // import { useUserStore } from '@/store/user'
 import { useNavigationStore } from '@/store/navigation'
 // import { storeToRefs } from 'pinia'
 import bg7 from "@/assets/slides-images/seven/bg.webp"
-import useFurtherButton from '../composables/useFurtherButton'
+import useFurtherButton from '../../composables/useFurtherButton'
+import vitaly from './assets/vitaly.mp3'
+import vitaly2 from './assets/vitaly2.mp3'
 
 const navigation = useNavigationStore()
 const replicStep = ref(0)
@@ -71,15 +74,20 @@ const isContinueBtn = ref(false)
 let text1
 let text2
 let interactive
+const audioVitaly1 = new Audio(vitaly)
+const audioVitaly2 = new Audio(vitaly2)
 
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audioVitaly1.pause()
             text2.classList.add('visible')
 
             setTimeout(() => {
+                audioVitaly2.play()
                 interactive.classList.add('active')
                 interactive.addEventListener('click', () => {
+                    audioVitaly2.pause()
                     navigation.stepForward()
                 })
             }, 1000)
@@ -108,7 +116,6 @@ defineExpose({
 onMounted(async () => {
     await nextTick()
 
-
     document.addEventListener('nextReplic', () => {
         if (!replicStepAskWaiting.value) {
             replicStep.value += 1
@@ -119,9 +126,9 @@ onMounted(async () => {
     text2 = document.querySelector('#text-1')
     interactive = document.querySelector('#interactive')
 
-
     setTimeout(() => {
         text1.classList.add('visible')
+        audioVitaly1.play()
     }, 1500)
     
     setTimeout(() => {

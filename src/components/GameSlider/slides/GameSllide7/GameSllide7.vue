@@ -30,16 +30,21 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 // import { useUserStore } from '@/store/user'
 // import { storeToRefs } from 'pinia'
 import bg7 from "@/assets/slides-images/seven/bg.webp"
-import useFurtherButton from '../composables/useFurtherButton'
+import useFurtherButton from '../../composables/useFurtherButton'
+import vitaly from './assets/vitaly.mp3'
+import vitaly2 from './assets/vitaly2.mp3'
+
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue']) 
 const replicStep = ref(0)
 const isContinueBtn = ref(true)
 const replicStepAskWaiting = ref(true)
+const audioVitaly1 = new Audio(vitaly)
+const audioVitaly2 = new Audio(vitaly2)
 
 let text3
 let text4
@@ -47,7 +52,9 @@ useFurtherButton()
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audioVitaly1.pause()
             text4.classList.add('visible')
+            audioVitaly2.play()
     
             setTimeout(() => {
                 emit('continue')
@@ -78,7 +85,12 @@ onMounted(async () => {
     setTimeout(() => {
         text3.classList.add('visible')
         replicStepAskWaiting.value = false
+        audioVitaly1.play()
     }, 1500)
+})
+
+onBeforeUnmount(() => {
+    audioVitaly2.pause()
 })
 
 </script>

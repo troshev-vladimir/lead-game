@@ -38,12 +38,14 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
 import bg17 from "@/assets/slides-images/seventeen/bg.webp"
-import useFurtherButton from '../composables/useFurtherButton'
-
+import useFurtherButton from '../../composables/useFurtherButton'
+import vitaly from './assets/vitaly.mp3'
+import vitaly2 from './assets/vitaly2.mp3'
+import vitaly3 from './assets/vitaly3.mp3'
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide', 'question'])
 
@@ -55,7 +57,9 @@ const nextStep = () => {
     replicStepAskWaiting.value = false
     replicStep.value += 1
 }
-
+const audioVitaly1 = new Audio(vitaly)
+const audioVitaly2 = new Audio(vitaly2)
+const audioVitaly3 = new Audio(vitaly3)
 let text1, text2, text3
 
 const replicStep = ref(0)
@@ -63,13 +67,17 @@ const replicStep = ref(0)
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audioVitaly1.pause()
             text1.classList.remove('visible')
             setTimeout(() => {
+                audioVitaly2.play()
                 text2.classList.add('visible')
             }, 500)
             break;
 
         case 2:
+            audioVitaly2.pause()
+            audioVitaly3.play()
             text3.classList.add('visible')
             break;
 
@@ -100,13 +108,16 @@ onMounted(async () => {
 
     setTimeout(() => {
         text1.classList.add('visible')
+        audioVitaly1.play()
     }, 500)
 
     setTimeout(() => {
         emit('question')
     }, 1500)
+})
 
-    
+onBeforeUnmount(() => {
+    audioVitaly3.pause()
 })
 
 // eslint-disable-next-line no-undef

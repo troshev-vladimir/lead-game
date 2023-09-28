@@ -3,7 +3,7 @@ import { ref } from "vue";
 import game from "@/api/game";
 
 export const useNavigationStore = defineStore("navigation", () => {
-  const currentStep = ref(-1);
+  const currentStep = ref(1);
   const totalSteps = 18;
 
   async function stepForward() {
