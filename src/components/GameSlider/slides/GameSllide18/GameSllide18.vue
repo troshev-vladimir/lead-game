@@ -18,6 +18,9 @@
 <script setup>
 import { nextTick, onMounted, ref, watch } from 'vue'
 import bg20 from "@/assets/slides-images/twenty/bg.webp"
+import irina from './assets/irina.mp3'
+
+const audioIrina = new Audio(irina)
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue'])
@@ -55,6 +58,7 @@ onMounted(async () => {
     text1 = document.querySelector('#text-201')
 
     setTimeout(() => {
+        audioIrina.play()
         text1.classList.add('visible')
     }, 500)
 

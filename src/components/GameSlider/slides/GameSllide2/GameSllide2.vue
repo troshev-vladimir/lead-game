@@ -116,6 +116,9 @@
 <script setup>
 import { nextTick, onMounted } from 'vue'
 import bg3 from "@/assets/slides-images/third/bg.webp"
+import ann from './assets/ann.mp3'
+
+const audioAnn1 = new Audio(ann)
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide'])
@@ -127,9 +130,11 @@ onMounted(async () => {
     const interactiveArea = document.querySelector('#interactive')
     
     setTimeout(() => {
+        audioAnn1.play()
         text1.classList.add('visible')
         interactiveArea.classList.add('active')
         interactiveArea.addEventListener('click', () => {
+            audioAnn1.pause()
             emit('nextSlide')
         })
     }, 1000)

@@ -20,10 +20,10 @@ import fourthStep from '@/components/slide6steps/fourthStep.vue'
 import TextsComponent from '@/components/slide6steps/TextsComponent.vue'
 import useFurtherButton from '../../composables/useFurtherButton'
 
-import sound1 from './assets/test.mp3'
+import ann from './assets/ann.mp3'
 import vitaly1 from './assets/vitaly1.mp3'
-import sound3 from './assets/test3.mp3'
-import sound4 from './assets/test4.mp3'
+import ann2 from './assets/ann2.mp3'
+import irina from './assets/irina.mp3'
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue']) 
 
@@ -32,10 +32,10 @@ const replicStep = ref(0)
 const replicStepAskWaiting = ref(false)
 const user = useUserStore()
 const { userName } = storeToRefs(user)
-const audio = new Audio(sound1)
+const audioAnn = new Audio(ann)
 const audioVitaly1 = new Audio(vitaly1)
-const audio3 = new Audio(sound3)
-const audio4 = new Audio(sound4)
+const audioAnn2 = new Audio(ann2)
+const audioIrina = new Audio(irina)
 
 useFurtherButton()
 let text1 
@@ -60,7 +60,7 @@ const nextStep = () => {
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
-            audio.pause()
+            audioAnn.pause()
             text1.classList.remove('visible')
             imageStep.value++
             text2.classList.add('visible')
@@ -79,20 +79,20 @@ watch(replicStep, (value) => {
 
             text2.classList.remove('visible')
             text3.classList.add('visible')
-            audio3.play()
+            audioAnn2.play()
 
             imageStep.value++
             break;
 
         case 3:
-            audio3.pause()
+            audioAnn2.pause()
 
             text3.classList.remove('visible')
             imageStep.value++
             
             setTimeout(() => {
                 text4.classList.add('visible')
-                audio4.play()
+                audioIrina.play()
             }, 500)
 
             setTimeout(() => {
@@ -123,12 +123,12 @@ onMounted(async () => {
     
     setTimeout(() => { // первый текст
         text1.classList.add('visible')
-        audio.play()
+        audioAnn.play()
     }, 1500)
 })
 
 onBeforeUnmount(() => {
-    audio4.pause()
+    audioIrina.pause()
 })
 
 // eslint-disable-next-line no-undef

@@ -231,8 +231,10 @@ onMounted(() => { //для дева
     } else if (event.code == 'ArrowLeft') {
       navigation.stepBackward()
     }
+    if (event.code == 'Escape') { // esc
+      navigation.currentStep = -1
+    } 
   })
-
 })
 </script>
 

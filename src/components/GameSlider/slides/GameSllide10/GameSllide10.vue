@@ -26,7 +26,10 @@
 <script setup>
 import bg10 from "@/assets/slides-images/twalve/bg.webp"
 import { nextTick, onMounted } from 'vue'
-import useFurtherButton from '../composables/useFurtherButton'
+import useFurtherButton from '../../composables/useFurtherButton'
+import programmer from './assets/programmer.mp3'
+
+const audioProgrammer = new Audio(programmer)
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide'])
@@ -37,11 +40,13 @@ onMounted(async () => {
     const text1 = document.querySelector('#text-3')
     
     setTimeout(() => {
+        audioProgrammer.play()
         text1.classList.add('visible')
     }, 500)
 
     setTimeout(() => {
         document.addEventListener('nextReplic', () => {
+            audioProgrammer.pause()
             emit('nextSlide')
         })
     }, 1000)

@@ -32,13 +32,17 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch} from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch} from 'vue'
 import bg11 from "@/assets/slides-images/eleven/bg.webp"
-import useFurtherButton from '../composables/useFurtherButton'
+import useFurtherButton from '../../composables/useFurtherButton'
+import programmer from './assets/programmer.mp3'
+import programmer2 from './assets/programmer2.mp3'
 
 const replicStep = ref(0)
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide'])
+const audioProgrammer = new Audio(programmer)
+const audioProgrammer2 = new Audio(programmer2)
 
 let text1
 let text2
@@ -48,10 +52,13 @@ useFurtherButton()
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audioProgrammer.pause()
+            audioProgrammer2.play()
             text2.classList.add('visible')
             break;
 
         case 2:
+            audioProgrammer2.pause()
             emit('nextSlide')
             break;
 
@@ -72,9 +79,11 @@ onMounted(async () => {
     text2 = document.querySelector('#text-2')
     
     setTimeout(() => {
+        audioProgrammer.play()
         text1.classList.add('visible')
     }, 500)
 })
+
 </script>
 
 <style lang="scss">

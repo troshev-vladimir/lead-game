@@ -4,25 +4,27 @@
 
 <script setup>
 import game from '@/api/game'
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
 
 const navigation = useNavigationStore()
 const { currentStep } = storeToRefs(navigation)
+const localStep = +localStorage.getItem('step')
 
 const getCurrentStep = async () => {
-    try {
-        const step = await game.getCurrentStep() || -1
-        currentStep.value = step 
-    } catch (error) {
-        console.log(error);
-    }
+    game.getCurrentStep()
+        .then(step => {
+            const actualStep = step || localStep
+            currentStep.value = actualStep 
+            console.log(currentStep.value);
+        })
 }
 
 onMounted(() => {
     getCurrentStep()
 }) 
+
 </script>
 
 <style lang='scss'>

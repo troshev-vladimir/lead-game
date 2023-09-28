@@ -45,6 +45,8 @@ import { storeToRefs } from 'pinia'
 import { onMounted, nextTick, ref } from 'vue'
 import bg from "@/assets/slides-images/first/bg.webp"
 import { useNavigationStore } from '@/store/navigation'
+import ann from './assets/ann.mp3'
+
 const user = useUserStore()
 const { userName } = storeToRefs(user)
 const navigation = useNavigationStore()
@@ -54,15 +56,16 @@ const userNameInput = ref('')
 const userNameInputError = ref('')
 const input = ref(null)
 const isInput = ref(false)
+const audioAnn1 = new Audio(ann)
 
 const goFurther = () => {
-
     if (userNameInput.value.length > 10 || userNameInput.value.length < 3) {
         userNameInputError.value = 
         'Имя должно быть меньше 10 символов и больше 3. Cейчас ' +
             userNameInput.value.length
     } else {
         userName.value = userNameInput.value
+        audioAnn1.pause()
         navigation.stepForward()
     }
 }
@@ -83,6 +86,7 @@ onMounted(async () => {
     
     setTimeout(() => {
         text1.classList.add('visible')
+        audioAnn1.play()
     }, 500)
 
 

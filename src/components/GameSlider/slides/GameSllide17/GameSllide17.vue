@@ -42,6 +42,9 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
 import bg19 from "@/assets/slides-images/nineteen/bg.webp"
+import irina from './assets/irina.mp3'
+import irina2 from './assets/irina2.mp3'
+import irina3 from './assets/irina3.mp3'
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide', 'question'])
@@ -49,6 +52,9 @@ const emit = defineEmits(['nextSlide', 'question'])
 const user = useUserStore()
 const { userName } = storeToRefs(user)
 const replicStepAskWaiting = ref(false)
+const audioIrina = new Audio(irina)
+const audioIrina2 = new Audio(irina2)
+const audioIrina3 = new Audio(irina3)
 
 const nextStep = () => {
     replicStepAskWaiting.value = false
@@ -62,15 +68,21 @@ const replicStep = ref(0)
 watch(replicStep, (value) => {
     switch (value) {
         case 1:
+            audioIrina.pause()
             text1.classList.remove('visible')
+            audioIrina2.play()
             text2.classList.add('visible')
             break;
 
         case 2:
+            audioIrina2.pause()
+            audioIrina3.play()
+
             text3.classList.add('visible')
             break;
 
         case 3:
+            audioIrina3.pause()
             emit('nextSlide')
             break;
 
@@ -95,6 +107,7 @@ onMounted(async () => {
 
     replicStepAskWaiting.value = true
     setTimeout(() => {
+        audioIrina.play()
         text1.classList.add('visible')
     }, 500)
 

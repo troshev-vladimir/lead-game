@@ -17,7 +17,9 @@
 
 <script setup>
 import bg2 from "@/assets/slides-images/second/bg.webp"
-import { nextTick, onMounted } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted } from 'vue'
+import ann from './assets/ann.mp3'
+const audioAnn1 = new Audio(ann)
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue'])
@@ -27,12 +29,16 @@ onMounted(async () => {
 
     const text1 = document.querySelector('#text-2')
     setTimeout(() => {
+        audioAnn1.play()
         text1.classList.add('visible')
     }, 500)
 
     setTimeout(() => {
         emit('continue')
     }, 1000)
+})
+onBeforeUnmount(() => {
+    audioAnn1.pause()
 })
 </script>
 
