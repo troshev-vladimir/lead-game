@@ -20,7 +20,7 @@ userName.value = savedUserName
 const getCurrentStep = async () => {
     game.getCurrentStep()
         .then(step => {
-            const actualStep = step || localStep
+            const actualStep = 14//step || localStep
             currentStep.value = actualStep 
             console.log(currentStep.value);
         })

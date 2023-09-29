@@ -24,19 +24,35 @@
                 </div>
                 <div class="question" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
 
-                <div class="answers" v-if="isShowedQuestion">
-                    <div 
-                        class="answer"
-                        v-for="(answer, idx) in currentTaskStep.answers"
-                        @click="checkAnswer(answer)"
-                        :key="idx"
-                        :class="[
-                            getAnswerStyle(answer), 
-                            {
-                                'disabled': isButtonDisabled
-                            }
-                        ]"
-                    >{{ answer.text }}</div>
+                <div 
+                    class="answers" 
+                    :class="{'single': currentTaskStep.usersAnswer}" 
+                    v-if="isShowedQuestion"
+                >
+                    <UserInput 
+                        v-if="currentTaskStep.usersAnswer"
+                        v-model="usersAnswerValue"
+                        @further="checkUsersCustomAnswer()"
+                        :button-text="currentTaskStep.usersAnswer.buttonText"
+                        :placeholder="currentTaskStep.usersAnswer.placeholder"
+                        :error-text="usersAnswerError"
+                    ></UserInput>
+                    <template v-else>
+                        <div 
+                            class="answer"
+                            v-for="(answer, idx) in currentTaskStep.answers"
+                            @click="checkAnswer(answer)"
+                            :key="idx"
+                            :class="[
+                                getAnswerStyle(answer), 
+                                {
+                                    'disabled': isButtonDisabled
+                                }
+                            ]"
+                        >{{ answer.text }}</div>
+                    </template>
+                    
+                    
                 </div>  
 
                 <div 
@@ -52,7 +68,7 @@
             <div class="video-wrapper">
                 <video 
                     ref="video" 
-                    :src="currentQuizeStep?.content.taskDescription.video" 
+                    :src="currentTipVideo" 
                     controls 
                     preload 
                     poster="@/assets/video-posters/vitaly.jpg"
@@ -60,7 +76,7 @@
                 ></video>
             </div>
             
-            <div class="user-quiz__tip-text styled-scrollbars" v-html="currentQuizeStep?.content.taskDescription.text"></div>
+            <div class="user-quiz__tip-text styled-scrollbars" v-html="currentDescription"></div>
         </div>
 
         <transition-group name="fade" mode="out-in">
@@ -99,7 +115,8 @@
     import failSound from '@/assets/audio/fail.mp3';
     import rightSound from '@/assets/audio/right.mp3';
     import CashCounter from '@/components/CashCounter'
-    
+    import UserInput from '@/components/UserInput'
+    import {validateEmail} from '@/utils/validators'
     useMeta({
       title: 'Тестовое задание',
     })
@@ -157,6 +174,20 @@
         }
     })
 
+    const currentDescription = computed(() => {
+        if(currentTaskStep.value.questionDescription?.text) {
+            return currentTaskStep.value.questionDescription?.text
+        }
+        return currentQuizeStep.value.content.taskDescription.text
+    })
+
+    const currentTipVideo = computed(() => {
+        if(currentTaskStep.value.questionDescription?.video) {
+            return currentTaskStep.value.questionDescription?.video
+        }
+        return currentQuizeStep.value?.content.taskDescription.video
+    }) 
+
     const isCustomerCall = ref(false)
     const isCustomerTask = ref(false)
     const isShowedQuestion = ref(false)
@@ -168,7 +199,9 @@
     const manySoundRef = ref(null)
     const failSoundRef = ref(null)
     const rightSoundRef = ref(null)
-
+    const usersAnswerValue = ref('')
+    const usersAnswerError = ref('')
+    
     const showTask = () => {
         isCustomerCall.value = false
         isCustomerTask.value = true
@@ -260,8 +293,12 @@
                 currentExplanation.value = ''
                 taskStep.value++
                 isButtonDisabled.value = false
-
+                // video.value.addEventL
+                video.value.addEventListener("canplaythrough", (event) => {
+                    event.target.play()
+                }); 
             }, 500)
+            
         } else {
             // Закончили задание 
             setTimeout(() => {
@@ -295,6 +332,22 @@
             currentMistakes += 1
             failSoundRef.value.play()
         }
+    }
+
+    const checkUsersCustomAnswer = () => {
+        const isCorrect = validateEmail(usersAnswerValue.value)
+
+        if (isCorrect) {
+            console.log(usersAnswerValue.value);
+            isButtonDisabled.value = true
+            addMany()
+            setTimeout(() => {
+                increaseTaskStep()
+            }, 500)
+        } else {
+            usersAnswerError.value = 'Напиши нормалный email !!!'
+        }
+        
     }
 
     const getAnswerStyle = (answer) => {
@@ -423,6 +476,16 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin-bottom: 10px;
+
+            :deep(.user-input) {
+                input {
+                    width: 100%;
+                }
+            }
+
+            &.single {
+                grid-template-columns: 1fr;
+            }
 
             .answer.disabled {
                 pointer-events: none;   

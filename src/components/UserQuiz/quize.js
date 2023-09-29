@@ -3,6 +3,76 @@ export const quize = [
     summ: 3000,
     task: {
       video:
+        "https://dl.dropbox.com/s/okxdc51p1lvtmfmok9emw/3.mp4?rlkey=z5c8wf3pngzlmx2hol351vv6w&dl=0",
+      text: "test",
+    },
+    content: {
+      taskDescription: {
+        video:
+          "https://dl.dropbox.com/s/43staam1bjad1llys6eem/3.mp4?rlkey=wcadhs26gyxjey7enkzyyk4yz&dl=0",
+        text: "test",
+      },
+
+      quest: [
+        {
+          question: "test",
+          answers: [
+            {
+              text: "test",
+              isRight: true,
+              isChecked: false,
+              explanation: "",
+            },
+          ],
+        },
+        {
+          question: "test2",
+          answers: [
+            {
+              text: "test",
+              isRight: true,
+              isChecked: false,
+              explanation: "",
+            },
+          ],
+          questionDescription: {
+            video:
+              "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+            text: "test question2",
+          },
+        },
+        {
+          question: "test3",
+          usersAnswer: {
+            placeholder: "Ваш email",
+            buttonText: "Отправить",
+          },
+          answers: [
+            {
+              text: "test",
+              isRight: true,
+              isChecked: false,
+              explanation: "",
+            },
+          ],
+          questionDescription: {
+            video:
+              "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            text: "test question3",
+          },
+        },
+      ],
+    },
+    congrates: {
+      video:
+        "https://dl.dropbox.com/s/o4i4g8k06g2u13t4rkz3j/3.mp4?rlkey=eem80de16marizicq1do3otiy&dl=0",
+      text: "test",
+    },
+  },
+  {
+    summ: 3000,
+    task: {
+      video:
         "https://dl.dropbox.com/s/v5gacsfdpyzsclve8q9df/1-1.mp4?rlkey=teiogplfp1c6rhywwha5tpbht&dl=0",
       text: "<p>Добрый день! У меня есть задача для тебя.</p><p>Мои менеджеры заполняют карточки клиентов вручную и часто делают ошибки в номерах телефонов и электронных почтах. <br />Возникает путаница: сотрудники вносят данные в разных форматах, делают опечатки, вводят много символов или мало!</p><p>Я так устал от этого. Чувствую, что мы просто теряем часть нашей прибыли!</p><p>Хочется, чтобы клиенты получали рассылки про наши акции, при отправке счета доходили до адресатов, а при передаче клиента новому менеджеру он точно смог позвонить по корректному номеру или отправить ему коммерческое предложение.</p><p>Если ты сможешь мне помочь, я заплачу 3000 рублей.</p>",
     },
