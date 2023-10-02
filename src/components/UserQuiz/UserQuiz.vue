@@ -207,9 +207,10 @@
         isCustomerTask.value = true
     }
 
-    const saveCurrentQuizeStep = (many) => {
-        localStorage.setItem('quizeStep', quizeStep.value + 1) 
-        localStorage.setItem('userMany', many)
+    const saveCurrentQuizeStep = () => {
+        localStorage.setItem('quizeStep', quizeStep.value) 
+        localStorage.setItem('taskStep', taskStep.value) 
+        localStorage.setItem('userMany', user.many)
     }
 
     const showQuizeDescription = () => {
@@ -223,6 +224,7 @@
         if (isCongrates.value) {
             // после поздравлений
             quizeStep.value++
+            saveCurrentQuizeStep()
             isUserCanBegin.value = false
             isShowedQuestion.value = false
 
@@ -280,7 +282,6 @@
         const summPerAnswer = currentQuizeStep.value.summ / totalCurrentQuizeStep.value
         const many = summPerAnswer - (currentMistakes * 0.25 * summPerAnswer)
         user.addMany(many)
-        saveCurrentQuizeStep(many)
         manySoundRef.value.play()
         rightSoundRef.value.play()
         currentMistakes = 0
@@ -292,6 +293,7 @@
             setTimeout(() => {
                 currentExplanation.value = ''
                 taskStep.value++
+                saveCurrentQuizeStep()
                 isButtonDisabled.value = false
                 // video.value.addEventL
                 video.value.addEventListener("canplaythrough", (event) => {
@@ -308,6 +310,8 @@
                 isButtonDisabled.value = false
             }, 2000)
         }
+
+
     }
 
     const explanationIntoView = () => {
@@ -338,14 +342,14 @@
         const isCorrect = validateEmail(usersAnswerValue.value)
 
         if (isCorrect) {
-            console.log(usersAnswerValue.value);
             isButtonDisabled.value = true
+            usersAnswerError.value = ''
             addMany()
             setTimeout(() => {
                 increaseTaskStep()
             }, 500)
         } else {
-            usersAnswerError.value = 'Напиши нормалный email !!!'
+            usersAnswerError.value = 'Введите корректный email'
         }
         
     }
@@ -361,6 +365,7 @@
         }, 1000)
 
         quizeStep.value = +localStorage.getItem('quizeStep') || 0
+        taskStep.value = +localStorage.getItem('taskStep') || 0
         user.addMany(+localStorage.getItem('userMany') || 0)
 
         if (quizeStep.value >= totalQuizeStep) navigation.stepForward()

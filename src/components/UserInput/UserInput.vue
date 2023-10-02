@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import {computed, defineEmits, defineProps, ref} from 'vue'
+import {computed, defineEmits, defineProps, onMounted, ref} from 'vue'
 
 const props = defineProps({
     modelValue: {
@@ -45,6 +45,14 @@ const input = computed({
     set(newValue) {
         emit('update:modelValue', newValue)
     }
+})
+
+onMounted(() => {
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            emit('further')
+        }
+    })
 })
 
 
