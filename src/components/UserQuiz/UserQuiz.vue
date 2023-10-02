@@ -51,8 +51,6 @@
                             ]"
                         >{{ answer.text }}</div>
                     </template>
-                    
-                    
                 </div>  
 
                 <div 
@@ -117,6 +115,7 @@
     import CashCounter from '@/components/CashCounter'
     import UserInput from '@/components/UserInput'
     import {validateEmail} from '@/utils/validators'
+
     useMeta({
       title: 'Тестовое задание',
     })
@@ -287,6 +286,10 @@
         currentMistakes = 0
     }
 
+    const videoPlay = (event) => {
+        event.target.play()
+    }
+
     const increaseTaskStep = () => {
         if(taskStep.value + 1 < currentQuizeStep.value.content.quest.length) {
             // Закончили вопрос 
@@ -295,14 +298,14 @@
                 taskStep.value++
                 saveCurrentQuizeStep()
                 isButtonDisabled.value = false
-                // video.value.addEventL
-                video.value.addEventListener("canplaythrough", (event) => {
-                    event.target.play()
-                }); 
+                video.value.addEventListener("canplaythrough", videoPlay)
+
+                
             }, 500)
             
         } else {
             // Закончили задание 
+            video.value.removeEventListener("canplaythrough", videoPlay)
             setTimeout(() => {
                 taskStep.value = 0
                 stopTimer()
@@ -310,8 +313,6 @@
                 isButtonDisabled.value = false
             }, 2000)
         }
-
-
     }
 
     const explanationIntoView = () => {
