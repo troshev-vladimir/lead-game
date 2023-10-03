@@ -1,9 +1,9 @@
 import axios from "../axios";
 
 class GameMethods {
-  sendCurrentStep(step) {
+  saveProgress(step) {
     return axios
-      .post("/step", { step })
+      .post("/CandidateProgress", { step })
       .then((response) => {
         return response.data;
       })
@@ -12,15 +12,20 @@ class GameMethods {
       });
   }
 
-  getCurrentStep() {
+  restoreProgress() {
     return axios
-      .get("/step")
+      .get("/CandidateCurrentProgress")
       .then((response) => {
         return response.data;
       })
       .catch((error) => {
         // throw new Error(error);
-        console.log(error);
+        return {
+          sum: 0,
+          slide: 14,
+          quizeStep: 0,
+          taskStep: 0,
+        };
       });
   }
 }

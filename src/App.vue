@@ -3,31 +3,22 @@
 </template>
 
 <script setup>
-import game from '@/api/game'
 import { onMounted } from "vue";
-import { useNavigationStore } from '@/store/navigation'
 import { useUserStore } from '@/store/user'
+import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
 
 const user = useUserStore()
 const navigation = useNavigationStore()
-const { currentStep } = storeToRefs(navigation)
-const localStep = +localStorage.getItem('step')
 const savedUserName = localStorage.getItem("userName")
 const { userName } = storeToRefs(user)
+const { currentStep } = storeToRefs(navigation)
 
 userName.value = savedUserName
-const getCurrentStep = async () => {
-    game.getCurrentStep()
-        .then(step => {
-            const actualStep = 14//step || localStep
-            currentStep.value = actualStep 
-            console.log(currentStep.value);
-        })
-}
 
-onMounted(() => {
-    getCurrentStep()
+onMounted( async () => {
+    const currentProgress = await user.restoreProgress()
+    currentStep.value = currentProgress.slide
 }) 
 
 </script>

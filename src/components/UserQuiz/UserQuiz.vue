@@ -26,7 +26,10 @@
 
                 <div 
                     class="answers" 
-                    :class="{'single': currentTaskStep.usersAnswer}" 
+                    :class="{
+                        'single': currentTaskStep.usersAnswer,
+                        'answers--wider': currentTaskStep.wider
+                    }" 
                     v-if="isShowedQuestion"
                 >
                     <UserInput 
@@ -481,12 +484,17 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            
             margin-bottom: 10px;
 
             :deep(.user-input) {
                 input {
                     width: 100%;
                 }
+            }
+
+            &--wider {
+                grid-template-columns: 1fr;
             }
 
             &.single {
