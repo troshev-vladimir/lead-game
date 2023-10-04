@@ -52,7 +52,8 @@
                                     'disabled': isButtonDisabled
                                 }
                             ]"
-                        >{{ answer.text }}</div>
+                            v-html="answer.text"
+                        ></div>
                     </template>
                 </div>  
 
@@ -484,7 +485,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            
+            white-space: break-spaces;
             margin-bottom: 10px;
 
             :deep(.user-input) {
