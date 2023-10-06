@@ -22,7 +22,7 @@ class GameMethods {
         // throw new Error(error);
         return {
           sum: 0,
-          slide: 14,
+          slide: -1,
           quizeStep: 0,
           taskStep: 0,
         };
