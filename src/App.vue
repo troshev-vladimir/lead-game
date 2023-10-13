@@ -12,7 +12,7 @@ const user = useUserStore()
 const navigation = useNavigationStore()
 const savedUserName = localStorage.getItem("userName")
 const { userName } = storeToRefs(user)
-const { currentStep } = storeToRefs(navigation)
+const { currentStep} = storeToRefs(navigation)
 
 userName.value = savedUserName
 

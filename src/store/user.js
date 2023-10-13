@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import game from "@/api/game";
-
 export const useUserStore = defineStore("user", () => {
   const userName = ref("");
   const many = ref(0);
@@ -20,16 +19,20 @@ export const useUserStore = defineStore("user", () => {
   }
 
   async function saveProgress() {
-    const userMany = +localStorage.getItem("userMany");
-    const slide = +localStorage.getItem("step");
-    const quizeStep = +localStorage.getItem("quizeStep");
-    const taskStep = +localStorage.getItem("taskStep");
+    const userMany = +localStorage.getItem("userMany") || 0;
+    const slide = +localStorage.getItem("step") || 0;
+    const quizeStep = +localStorage.getItem("quizeStep") || 0;
+    const taskStep = +localStorage.getItem("taskStep") || 0;
+    const id = localStorage.getItem("userPhone") || "";
+    const token = localStorage.getItem("userToken") || "";
 
     const progres = {
-      stage: quizeStep,
-      taskStep,
-      slide,
+      quizestep: quizeStep,
+      taskstep: taskStep,
+      step: slide,
       sum: userMany,
+      id,
+      token,
     };
 
     try {

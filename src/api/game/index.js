@@ -1,9 +1,9 @@
 import axios from "../axios";
 
 class GameMethods {
-  saveProgress(step) {
+  saveProgress(progress) {
     return axios
-      .post("/CandidateProgress", { step })
+      .post("/candidateprogress", progress)
       .then((response) => {
         return response.data;
       })

@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { useUserStore } from "@/store/user";
+const user = useUserStore();
 
 export const useNavigationStore = defineStore("navigation", () => {
   const currentStep = ref(-1);
@@ -8,6 +10,7 @@ export const useNavigationStore = defineStore("navigation", () => {
   async function stepForward() {
     if (currentStep.value === totalSteps) return;
     currentStep.value++;
+    user.saveProgress();
   }
 
   function stepBackward() {

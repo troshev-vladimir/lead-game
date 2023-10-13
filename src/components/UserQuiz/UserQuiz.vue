@@ -119,7 +119,6 @@
     import CashCounter from '@/components/CashCounter'
     import UserInput from '@/components/UserInput'
     import {validateEmail} from '@/utils/validators'
-
     useMeta({
       title: 'Тестовое задание',
     })
@@ -214,6 +213,7 @@
         localStorage.setItem('quizeStep', quizeStep.value) 
         localStorage.setItem('taskStep', taskStep.value) 
         localStorage.setItem('userMany', user.many)
+        user.saveProgress()
     }
 
     const showQuizeDescription = () => {
