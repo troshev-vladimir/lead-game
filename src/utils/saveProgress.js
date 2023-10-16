@@ -1,6 +1,6 @@
 import game from "@/api/game";
 
-export default async function saveProgressOnServer() {
+export default async function saveProgressOnServer(isFinal = false) {
   const userMany = +localStorage.getItem("userMany") || 0;
   const step = +localStorage.getItem("step") || 0;
   const quizeStep = +localStorage.getItem("quizeStep") || 0;
@@ -8,7 +8,7 @@ export default async function saveProgressOnServer() {
   const id = localStorage.getItem("userPhone") || "";
   const token = localStorage.getItem("userToken") || "";
   const userName = localStorage.getItem("userName") || "";
-  const finalstep = false;
+  const finalstep = isFinal;
 
   const progres = {
     quizestep: quizeStep,

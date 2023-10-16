@@ -36,11 +36,11 @@ export const useUserStore = defineStore("user", () => {
       localStorage.setItem("step", step || String(localStorage.step) || -1);
       localStorage.setItem(
         "quizeStep",
-        currentProgress[0].quizeStep + 1 || localStorage.quizeStep || 0
+        currentProgress[0].quizestep || localStorage.quizeStep || 0
       );
       localStorage.setItem(
         "taskStep",
-        currentProgress[0].taskStep + 1 || localStorage.taskStep || 0
+        currentProgress[0].taskstep || localStorage.taskStep || 0
       );
       return currentProgress[0];
     } catch (error) {

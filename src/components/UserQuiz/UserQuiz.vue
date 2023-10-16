@@ -211,11 +211,11 @@
         isCustomerTask.value = true
     }
 
-    const saveCurrentQuizeStep = () => {
+    const saveCurrentQuizeStep = (isFinal) => {
         localStorage.setItem('quizeStep', quizeStep.value) 
         localStorage.setItem('taskStep', taskStep.value) 
         localStorage.setItem('userMany', user.many)
-        saveProgressOnServer()
+        saveProgressOnServer(isFinal)
     }
 
     const showQuizeDescription = () => {
@@ -224,6 +224,7 @@
         if (quizeStep.value + 1 === quizeReactive.length && isCongrates.value) { 
             // последний таск после позравлений
             navigation.stepForward()
+            saveCurrentQuizeStep(true)
         }
 
         if (isCongrates.value) {
@@ -301,10 +302,9 @@
             setTimeout(() => {
                 currentExplanation.value = ''
                 taskStep.value++
+                saveCurrentQuizeStep()
                 isButtonDisabled.value = false
                 video.value.addEventListener("canplaythrough", videoPlay)
-
-                
             }, 500)
             
         } else {
@@ -314,6 +314,7 @@
                 taskStep.value = 0
                 stopTimer()
                 increaseQuizeStep()
+                saveCurrentQuizeStep()
                 isButtonDisabled.value = false
             }, 2000)
         }
@@ -334,7 +335,6 @@
             isButtonDisabled.value = true
             setTimeout(() => {
                 increaseTaskStep()
-                saveCurrentQuizeStep()
             }, 500)
         } else {
             // time.value += penalty
@@ -353,6 +353,19 @@
             addMany()
             setTimeout(() => {
                 increaseTaskStep()
+                const id = localStorage.getItem("userPhone") || "";
+                const token = localStorage.getItem("userToken") || "";
+                fetch(
+                    "https://max43.ru:8333/ka_uprbase2/ru_RU/hs/education/v1/candidateupdate",
+                    {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        id,
+                        token,
+                        Email: usersAnswerValue.value,
+                    }),
+                    }
+                );
             }, 500)
         } else {
             usersAnswerError.value = 'Введите корректный email'
