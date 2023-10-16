@@ -1,7 +1,7 @@
 <template>
 <!-- controls -->
 <video ref="video" >
-    <source src="https://dl.dropbox.com/s/ageqjjm7s7yey7mcah38d/2.mp4?rlkey=sb2f7sxyf8z6yi9qst06ljt3z&dl=0" type="video/mp4">
+    <source src="https://dl.dropbox.com/s/0xu0mjncndflvlpsirgcd/2.mp4?rlkey=h83j5h1xildzkjion12irytgk&dl=0" type="video/mp4">
 </video>
 </template>
 
