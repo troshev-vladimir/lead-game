@@ -211,10 +211,11 @@
         isCustomerTask.value = true
     }
 
-    const saveCurrentQuizeStep = (isFinal) => {
-        localStorage.setItem('quizeStep', quizeStep.value) 
-        localStorage.setItem('taskStep', taskStep.value) 
+    const saveCurrentQuizeStep = (isFinal, isTaskStep) => {
+        localStorage.setItem('quizeStep', quizeStep.value + !isTaskStep) 
+        localStorage.setItem('taskStep', taskStep.value + isTaskStep) 
         localStorage.setItem('userMany', user.many)
+        console.log(quizeStep.value, taskStep.value);
         saveProgressOnServer(isFinal)
     }
 
@@ -301,8 +302,8 @@
             // Закончили вопрос 
             setTimeout(() => {
                 currentExplanation.value = ''
+                saveCurrentQuizeStep(false, true)
                 taskStep.value++
-                saveCurrentQuizeStep()
                 isButtonDisabled.value = false
                 video.value.addEventListener("canplaythrough", videoPlay)
             }, 500)
@@ -313,8 +314,8 @@
             setTimeout(() => {
                 taskStep.value = 0
                 stopTimer()
+                saveCurrentQuizeStep(false, false)
                 increaseQuizeStep()
-                saveCurrentQuizeStep()
                 isButtonDisabled.value = false
             }, 2000)
         }

@@ -40,8 +40,6 @@ defineExpose({
 })
 
 const currentSlide = computed(() => {
-    localStorage.setItem('step', String(currentStep.value) || -1)
-
     if (currentStep.value === -1 ) {
       return 'initialSlide'
     }

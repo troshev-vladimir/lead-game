@@ -17,7 +17,6 @@ onMounted(() => {
     video.value.play()
 
     video.value.addEventListener('ended', () => {
-        console.log('adsasd');
         emit('nextSlide')
     });
 }) 
