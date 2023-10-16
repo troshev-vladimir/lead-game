@@ -26,7 +26,10 @@
 
                 <div 
                     class="answers" 
-                    :class="{'single': currentTaskStep.usersAnswer}" 
+                    :class="{
+                        'single': currentTaskStep.usersAnswer,
+                        'answers--wider': currentTaskStep.wider
+                    }" 
                     v-if="isShowedQuestion"
                 >
                     <UserInput 
@@ -49,7 +52,8 @@
                                     'disabled': isButtonDisabled
                                 }
                             ]"
-                        >{{ answer.text }}</div>
+                            v-html="answer.text"
+                        ></div>
                     </template>
                 </div>  
 
@@ -115,7 +119,6 @@
     import CashCounter from '@/components/CashCounter'
     import UserInput from '@/components/UserInput'
     import {validateEmail} from '@/utils/validators'
-
     useMeta({
       title: 'Тестовое задание',
     })
@@ -210,6 +213,7 @@
         localStorage.setItem('quizeStep', quizeStep.value) 
         localStorage.setItem('taskStep', taskStep.value) 
         localStorage.setItem('userMany', user.many)
+        user.saveProgress()
     }
 
     const showQuizeDescription = () => {
@@ -481,12 +485,17 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            white-space: break-spaces;
             margin-bottom: 10px;
 
             :deep(.user-input) {
                 input {
                     width: 100%;
                 }
+            }
+
+            &--wider {
+                grid-template-columns: 1fr;
             }
 
             &.single {
