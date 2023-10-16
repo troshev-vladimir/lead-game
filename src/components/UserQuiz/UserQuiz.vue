@@ -119,6 +119,8 @@
     import CashCounter from '@/components/CashCounter'
     import UserInput from '@/components/UserInput'
     import {validateEmail} from '@/utils/validators'
+    import saveProgressOnServer from '@/utils/saveProgress'
+
     useMeta({
       title: 'Тестовое задание',
     })
@@ -213,7 +215,7 @@
         localStorage.setItem('quizeStep', quizeStep.value) 
         localStorage.setItem('taskStep', taskStep.value) 
         localStorage.setItem('userMany', user.many)
-        user.saveProgress()
+        saveProgressOnServer()
     }
 
     const showQuizeDescription = () => {
@@ -227,7 +229,6 @@
         if (isCongrates.value) {
             // после поздравлений
             quizeStep.value++
-            saveCurrentQuizeStep()
             isUserCanBegin.value = false
             isShowedQuestion.value = false
 
@@ -351,6 +352,7 @@
             usersAnswerError.value = ''
             addMany()
             setTimeout(() => {
+                saveCurrentQuizeStep()
                 increaseTaskStep()
             }, 500)
         } else {

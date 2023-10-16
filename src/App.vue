@@ -17,8 +17,15 @@ const { currentStep} = storeToRefs(navigation)
 userName.value = savedUserName
 
 onMounted( async () => {
-    const currentProgress = await user.restoreProgress()
-    currentStep.value = currentProgress.slide
+    await user.restoreProgress()
+    currentStep.value = +localStorage.step || -1
+    
+    const id = localStorage.getItem("userPhone") || "";
+    const token = localStorage.getItem("userToken") || "";
+
+    if (!id || !token) {
+      window.location.href = '/configurator/auth';
+    }
 }) 
 
 </script>
