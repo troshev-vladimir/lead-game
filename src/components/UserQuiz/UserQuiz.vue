@@ -301,7 +301,6 @@
             setTimeout(() => {
                 currentExplanation.value = ''
                 taskStep.value++
-                saveCurrentQuizeStep()
                 isButtonDisabled.value = false
                 video.value.addEventListener("canplaythrough", videoPlay)
 
@@ -335,6 +334,7 @@
             isButtonDisabled.value = true
             setTimeout(() => {
                 increaseTaskStep()
+                saveCurrentQuizeStep()
             }, 500)
         } else {
             // time.value += penalty
@@ -352,7 +352,6 @@
             usersAnswerError.value = ''
             addMany()
             setTimeout(() => {
-                saveCurrentQuizeStep()
                 increaseTaskStep()
             }, 500)
         } else {

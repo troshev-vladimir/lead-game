@@ -21,14 +21,19 @@ export const useUserStore = defineStore("user", () => {
   async function restoreProgress() {
     try {
       const currentProgress = await game.restoreProgress();
+
+      let step;
+      if (currentProgress[0].step === 3 || currentProgress[0].step === 6) {
+        step = currentProgress[0].step - 1;
+      } else {
+        step = currentProgress[0].step;
+      }
+
       localStorage.setItem(
         "userMany",
         currentProgress[0].sum || localStorage.userMany || 0
       );
-      localStorage.setItem(
-        "step",
-        currentProgress[0].step + 1 || String(localStorage.step) || -1
-      );
+      localStorage.setItem("step", step || String(localStorage.step) || -1);
       localStorage.setItem(
         "quizeStep",
         currentProgress[0].quizeStep + 1 || localStorage.quizeStep || 0
