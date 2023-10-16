@@ -26,7 +26,7 @@ export const quize = [
               isChecked: false,
             },
             {
-              text: "+9(999)9999999",
+              text: "+9(999) 999 99 99",
               isRight: false,
               explanation:
                 '<p>Подумай еще немного, в выбранном тобой ответе второй символ это "9", что позволит пользователю вместо кода страны &laquo;+7&raquo; ввести любую цифру.</p><p>Помни, ошибаться нельзя, ты дал не верный ответ, сумма твоего вознаграждения уменьшена на 750₽</p>',
@@ -38,7 +38,7 @@ export const quize = [
               isChecked: false,
             },
             {
-              text: "+9(XXX)@@@ @@ @@",
+              text: "+9(XXX) @@@ @@ @@",
               isRight: false,
               isChecked: false,
               explanation:
