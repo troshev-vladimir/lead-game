@@ -27,11 +27,15 @@ export default async function saveProgressOnServer(isFinal = false) {
   }
 
   try {
-    if (userName.length && step < 1)
+    if (userName.length && step <= 1)
       fetch(
         "https://max43.ru:8333/ka_uprbase2/ru_RU/hs/education/v1/candidateupdate",
         {
           method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json;charset=UTF-8",
+          },
           body: JSON.stringify({
             id,
             token,

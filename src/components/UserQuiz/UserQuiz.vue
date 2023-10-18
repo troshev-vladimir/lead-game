@@ -386,7 +386,7 @@
 
         quizeStep.value = +localStorage.getItem('quizeStep') || 0
         taskStep.value = +localStorage.getItem('taskStep') || 0
-        user.addMany(+localStorage.getItem('userMany') || 0)
+        // user.addMany(+localStorage.getItem('userMany') || 0)
 
         if (quizeStep.value >= totalQuizeStep) navigation.stepForward()
     }) 
