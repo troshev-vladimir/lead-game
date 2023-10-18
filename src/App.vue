@@ -25,9 +25,9 @@ onMounted( async () => {
     const id = localStorage.getItem("userPhone") || "";
     const token = localStorage.getItem("userToken") || "";
 
-    if (!id || !token) {
-      window.location.href = '/configurator/auth';
-    }
+    //if (!id || !token) {
+   //   window.location.href = '/configurator/auth';
+   // }
 }) 
 
 </script>

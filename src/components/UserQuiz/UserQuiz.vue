@@ -119,8 +119,6 @@
     import CashCounter from '@/components/CashCounter'
     import UserInput from '@/components/UserInput'
     import {validateEmail} from '@/utils/validators'
-    import saveProgressOnServer from '@/utils/saveProgress'
-
     useMeta({
       title: 'Тестовое задание',
     })
@@ -211,12 +209,11 @@
         isCustomerTask.value = true
     }
 
-    const saveCurrentQuizeStep = (isFinal, isTaskStep) => {
-        localStorage.setItem('quizeStep', quizeStep.value + !isTaskStep) 
-        localStorage.setItem('taskStep', taskStep.value + isTaskStep) 
+    const saveCurrentQuizeStep = () => {
+        localStorage.setItem('quizeStep', quizeStep.value) 
+        localStorage.setItem('taskStep', taskStep.value) 
         localStorage.setItem('userMany', user.many)
-        console.log(quizeStep.value, taskStep.value);
-        saveProgressOnServer(isFinal)
+        user.saveProgress()
     }
 
     const showQuizeDescription = () => {
@@ -225,12 +222,12 @@
         if (quizeStep.value + 1 === quizeReactive.length && isCongrates.value) { 
             // последний таск после позравлений
             navigation.stepForward()
-            saveCurrentQuizeStep(true)
         }
 
         if (isCongrates.value) {
             // после поздравлений
             quizeStep.value++
+            saveCurrentQuizeStep()
             isUserCanBegin.value = false
             isShowedQuestion.value = false
 
@@ -302,10 +299,12 @@
             // Закончили вопрос 
             setTimeout(() => {
                 currentExplanation.value = ''
-                saveCurrentQuizeStep(false, true)
                 taskStep.value++
+                saveCurrentQuizeStep()
                 isButtonDisabled.value = false
                 video.value.addEventListener("canplaythrough", videoPlay)
+
+                
             }, 500)
             
         } else {
@@ -314,7 +313,6 @@
             setTimeout(() => {
                 taskStep.value = 0
                 stopTimer()
-                saveCurrentQuizeStep(false, false)
                 increaseQuizeStep()
                 isButtonDisabled.value = false
             }, 2000)
@@ -354,19 +352,6 @@
             addMany()
             setTimeout(() => {
                 increaseTaskStep()
-                const id = localStorage.getItem("userPhone") || "";
-                const token = localStorage.getItem("userToken") || "";
-                fetch(
-                    "https://max43.ru:8333/ka_uprbase2/ru_RU/hs/education/v1/candidateupdate",
-                    {
-                    method: "PUT",
-                    body: JSON.stringify({
-                        id,
-                        token,
-                        Email: usersAnswerValue.value,
-                    }),
-                    }
-                );
             }, 500)
         } else {
             usersAnswerError.value = 'Введите корректный email'
