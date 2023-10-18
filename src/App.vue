@@ -20,7 +20,7 @@ onMounted( async () => {
     await user.restoreProgress()
     currentStep.value = +localStorage.step || -1
     userName.value = localStorage.userName || ''
-    many.value = localStorage.userMany || 0
+    many.value = +localStorage.userMany || 0
 
     const id = localStorage.getItem("userPhone") || "";
     const token = localStorage.getItem("userToken") || "";
