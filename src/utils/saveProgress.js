@@ -29,7 +29,7 @@ export default async function saveProgressOnServer(isFinal = false) {
   try {
     if (userName.length && step <= 1)
       fetch(
-        "https://max43.ru:8333/ka_uprbase2/ru_RU/hs/education/v1/candidateupdate",
+        "https://max43.ru:12233/ka_uprbase2/ru_RU/hs/education/v1/candidateupdate",
         {
           method: "PUT",
           headers: {
