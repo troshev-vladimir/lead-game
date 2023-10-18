@@ -46,7 +46,7 @@ const currentStepAnswers = computed(() => {
 
     case 17:
       return [
-        'Привет Ирина!',
+        'Привет, Ирина!',
       ]
 
     default:

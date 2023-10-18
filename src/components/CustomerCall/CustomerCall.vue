@@ -73,6 +73,14 @@ onMounted(() => {
         emit('further')
     })
 
+    const promise = ringingRef.value.play();
+        if (promise !== undefined) {
+            promise.then(_ => {
+                console.log(_);
+            }).catch(error => {
+                console.log(error);
+            });
+        }
 }) 
 </script>
 <style lang="scss">
