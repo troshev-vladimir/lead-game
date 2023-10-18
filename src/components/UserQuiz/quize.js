@@ -246,7 +246,7 @@ export const quize = [
           ],
           questionDescription: {
             video:
-              "https://dl.dropbox.com/s/zf3j81hn54dennlktipft/4_2.mp4?rlkey=uwgpq6wgtxfi639ytbakto8w6&dl=0",
+              "https://dl.dropbox.com/s/pxconki7n1a8kv3zs0asc/4_3.mp4?rlkey=jjd6arehdnnhdtujjy0g0nqna&dl=0",
             text: "<p>Очень хорошо, теперь мы&nbsp;можем использовать текст из&nbsp;строк документа Excel и&nbsp;работать с&nbsp;ним, чтобы определить, от&nbsp;какого поставщика пришел документ. Для этого идентифицируем его через уникальный параметр &laquo;ИНН&raquo;&nbsp;&mdash; индивидуальный номер налогоплательщика.</p><p>План такой: найти слово &laquo;ИНН&raquo; в&nbsp;строке документа. Для этого мы&nbsp;можем использовать команды: Лев, Прав, Сред.</p><p>Команды Лев(x, y) и&nbsp;Прав(x, y) возвращают количество символов &laquo;y&raquo; с&nbsp;левого или правого края строки документа &laquo;x&raquo;. А&nbsp;функция Сред(x, y, z) возвращает количество символов &laquo;z&raquo; из&nbsp;указанного места &laquo;y&raquo; строки документа &laquo;x&raquo;.</p><p>Важно помнить, что само слово &laquo;ИНН:&raquo; тоже содержит в&nbsp;себе 4&nbsp;символа, которые нужно пропустить, чтобы считать корректный номер ИНН.</p><p>Как и&nbsp;в&nbsp;прошлый раз, при совершении ошибки, твой гонорар будет уменьшен на&nbsp;750&nbsp;₽.</p>",
           },
         },
@@ -348,28 +348,28 @@ export const quize = [
             "<p>Выбери верную команду, которая позволит нам стилизовать письмо:</p>",
           answers: [
             {
-              text: "Текст = Письмо.Тексты.Добавить('<p style= font-family: semi-bold font-size: 12 font-weight: Verdana color: #000000;  '>' +ТекстПисьма +'</p>');",
+              text: "`Текст = Письмо.Тексты.Добавить(<р style=\"font-family: semi-bold; font-size: 12; font-weight: Verdana; color: #000000;\" > +ТекстПисьма +</р> );`",
               isRight: false,
               isChecked: false,
               explanation:
                 "<p>Подумай еще немного. В&nbsp;выбранном тобою варианте параметры наименования шрифта и&nbsp;его жирности поменяны местами. Помни, ошибаться нельзя, ты&nbsp;дал не&nbsp;верный ответ, сумма твоего вознаграждения уменьшена на&nbsp;750₽.</p>",
             },
             {
-              text: "Текст = Письмо.Тексты.Добавить('<p style= font-family: Verdana font-size: 12 font-weight: semi-bold color: #ffffff;  '>' +ТекстПисьма +'</p>');",
+              text: "`Текст = Письмо.Тексты.Добавить(<р style= \"font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #ffffff;\"> +ТекстПисьма +</р>);`",
               isRight: false,
               isChecked: false,
               explanation:
                 "<p>Подумай еще немного. В&nbsp;выбранном тобою варианте параметр цвет не&nbsp;верный. Помни, ошибаться нельзя, ты&nbsp;дал не&nbsp;верный ответ, сумма твоего вознаграждения уменьшена на&nbsp;750₽.</p>",
             },
             {
-              text: "Текст = Тексты.Добавить.Письмо('<p style= font-family: Verdana font-size: 12 font-weight: semi-bold color: #000000;  '>' +ТекстПисьма +'</p>');",
+              text: "`Текст = Тексты.Добавить.Письмо(<р style=\"font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #000000;\"> +ТекстПисьма +</р>);`",
               isRight: false,
               isChecked: false,
               explanation:
                 "<p>Подумай еще немного. В&nbsp;выбранном тобою варианте использована неверная команда. Помни, ошибаться нельзя, ты&nbsp;дал не&nbsp;верный ответ, сумма твоего вознаграждения уменьшена на&nbsp;750₽.</p>",
             },
             {
-              text: "Текст = Письмо.Тексты.Добавить('<p style= font-family: Verdana font-size: 12 font-weight: semi-bold color: #000000;  '>' +ТекстПисьма +'</p>');",
+              text: "`Текст = Письмо.Тексты.Добавить(<р style=\"font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #000000;\"> +ТекстПисьма +</р>);`",
               isRight: true,
               isChecked: false,
             },
