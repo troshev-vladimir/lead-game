@@ -88,6 +88,7 @@ import GameSllide11 from './slides/GameSllide11'
 import GameSllide12 from './slides/GameSllide12'
 import GameSllide13 from './slides/GameSllide13.vue'
 import GameSllide14 from './slides/GameSllide14.vue' // 1с
+// const GameSllide14 = () => import('./slides/GameSllide14.vue')
 import GameSllide15 from './slides/GameSllide15'
 import GameSllide16 from './slides/GameSllide16'
 import GameSllide17 from './slides/GameSllide17'
