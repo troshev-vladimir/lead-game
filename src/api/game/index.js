@@ -13,19 +13,21 @@ class GameMethods {
   }
 
   restoreProgress() {
+    const id = localStorage.getItem("userPhone") || "";
+    const token = localStorage.getItem("userToken") || "";
+
     return axios
-      .get("/CandidateCurrentProgress")
+      .get("/candidatecurrentprogress", {
+        params: {
+          id,
+          token,
+        },
+      })
       .then((response) => {
         return response.data;
       })
       .catch((error) => {
-        // throw new Error(error);
-        return {
-          sum: 0,
-          slide: -1,
-          quizeStep: 0,
-          taskStep: 0,
-        };
+        throw new Error(error);
       });
   }
 }

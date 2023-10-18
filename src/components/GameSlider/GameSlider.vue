@@ -18,7 +18,8 @@
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
 import { computed, onMounted, ref } from "vue";
-
+const navigation = useNavigationStore()
+const { currentStep } = storeToRefs(navigation)
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['continue', 'showCashCounter']) 
 
@@ -38,15 +39,12 @@ defineExpose({
   slide
 })
 
-const navigation = useNavigationStore()
-const { currentStep } = storeToRefs(navigation)
-
 const currentSlide = computed(() => {
-    console.log('GameSllide' + ' ' + currentStep.value);
-    localStorage.setItem('step', currentStep.value)
     if (currentStep.value === -1 ) {
       return 'initialSlide'
     }
+
+    console.log('GameSllide' + ' ' + currentStep.value);
     return 'GameSllide' + currentStep.value
 })
 
@@ -56,19 +54,9 @@ const skipSlide = () => {
 
 const isPhone = ref(false)
 
-const setDevice = () => {
-  let w = screen.width;
-  let h = screen.height;
-  console.log((w / h));
-  isPhone.value = (w / h) < 0.6
-} 
 
 onMounted(() => {
-  setDevice()
 
-  window.addEventListener('resize', () => {
-    setDevice()
-  })
 })
 </script>
 <script>

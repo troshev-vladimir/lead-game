@@ -17,7 +17,7 @@ import customer2 from '@/assets/video-posters/customer2.jpg'
 import { defineEmits,defineProps, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
 const emit = defineEmits(['further'])
 const video = ref(null)
-const isAwailablebutton = ref(false) // false
+const isAwailablebutton = ref(true) // false
 const props = defineProps({
     isCongrates: {
         type: Boolean,

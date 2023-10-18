@@ -11,14 +11,23 @@ import { storeToRefs } from 'pinia';
 const user = useUserStore()
 const navigation = useNavigationStore()
 const savedUserName = localStorage.getItem("userName")
-const { userName } = storeToRefs(user)
+const { userName, many } = storeToRefs(user)
 const { currentStep} = storeToRefs(navigation)
 
 userName.value = savedUserName
 
 onMounted( async () => {
-    const currentProgress = await user.restoreProgress()
-    currentStep.value = currentProgress.slide
+    await user.restoreProgress()
+    currentStep.value = +localStorage.step || -1
+    userName.value = localStorage.userName || ''
+    many.value = localStorage.userMany || 0
+
+    const id = localStorage.getItem("userPhone") || "";
+    const token = localStorage.getItem("userToken") || "";
+
+    if (!id || !token) {
+      window.location.href = '/configurator/auth';
+    }
 }) 
 
 </script>

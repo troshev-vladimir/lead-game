@@ -18,47 +18,38 @@ export const useUserStore = defineStore("user", () => {
     }, 50);
   }
 
-  async function saveProgress() {
-    const userMany = +localStorage.getItem("userMany") || 0;
-    const slide = +localStorage.getItem("step") || 0;
-    const quizeStep = +localStorage.getItem("quizeStep") || 0;
-    const taskStep = +localStorage.getItem("taskStep") || 0;
-    const id = localStorage.getItem("userPhone") || "";
-    const token = localStorage.getItem("userToken") || "";
-
-    const progres = {
-      quizestep: quizeStep,
-      taskstep: taskStep,
-      step: slide,
-      sum: userMany,
-      id,
-      token,
-    };
-
-    try {
-      await game.saveProgress(progres);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   async function restoreProgress() {
     try {
       const currentProgress = await game.restoreProgress();
+
+      let step;
+      if (currentProgress[0].step === 3 || currentProgress[0].step === 6) {
+        step = currentProgress[0].step - 1;
+      } else {
+        step = currentProgress[0].step;
+      }
+
       localStorage.setItem(
         "userMany",
-        currentProgress.sum || localStorage.userMany
+        currentProgress[0].sum || localStorage.userMany || 0
       );
-      localStorage.setItem("step", currentProgress.slide || localStorage.step);
+
+      localStorage.setItem(
+        "userName",
+        currentProgress[0].name || localStorage.userName || ""
+      );
+
+      localStorage.setItem("step", step || String(localStorage.step) || -1);
       localStorage.setItem(
         "quizeStep",
-        currentProgress.quizeStep || localStorage.quizeStep
+        currentProgress[0].quizestep || localStorage.quizeStep || 0
       );
+
       localStorage.setItem(
         "taskStep",
-        currentProgress.taskStep || localStorage.taskStep
+        currentProgress[0].taskstep || localStorage.taskStep || 0
       );
-      return currentProgress;
+      return currentProgress[0];
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +59,6 @@ export const useUserStore = defineStore("user", () => {
     userName,
     many,
     addMany,
-    saveProgress,
     restoreProgress,
   };
 });
