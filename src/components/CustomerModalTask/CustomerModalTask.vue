@@ -130,6 +130,7 @@ onBeforeUnmount(() => {
 
         &:disabled {
             pointer-events: none;
+            color: #999;
         }
 
         &:hover {

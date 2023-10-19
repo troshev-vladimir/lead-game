@@ -224,22 +224,22 @@ watch(currentStep, () => {
   }
 }, {immediate: true})
 
-// onMounted(() => { //для дева
-//   document.addEventListener('keydown', (event) => {
-//     if (event.code == 'ArrowRight') {
-//       navigation.stepForward()
-//     } else if (event.code == 'ArrowLeft') {
-//       navigation.stepBackward()
-//     }
-//     if (event.code == 'Escape') { // esc
-//       navigation.currentStep = -1
-//       localStorage.setItem("quizeStep", 0)
-//       localStorage.setItem("taskStep", 0)
-//       localStorage.setItem("userMany", 0)
-//       localStorage.setItem('userName', '')
-//     } 
-//   })
-// })
+onMounted(() => { //для дева
+  document.addEventListener('keydown', (event) => {
+    if (event.code == 'ArrowRight') {
+      navigation.stepForward()
+    } else if (event.code == 'ArrowLeft') {
+      navigation.stepBackward()
+    }
+    if (event.code == 'Escape') { // esc
+      navigation.currentStep = -1
+      localStorage.setItem("quizeStep", 0)
+      localStorage.setItem("taskStep", 0)
+      localStorage.setItem("userMany", 0)
+      localStorage.setItem('userName', '')
+    } 
+  })
+})
 </script>
 
 <style lang="scss">
