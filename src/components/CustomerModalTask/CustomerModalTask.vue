@@ -10,7 +10,7 @@
         </button>
     </div>
 </template>
-<!--  -->
+
 <script setup>
 import customer1 from '@/assets/video-posters/customer1.jpg'
 import customer2 from '@/assets/video-posters/customer2.jpg'
