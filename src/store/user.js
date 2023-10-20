@@ -31,7 +31,7 @@ export const useUserStore = defineStore("user", () => {
 
       localStorage.setItem(
         "userMany",
-        currentProgress[0].sum || localStorage.userMany || 0
+        currentProgress[0].sum || +localStorage.userMany || 0
       );
 
       localStorage.setItem(
