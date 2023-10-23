@@ -256,6 +256,7 @@ watch(currentStep, () => {
 #further-btn.visible{
   opacity: 1;
   visibility: visible;
+  border-radius: 16px;
 }
 
 .navigation {

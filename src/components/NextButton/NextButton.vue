@@ -1,6 +1,6 @@
 <template>
   <div
-    class="next-button"
+    class="next-button border-animation"
     :class="{'next-button--prev': props.prev}"
     v-if="currentStepButton"
     @click="emit('next')"
