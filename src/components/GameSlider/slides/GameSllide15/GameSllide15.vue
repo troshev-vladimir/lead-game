@@ -8,21 +8,21 @@
 <path id="Vector 17" d="M854 435H834L852.293 416.707L854 415V417.414V435Z" fill="white"/>
 <g id="Frame 102">
 <path d="M853 318C853 309.163 860.163 302 869 302H1618C1626.84 302 1634 309.163 1634 318V419C1634 427.837 1626.84 435 1618 435H853V318Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="353.977">{{userName}}, &#x442;&#x44b; &#x43e;&#x442;&#x43b;&#x438;&#x447;&#x43d;&#x43e; &#x441;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x43b;&#x441;&#x44f; &#x441;&#x43e; &#x432;&#x441;&#x435;&#x43c;&#x438; &#x437;&#x430;&#x434;&#x430;&#x43d;&#x438;&#x44f;&#x43c;&#x438;! &#x422;&#x430;&#x43a;&#x43e;&#x439; </tspan><tspan x="898" y="382.977">&#x440;&#x435;&#x437;&#x443;&#x43b;&#x44c;&#x442;&#x430;&#x442; &#x442;&#x43e;&#x43b;&#x44c;&#x43a;&#x43e; &#x443; 17% &#x441;&#x442;&#x430;&#x436;&#x435;&#x440;&#x43e;&#x432;</tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="353.977">{{userName}}, ты отлично справился со всеми заданиями!</tspan></text>
 </g>
 </g>
 <g id="text-2">
 <path id="Vector 17_2" d="M854 411H834L852.293 392.707L854 391V393.414V411Z" fill="white"/>
 <g id="Frame 102_2">
 <path d="M853 323C853 314.163 860.163 307 869 307H1618C1626.84 307 1634 314.163 1634 323V395C1634 403.837 1626.84 411 1618 411H853V323Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="358.977">&#x422;&#x44b; &#x437;&#x430;&#x440;&#x430;&#x431;&#x43e;&#x442;&#x430;&#x43b; &#x441;&#x432;&#x43e;&#x438; &#x43f;&#x435;&#x440;&#x432;&#x44b;&#x435; &#x434;&#x435;&#x43d;&#x44c;&#x433;&#x438;. &#x423;&#x437;&#x43d;&#x430;&#x439;, &#x43a;&#x430;&#x43a; &#x438;&#x445; &#x43f;&#x43e;&#x43b;&#x443;&#x447;&#x438;&#x442;&#x44c;!</tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="358.977">Ты заработал свои первые деньги. Узнай, как их получить!</tspan></text>
 </g>
 </g>
 <g id="text-3">
 <path id="Vector 17_3" d="M854 460V480L835.707 461.707L834 460H836.414H854Z" fill="white"/>
 <g id="Frame 102_3">
 <path d="M853 460H1618C1626.84 460 1634 467.163 1634 476V548C1634 556.837 1626.84 564 1618 564H869C860.163 564 853 556.837 853 548V460Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="511.977">&#x423; &#x442;&#x435;&#x431;&#x44f; &#x435;&#x441;&#x442;&#x44c; &#x434;&#x432;&#x430; &#x432;&#x430;&#x440;&#x438;&#x430;&#x43d;&#x442;&#x430;, &#x43d;&#x43e; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x43d;&#x443;&#x436;&#x43d;&#x43e; &#x442;&#x43e;&#x43b;&#x44c;&#x43a;&#x43e; &#x43e;&#x434;&#x438;&#x43d;.</tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="511.977">У тебя есть два варианта.</tspan></text>
 </g>
 </g>
 <g id="further-btn">

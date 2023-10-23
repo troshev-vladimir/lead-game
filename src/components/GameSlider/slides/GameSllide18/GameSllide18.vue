@@ -7,7 +7,7 @@
         <g id="text-201">
         <g id="Frame 102">
         <path d="M442 475C442 466.163 449.163 459 458 459H1223V576C1223 584.837 1215.84 592 1207 592H458C449.163 592 442 584.837 442 576V475Z" fill="white"/>
-        <text id="value" fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="487" y="510.977">Для этого пройди обучение в нашем учебном центре: собери</tspan><tspan x="487" y="539.977">под себя программу обучения.</tspan></text>
+        <text id="value" fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="487" y="510.977">Для этого пройди обучение в нашем учебном центре.</tspan></text>
         </g>
         <path id="Vector 17" d="M1222 459H1242L1223.71 477.293L1222 479V476.586V459Z" fill="white"/>
         </g>
