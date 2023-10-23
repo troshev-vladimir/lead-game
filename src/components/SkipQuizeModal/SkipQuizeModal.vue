@@ -1,11 +1,11 @@
 <template>
   <div class="skip-quize">
       <div class="content">
-          <p>Ты уже проделал такой путь, если завершишь обучение сейчас, то не сможешь получить заработанное.</p>
+          <p>Ты уже проделал такой путь, если завершишь игру сейчас, то не сможешь получить заработанное.</p>
       </div>
       <div class="buttons">
-          <button @click="emit('accept')">Все равно завершить обучение</button>
-          <button @click="emit('cancle')">Продолжить обучение</button>
+          <button @click="emit('accept')">Все равно завершить игру</button>
+          <button @click="emit('cancle')">Продолжить игру</button>
       </div>
   </div>
 </template>

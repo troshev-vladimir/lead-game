@@ -6,7 +6,7 @@
 <g id="text-3">
 <g id="Frame 102">
 <path d="M251 408C251 399.163 258.163 392 267 392H1032V509C1032 517.837 1024.84 525 1016 525H267C258.163 525 251 517.837 251 509V408Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="296" y="443.977">&#x41f;&#x43e;&#x439;&#x434;&#x435;&#x43c; &#x43a; &#x43d;&#x430;&#x448;&#x438;&#x43c; &#x440;&#x430;&#x437;&#x440;&#x430;&#x431;&#x43e;&#x442;&#x447;&#x438;&#x43a;&#x430;&#x43c;, &#x43b;&#x443;&#x447;&#x448;&#x435; &#x43d;&#x438;&#x445; &#x43f;&#x440;&#x43e; &#x44d;&#x442;&#x43e; &#x43d;&#x438;&#x43a;&#x442;&#x43e; &#x43d;&#x435; </tspan><tspan x="296" y="472.977">&#x440;&#x430;&#x441;&#x441;&#x43a;&#x430;&#x436;&#x435;&#x442;.</tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="296" y="443.977">Пойдем к нашим разработчикам, лучше них про это никто не</tspan><tspan x="296" y="472.977">расскажет.</tspan></text>
 </g>
 <path id="Vector 17" d="M1031 392H1051L1032.71 410.293L1031 412V409.586V392Z" fill="white"/>
 </g>
@@ -18,12 +18,13 @@
 <path id="Polygon 2" d="M1064.03 954L1049.78 960.928L1054.47 954L1049.78 947.072L1064.03 954Z" fill="#010101"/>
 </g>
 </g>
+<g>
 <g id="text-2">
-<g id="Frame 102_2">
-<path d="M252 259C252 250.163 259.163 243 268 243H1017C1025.84 243 1033 250.163 1033 259V376H268C259.163 376 252 368.837 252 360V259Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="297" y="294.977">&#x41f;&#x440;&#x438; &#x44d;&#x442;&#x43e;&#x43c; &#xab;1&#x421; &#x43f;&#x440;&#x43e;&#x433;&#x440;&#x430;&#x43c;&#x43c;&#x438;&#x441;&#x442;&#xbb; &#x2013; &#x441;&#x430;&#x43c;&#x430;&#x44f; &#x43f;&#x440;&#x43e;&#x441;&#x442;&#x430;&#x44f; &#x43f;&#x440;&#x43e;&#x444;&#x435;&#x441;&#x441;&#x438;&#x44f; &#x434;&#x43b;&#x44f; </tspan><tspan x="297" y="323.977">&#x432;&#x445;&#x43e;&#x434;&#x430; &#x432; IT-&#x43c;&#x438;&#x440;.</tspan></text>
+<g id="Frame 102">
+<path d="M228 312C228 303.163 235.163 296 244 296H993C1001.84 296 1009 303.163 1009 312V429H244C235.163 429 228 421.837 228 413V312Z" fill="white"/>
+<text id="value" fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="273" y="347.977">«1С программист» – самая простая профессия для входа</tspan><tspan x="273" y="376.977">в IT-мир.</tspan></text>
 </g>
-<path id="Vector 17_2" d="M1032 376V356L1050.29 374.293L1052 376H1049.59H1032Z" fill="white"/>
+<path id="Vector 17" d="M1008 429V409L1026.29 427.293L1028 429H1025.59H1008Z" fill="white"/>
 </g>
 </g>
     </svg>

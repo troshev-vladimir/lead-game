@@ -29,21 +29,21 @@
 <g id="text-3">
 <g id="Frame 102_3">
 <path d="M353 259C353 250.163 360.163 243 369 243H1118C1126.84 243 1134 250.163 1134 259V376H369C360.163 376 353 368.837 353 360V259Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="398" y="294.977">&#x417;&#x430; &#x43a;&#x430;&#x436;&#x434;&#x43e;&#x435; &#x432;&#x44b;&#x43f;&#x43e;&#x43b;&#x43d;&#x435;&#x43d;&#x43d;&#x43e;&#x435; &#x437;&#x430;&#x434;&#x430;&#x43d;&#x438;&#x435; &#x442;&#x44b; &#x431;&#x443;&#x434;&#x435;&#x448;&#x44c; &#x43f;&#x43e;&#x43b;&#x443;&#x447;&#x430;&#x442;&#x44c; &#x43e;&#x43f;&#x43b;&#x430;&#x442;&#x443;. </tspan><tspan x="398" y="323.977">&#x421;&#x443;&#x43c;&#x43c;&#x430; &#x442;&#x432;&#x43e;&#x435;&#x433;&#x43e; &#x437;&#x430;&#x440;&#x430;&#x431;&#x43e;&#x442;&#x43a;&#x430; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43e;&#x442;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x430;&#x442;&#x44c;&#x441;&#x44f; &#x442;&#x443;&#x442;. </tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="398" y="294.977">За каждое выполненное задание ты будешь получать оплату. </tspan><tspan x="398" y="323.977">Сумма твоего заработка будет отображаться здесь. </tspan></text>
 </g>
 <path id="Vector 17_3" d="M1133 376V356L1151.29 374.293L1153 376H1150.59H1133Z" fill="white"/>
 </g>
 <g id="text-2">
 <g id="Frame 102_4">
 <path d="M353 230C353 221.163 360.163 214 369 214H1118C1126.84 214 1134 221.163 1134 230V376H369C360.163 376 353 368.837 353 360V230Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="398" y="265.977">&#x421;&#x435;&#x439;&#x447;&#x430;&#x441; &#x442;&#x44b; &#x43f;&#x43e;&#x437;&#x43d;&#x430;&#x43a;&#x43e;&#x43c;&#x438;&#x448;&#x44c;&#x441;&#x44f; &#x441; &#x41a;&#x43e;&#x43d;&#x444;&#x438;&#x433;&#x443;&#x440;&#x430;&#x442;&#x43e;&#x440;&#x43e;&#x43c; 1&#x421; &#x2013; &#x44d;&#x442;&#x43e; </tspan><tspan x="398" y="294.977">&#x43e;&#x441;&#x43d;&#x43e;&#x432;&#x43d;&#x430;&#x44f; &#x441;&#x440;&#x435;&#x434;&#x430; &#x440;&#x430;&#x437;&#x440;&#x430;&#x431;&#x43e;&#x442;&#x447;&#x438;&#x43a;&#x430;. &#x412; &#x43d;&#x435;&#x439; &#x43f;&#x440;&#x43e;&#x438;&#x441;&#x445;&#x43e;&#x434;&#x438;&#x442; &#x43d;&#x430;&#x43f;&#x438;&#x441;&#x430;&#x43d;&#x438;&#x435; </tspan><tspan x="398" y="323.977">&#x43a;&#x43e;&#x434;&#x430; &#x438; &#x432;&#x441;&#x44f; &#x43c;&#x430;&#x433;&#x438;&#x44f;! </tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="398" y="265.977">Сейчас ты познакомишься с Конфигуратором 1С – это </tspan><tspan x="398" y="294.977">основная среда разработки. В ней происходит написание </tspan><tspan x="398" y="323.977">кода и вся магия! </tspan></text>
 </g>
 <path id="Vector 17_4" d="M1133 376V356L1151.29 374.293L1153 376H1150.59H1133Z" fill="white"/>
 </g>
 <g id="text-1">
 <g id="Frame 102_5">
 <path d="M398 372C398 363.163 405.163 356 414 356H1179V502C1179 510.837 1171.84 518 1163 518H414C405.163 518 398 510.837 398 502V372Z" fill="white"/>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="443" y="407.977">&#x41d;&#x430;&#x43f;&#x43e;&#x43c;&#x438;&#x43d;&#x430;&#x44e;, &#x43d;&#x430;&#x441;&#x442;&#x43e;&#x44f;&#x449;&#x438;&#x439; &#x43f;&#x440;&#x43e;&#x433;&#x440;&#x430;&#x43c;&#x43c;&#x438;&#x441;&#x442;-&#x440;&#x430;&#x437;&#x440;&#x430;&#x431;&#x43e;&#x442;&#x447;&#x438;&#x43a; &#x43c;&#x43e;&#x436;&#x435;&#x442; </tspan><tspan x="443" y="436.977">&#x440;&#x430;&#x431;&#x43e;&#x442;&#x430;&#x442;&#x44c; &#x442;&#x43e;&#x43b;&#x44c;&#x43a;&#x43e; &#x43d;&#x430; &#x41f;&#x41a; &#x438;&#x43b;&#x438; &#x43d;&#x43e;&#x443;&#x442;&#x431;&#x443;&#x43a;&#x435;, &#x441; &#x43a;&#x43b;&#x430;&#x432;&#x438;&#x430;&#x442;&#x443;&#x440;&#x43e;&#x439; &#x438; </tspan><tspan x="443" y="465.977">&#x43c;&#x44b;&#x448;&#x43a;&#x43e;&#x439;. &#x41d;&#x430; &#x442;&#x435;&#x43b;&#x435;&#x444;&#x43e;&#x43d;&#x435; &#x434;&#x430;&#x436;&#x435; &#x43d;&#x43e;&#x432;&#x438;&#x447;&#x43a;&#x438; &#x43d;&#x435; &#x440;&#x430;&#x431;&#x43e;&#x442;&#x430;&#x44e;&#x442;!</tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="443" y="407.977">Напоминаю, настоящий программист-разработчик может </tspan><tspan x="443" y="436.977">работать только на ПК или ноутбуке, с клавиатурой и </tspan><tspan x="443" y="465.977">мышкой.</tspan></text>
 </g>
 <path id="Vector 17_5" d="M1178 356H1198L1179.71 374.293L1178 376V373.586V356Z" fill="white"/>
 </g>
