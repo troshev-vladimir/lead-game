@@ -251,7 +251,7 @@ export const quize = [
           },
         },
         {
-          // wider: true, // ответы в одну колонку
+          wider: true, // ответы в одну колонку
           question: "<p>Выбери нужную команду для выполнения этой задачи.</p>",
           answers: [
             {
@@ -348,28 +348,28 @@ export const quize = [
             "<p>Выбери верную команду, которая позволит нам стилизовать письмо:</p>",
           answers: [
             {
-              text: "`Текст = Письмо.Тексты.Добавить(&lt;р style=\"font-family: semi-bold; font-size: 12; font-weight: Verdana; color: #000000;\" &gt; +ТекстПисьма +&lt;/р&gt; );`",
+              text: '`Текст = Письмо.Тексты.Добавить(&lt;р style="font-family: semi-bold; font-size: 12; font-weight: Verdana; color: #000000;" &gt; +ТекстПисьма +&lt;/р&gt; );`',
               isRight: false,
               isChecked: false,
               explanation:
                 "<p>Подумай еще немного. В&nbsp;выбранном тобою варианте параметры наименования шрифта и&nbsp;его жирности поменяны местами. Помни, ошибаться нельзя, ты&nbsp;дал неверный ответ, сумма твоего вознаграждения уменьшена на&nbsp;750₽.</p>",
             },
             {
-              text: "`Текст = Письмо.Тексты.Добавить(&lt;р style= \"font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #ffffff;\"&gt; +ТекстПисьма +&lt;/р&gt;);`",
+              text: '`Текст = Письмо.Тексты.Добавить(&lt;р style= "font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #ffffff;"&gt; +ТекстПисьма +&lt;/р&gt;);`',
               isRight: false,
               isChecked: false,
               explanation:
                 "<p>Подумай еще немного. В&nbsp;выбранном тобою варианте параметр цвет неверный. Помни, ошибаться нельзя, ты&nbsp;дал неверный ответ, сумма твоего вознаграждения уменьшена на&nbsp;750₽.</p>",
             },
             {
-              text: "`Текст = Тексты.Добавить.Письмо(&lt;р style=\"font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #000000;\"&gt; +ТекстПисьма +&lt;/р&gt;);`",
+              text: '`Текст = Тексты.Добавить.Письмо(&lt;р style="font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #000000;"&gt; +ТекстПисьма +&lt;/р&gt;);`',
               isRight: false,
               isChecked: false,
               explanation:
                 "<p>Подумай еще немного. В&nbsp;выбранном тобою варианте использована неверная команда. Помни, ошибаться нельзя, ты&nbsp;дал неверный ответ, сумма твоего вознаграждения уменьшена на&nbsp;750₽.</p>",
             },
             {
-              text: "`Текст = Письмо.Тексты.Добавить(&lt;р style=\"font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #000000;\"&gt; +ТекстПисьма +&lt;/р&gt;);`",
+              text: '`Текст = Письмо.Тексты.Добавить(&lt;р style="font-family: Verdana; font-size: 12; font-weight: semi-bold; color: #000000;"&gt; +ТекстПисьма +&lt;/р&gt;);`',
               isRight: true,
               isChecked: false,
             },

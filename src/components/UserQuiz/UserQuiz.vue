@@ -3,8 +3,8 @@
         <audio ref="manySoundRef" :src="manySound"> </audio>
         <audio ref="failSoundRef" :src="failSound"> </audio>
         <audio ref="rightSoundRef" :src="rightSound"> </audio>
-        <div class="content-wrapper">
-            <div class="content" :class="{'content--hidden': !isShowedQuestion && isUserCanBegin}">
+        <div class="content-wrapper styled-scrollbars">
+            <div class="content " :class="{'content--hidden': !isShowedQuestion && isUserCanBegin}">
                 <button 
                     v-if="!isShowedQuestion && isUserCanBegin" 
                     class="start-task-btn" 
@@ -22,7 +22,7 @@
                         @skip="isSkipModal = true"
                     ></ProgressBar>
                 </div>
-                <div class="question" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
+                <div class="question styled-scrollbars" v-if="isShowedQuestion" v-html="currentTaskStep.question"></div>
 
                 <div 
                     class="answers" 
@@ -498,10 +498,19 @@
 
         .answers {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 20px;
-            white-space: break-spaces;
             margin-bottom: 10px;
+
+            // white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            // white-space: -webkit-pre-wrap; /*Chrome & Safari */ 
+            // white-space: -pre-wrap;      /* Opera 4-6 */
+            // white-space: -o-pre-wrap;    /* Opera 7 */
+            // white-space: pre-wrap;       /* css-3 */
+            // word-break: break-all; 
+            word-wrap: break-word;     /* Internet  Explorer 5.5+ */
+
+            white-space: normal;
 
             :deep(.user-input) {
                 input {
@@ -523,7 +532,7 @@
 
             .answer {
                 cursor: pointer;
-                border-radius: 16px;
+                border-radius: 16px;    
                 border: 1px solid #CCC;
                 background: #FFF;
                 padding: 30px 50px;
@@ -594,11 +603,6 @@
             position: relative;
             height: 0;
             padding-bottom: 56.25%;
-            margin-bottom: 32px;
-
-            @media screen and (max-width: 1200px) {
-                margin-bottom: 16px;
-            }
         }
         video {
             width: 100%;
@@ -616,7 +620,6 @@
 
     &__tip-text {
         padding: 32px 48px;
-        padding-top: 0;
         overflow: auto;
 
         color: #010101;
