@@ -7,6 +7,7 @@ import { onMounted } from "vue";
 import { useUserStore } from '@/store/user'
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
+import { useMeta } from "vue-meta";
 
 const user = useUserStore()
 const navigation = useNavigationStore()
@@ -15,7 +16,9 @@ const { userName, many } = storeToRefs(user)
 const { currentStep} = storeToRefs(navigation)
 
 userName.value = savedUserName
-
+useMeta({
+  title: 'ITS GAME ',
+})
 onMounted( async () => {
     await user.restoreProgress()
     currentStep.value = +localStorage.step || -1
@@ -25,9 +28,9 @@ onMounted( async () => {
     const id = localStorage.getItem("userPhone") || "";
     const token = localStorage.getItem("userToken") || "";
 
-    if (!id || !token) {
-      window.location.href = '/configurator/auth';
-    }
+    // if (!id || !token) {
+    //   window.location.href = '/configurator/auth';
+    // }
 }) 
 
 </script>
@@ -104,4 +107,19 @@ body {
         opacity: 1;
     }
 }
+
+.border-animation {
+  animation: 1s border-animation ease infinite alternate;
+}
+
+@keyframes border-animation {
+  from {
+    box-shadow: 0px 0px 30px #fff;
+  }
+
+  to {
+    box-shadow: 0px 0px 0px #fff;
+  }
+}
+
 </style>

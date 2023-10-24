@@ -1,9 +1,11 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <div class="customer-modal-task">
-        <video ref="video" preload autoplay :poster="customer ? customer2 : customer1">
-            <source :src="videoLink" type="video/mp4">
-        </video>
+        <div class="video-container">
+            <video ref="video" preload autoplay :poster="customer ? customer2 : customer1">
+                <source :src="videoLink" type="video/mp4">
+            </video>
+        </div>
         <div class="customer-modal-task__text styled-scrollbars" v-html="text"></div>
         <button :disabled="!isAwailablebutton" @click="goFurther">
             {{isCongrates ? "Перейти к следующему заданию" : "Приступить к выполнению"}}
@@ -62,9 +64,8 @@ onBeforeUnmount(() => {
     z-index: 1000;
     overflow: hidden;
     border-radius: 16px;
-    
-    max-height: 850px;
-    height: 80vh;
+    max-width: 700px;
+    max-height: 80vh;
     background-color: #fff;
     position: absolute;
     top: 50%;
@@ -75,19 +76,20 @@ onBeforeUnmount(() => {
 
     @media screen and (max-width: 1200px) {
         max-width: 400px;
+        width: 90vw;
+    }
+    
+
+    .video-container {
+        width: 100%;
+        height: 0;
+        background-color: #000000;
+        padding-bottom: 56.25%;
     }
 
     video {
-        width: 100%;
         position: static;
         transform: none;
-        object-fit: cover;
-        background-color: #000000;
-        // height: 851px;
-
-        @media screen and (max-width: 1200px) {
-            height: 450px;
-        }
     }
 
     &__text {

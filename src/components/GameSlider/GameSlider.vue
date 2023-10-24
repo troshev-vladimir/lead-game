@@ -30,8 +30,7 @@ const mode = computed(() => {
   if (fukingSlides.includes(currentStep.value) ) {
     return ''
   }
-  return '' // for prod
-  // return '' // for dev
+  return ''
 })
 
 // eslint-disable-next-line no-undef
