@@ -29,8 +29,12 @@ onMounted( async () => {
       const id = localStorage.getItem("userPhone") || "";
       const token = localStorage.getItem("userToken") || "";
 
-      if ((!id || !token) && process.env.NODE_ENV === 'production') {
+      if (process.env.FOR_PAGES === 'true') {
+        window.location.href = '/test/configurator/auth';
+      } else if ((!id || !token) && process.env.NODE_ENV === 'production') {
         window.location.href = '/configurator/auth';
+      } else {
+        console.log('go to auth');
       }
     } catch (error) {
       console.log(error);
