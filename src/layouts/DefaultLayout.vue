@@ -103,7 +103,13 @@ const showNavigationMap = () => {
 }
 
 const goToConfigurator = () => {
-  window.location.replace("https://lk.itseducation.ru/configurator/");
+  if (process.env.FOR_PAGES === 'true') {
+    window.location.replace("/test/configurator/");
+  } else if (process.env.NODE_ENV === 'production') {
+    window.location.replace("/configurator/");
+  } else {
+    console.log('go to configurator');
+  }
 }
 
 watch(currentStep, (value) => {
