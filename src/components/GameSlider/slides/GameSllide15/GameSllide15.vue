@@ -8,7 +8,7 @@
 <path id="Vector 17" d="M854 406H834L852.293 387.707L854 386V388.414V406Z" fill="white"/>
 <g id="Frame 102">
 <path d="M853 318C853 309.163 860.163 302 869 302H1618C1626.84 302 1634 309.163 1634 318V390C1634 398.837 1626.84 406 1618 406H853V318Z" fill="white"/>
-<text id="value" fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="353.977">#userName, &#x43e;&#x442;&#x43b;&#x438;&#x447;&#x43d;&#x430;&#x44f; &#x440;&#x430;&#x431;&#x43e;&#x442;&#x430;, &#x432;&#x441;&#x435; &#x437;&#x430;&#x434;&#x430;&#x43d;&#x438;&#x44f; &#x432;&#x44b;&#x43f;&#x43e;&#x43b;&#x43d;&#x435;&#x43d;&#x44b;!</tspan></text>
+<text id="value" fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="898" y="353.977">{{userName}}, &#x43e;&#x442;&#x43b;&#x438;&#x447;&#x43d;&#x430;&#x44f; &#x440;&#x430;&#x431;&#x43e;&#x442;&#x430;, &#x432;&#x441;&#x435; &#x437;&#x430;&#x434;&#x430;&#x43d;&#x438;&#x44f; &#x432;&#x44b;&#x43f;&#x43e;&#x43b;&#x43d;&#x435;&#x43d;&#x44b;!</tspan></text>
 </g>
 </g>
 <g id="text-2">

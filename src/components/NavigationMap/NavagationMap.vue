@@ -1,5 +1,5 @@
 <template>
-  <div class="select-answers border-animation" v-if="currentStepAnswers">
+  <div class="select-answers" v-if="currentStepAnswers">
     <div
       class="ansver"
       v-for="ansver in currentStepAnswers"
