@@ -64,8 +64,8 @@ onBeforeUnmount(() => {
     z-index: 1000;
     overflow: hidden;
     border-radius: 16px;
-    max-width: 700px;
-    max-height: 80vh;
+    max-width: 650px;
+    max-height: 85vh;
     background-color: #fff;
     position: absolute;
     top: 50%;
