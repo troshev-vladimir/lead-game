@@ -20,17 +20,28 @@ useMeta({
   title: 'ITS GAME ',
 })
 onMounted( async () => {
-    await user.restoreProgress()
-    currentStep.value = +localStorage.step || -1
-    userName.value = localStorage.userName || ''
-    many.value = +localStorage.userMany || 0
+    try {
+      await user.restoreProgress()
+      currentStep.value = +localStorage.step || -1
+      userName.value = localStorage.userName || ''
+      many.value = +localStorage.userMany || 0
 
-    const id = localStorage.getItem("userPhone") || "";
-    const token = localStorage.getItem("userToken") || "";
+      const id = localStorage.getItem("userPhone") || "";
+      const token = localStorage.getItem("userToken") || "";
 
-    // if (!id || !token) {
-    //   window.location.href = '/configurator/auth';
-    // }
+      if (process.env.FOR_PAGES === 'true') {
+        window.location.href = '/test/configurator/auth';
+      } else if ((!id || !token) && process.env.NODE_ENV === 'production') {
+        window.location.href = '/configurator/auth';
+      } else {
+        console.log('go to auth');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+    
 }) 
 
 </script>

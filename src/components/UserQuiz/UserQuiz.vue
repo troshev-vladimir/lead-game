@@ -120,6 +120,7 @@
     import UserInput from '@/components/UserInput'
     import {validateEmail} from '@/utils/validators'
     import saveProgressOnServer from '@/utils/saveProgress'
+    import CandidateMethods from "@/api/candidate";
 
     useMeta({
       title: 'Тестовое задание',
@@ -356,17 +357,12 @@
                 increaseTaskStep()
                 const id = localStorage.getItem("userPhone") || "";
                 const token = localStorage.getItem("userToken") || "";
-                fetch(
-                    "https://max43.ru:12233/ka_uprbase2/ru_RU/hs/education/v1/candidateupdate",
-                    {
-                    method: "PUT",
-                    body: JSON.stringify({
-                        id,
-                        token,
-                        Email: usersAnswerValue.value,
-                    }),
-                    }
-                );
+
+                CandidateMethods.candidateUpdate({
+                    id,
+                    token,
+                    Email: usersAnswerValue.value
+                });
             }, 500)
         } else {
             usersAnswerError.value = 'Введите корректный email'

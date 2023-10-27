@@ -2,6 +2,7 @@
 <template>
     <img :src="bg7" alt="slide">
     <svg :class="{'no-continue-button': !isContinueBtn}" width="1920" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+
 <g>
     <g id="text-2">
         <g id="Frame 102_2">
@@ -28,6 +29,7 @@
     </g>
     </g>
 </g>
+
     </svg>
 </template>
 
@@ -77,12 +79,10 @@ onMounted(async () => {
         if (!replicStepAskWaiting.value) {
             replicStep.value += 1
         }
-
     })
 
     text3 = document.querySelector('#text-2')
     text4 = document.querySelector('#text-3')
-
 
     setTimeout(() => {
         text3.classList.add('visible')
