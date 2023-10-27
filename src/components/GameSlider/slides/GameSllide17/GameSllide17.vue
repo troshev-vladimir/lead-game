@@ -8,7 +8,7 @@
 <path id="Vector 17" d="M1011 337V357L992.707 338.707L991 337H993.414H1011Z" fill="white"/>
 <g id="Frame 102">
 <path d="M1010 337H1775C1783.84 337 1791 344.163 1791 353V454C1791 462.837 1783.84 470 1775 470H1026C1017.16 470 1010 462.837 1010 454V337Z" fill="white"/>
-<text id="value" fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="1055" y="388.977">#userName, &#x43f;&#x440;&#x438;&#x432;&#x435;&#x442;! &#x41c;&#x44b; &#x441; &#x442;&#x43e;&#x431;&#x43e;&#x439; &#x443;&#x436;&#x435; &#x432;&#x438;&#x434;&#x435;&#x43b;&#x438;&#x441;&#x44c;, &#x43c;&#x435;&#x43d;&#x44f; &#x437;&#x43e;&#x432;&#x443;&#x442; </tspan><tspan x="1055" y="417.977">&#x418;&#x440;&#x438;&#x43d;&#x430;, &#x44f;&#xa0;&#x433;&#x43b;&#x430;&#x432;&#x43d;&#x44b;&#x439; &#x431;&#x443;&#x445;&#x433;&#x430;&#x43b;&#x442;&#x435;&#x440; &#x43a;&#x43e;&#x43c;&#x43f;&#x430;&#x43d;&#x438;&#x438; IT-&#x421;&#x435;&#x440;&#x432;&#x438;&#x441;.</tspan></text>
+<text id="value" fill="black" xml:space="preserve" style="white-space: pre" font-family="Gogh" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="1055" y="388.977">{{userName}}, &#x43f;&#x440;&#x438;&#x432;&#x435;&#x442;! &#x41c;&#x44b; &#x441; &#x442;&#x43e;&#x431;&#x43e;&#x439; &#x443;&#x436;&#x435; &#x432;&#x438;&#x434;&#x435;&#x43b;&#x438;&#x441;&#x44c;, &#x43c;&#x435;&#x43d;&#x44f; &#x437;&#x43e;&#x432;&#x443;&#x442; </tspan><tspan x="1055" y="417.977">&#x418;&#x440;&#x438;&#x43d;&#x430;, &#x44f;&#xa0;&#x433;&#x43b;&#x430;&#x432;&#x43d;&#x44b;&#x439; &#x431;&#x443;&#x445;&#x433;&#x430;&#x43b;&#x442;&#x435;&#x440; &#x43a;&#x43e;&#x43c;&#x43f;&#x430;&#x43d;&#x438;&#x438; &laquo;IT-&#x421;&#x435;&#x440;&#x432;&#x438;&#x441;&raquo;.</tspan></text>
 </g>
 </g>
 <g id="text-2">
@@ -41,6 +41,7 @@
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
+import useFurtherButton from '../../composables/useFurtherButton'
 import bg19 from "@/assets/slides-images/nineteen/bg.webp"
 import irina from './assets/irina.mp3'
 import irina2 from './assets/irina2.mp3'
@@ -56,6 +57,7 @@ const audioIrina = new Audio(irina)
 const audioIrina2 = new Audio(irina2)
 const audioIrina3 = new Audio(irina3)
 
+useFurtherButton()
 const nextStep = () => {
     replicStepAskWaiting.value = false
     replicStep.value += 1
