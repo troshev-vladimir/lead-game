@@ -35,6 +35,7 @@
                     <UserInput 
                         v-if="currentTaskStep.usersAnswer"
                         v-model="usersAnswerValue"
+                        type="email"
                         @further="checkUsersCustomAnswer()"
                         :button-text="currentTaskStep.usersAnswer.buttonText"
                         :placeholder="currentTaskStep.usersAnswer.placeholder"
