@@ -31,23 +31,23 @@ export const useUserStore = defineStore("user", () => {
 
       localStorage.setItem(
         "userMany",
-        currentProgress[0].sum || +localStorage.userMany || 0
+        currentProgress[0].sum ?? +localStorage.userMany ?? 0
       );
 
       localStorage.setItem(
         "userName",
-        currentProgress[0].name || localStorage.userName || ""
+        currentProgress[0].name ?? localStorage.userName ?? ""
       );
 
-      localStorage.setItem("step", step || String(localStorage.step) || -1);
+      localStorage.setItem("step", step ?? String(localStorage.step) ?? -1);
       localStorage.setItem(
         "quizeStep",
-        currentProgress[0].quizestep || localStorage.quizeStep || 0
+        currentProgress[0].quizestep ?? localStorage.quizeStep ?? 0
       );
 
       localStorage.setItem(
         "taskStep",
-        currentProgress[0].taskstep || localStorage.taskStep || 0
+        currentProgress[0].taskstep ?? localStorage.taskStep ?? 0
       );
       return currentProgress[0];
     } catch (error) {
