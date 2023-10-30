@@ -230,7 +230,9 @@ watch(currentStep, () => {
   }
 }, {immediate: true})
 
-onMounted(() => { //для дева
+onMounted(() => {
+  if (process.env.NODE_ENV === 'production') return 
+
   document.addEventListener('keydown', (event) => {
     if (event.code == 'ArrowRight') {
       navigation.stepForward()

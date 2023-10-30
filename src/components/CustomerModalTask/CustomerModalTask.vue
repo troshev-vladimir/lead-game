@@ -19,7 +19,7 @@ import customer2 from '@/assets/video-posters/customer2.jpg'
 import { defineEmits,defineProps, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
 const emit = defineEmits(['further'])
 const video = ref(null)
-const isAwailablebutton = ref(true) // false
+const isAwailablebutton = ref(false)
 const props = defineProps({
     isCongrates: {
         type: Boolean,
@@ -49,6 +49,10 @@ const videoEndHandler = () => {
 onMounted(() => {
     video.value.play()
     video.value.addEventListener('ended', videoEndHandler);
+
+    if (process.env.NODE_ENV === 'development') {
+        isAwailablebutton.value = true
+    } 
 })
 
 onBeforeUnmount(() => {

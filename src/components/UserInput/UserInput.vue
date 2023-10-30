@@ -1,21 +1,22 @@
 <template>
   <div class="user-input">
-        <input 
-            :placeholder="placeholder" 
-            type="text"
-            v-model="input" 
-        >
-        <button @click="emit('further')">
-            {{ buttonText }}
-            <svg width="50" height="14" viewBox="0 0 50 14" xmlns="http://www.w3.org/2000/svg">
-                <rect y="6.0083" width="42" height="2"/>
-                <path d="M49.0586 7.00877L34.8086 13.937L39.5 7.0083L34.8086 0.0805664L49.0586 7.00877Z"/>
-            </svg>
-        </button>
-        <div class="error">
-            {{ errorText }}
-        </div>
+    <input 
+      :placeholder="placeholder" 
+      type="text"
+      v-model="input" 
+      v-bind="$attrs"
+    >
+    <button @click="emit('further')">
+      {{ buttonText }}
+      <svg width="50" height="14" viewBox="0 0 50 14" xmlns="http://www.w3.org/2000/svg">
+        <rect y="6.0083" width="42" height="2"/>
+        <path d="M49.0586 7.00877L34.8086 13.937L39.5 7.0083L34.8086 0.0805664L49.0586 7.00877Z"/>
+      </svg>
+    </button>
+    <div class="error">
+      {{ errorText }}
     </div>
+  </div>
 </template>
 
 <script setup>
