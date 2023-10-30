@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, onBeforeUnmount } from "vue";
 import { useUserStore } from '@/store/user'
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia';
@@ -19,26 +19,41 @@ userName.value = savedUserName
 useMeta({
   title: 'ITS GAME ',
 })
+
+const unauthorisedHandler = (e) =>  {
+  if (process.env.FOR_PAGES === "true") {
+    window.location.href = "/test/configurator/auth?unauthorised=true";
+  } else if (process.env.NODE_ENV === "production") {
+    window.location.href = "/configurator/auth?unauthorised=true";
+  } else {
+    console.log("to game");
+  }
+}
 onMounted( async () => {
-    try {
-      await user.restoreProgress()
-      currentStep.value = +localStorage.step || -1
-      userName.value = localStorage.userName || ''
-      many.value = +localStorage.userMany || 0
+  window.addEventListener("unauthorized", unauthorisedHandler);
 
-      const id = localStorage.getItem("userPhone") || "";
-      const token = localStorage.getItem("userToken") || "";
+  try {
+    await user.restoreProgress()
+    currentStep.value = +localStorage.step || -1
+    userName.value = localStorage.userName || ''
+    many.value = +localStorage.userMany || 0
 
-      if (process.env.FOR_PAGES === 'true') {
-        window.location.href = '/test/configurator/auth';
-      } else if ((!id || !token) && process.env.NODE_ENV === 'production') {
-        window.location.href = '/configurator/auth';
-      } else {
-        console.log('go to auth');
-      }
-    } catch (error) {
-      console.log(error);
+    const id = localStorage.getItem("userPhone") || "";
+    const token = localStorage.getItem("userToken") || "";
+
+    if (process.env.FOR_PAGES === 'true') {
+      window.location.href = '/test/configurator/auth?unauthorised=true';
+    } else if ((!id || !token) && process.env.NODE_ENV === 'production') {
+      window.location.href = '/configurator/auth?unauthorised=true';
+    } else {
+      console.log('go to auth');
     }
+  } catch (error) {
+    console.log(error);
+  }
+}),
+onBeforeUnmount(() => {
+  window.removeEventListener("unauthorized", unauthorisedHandler);
 }) 
 
 </script>
