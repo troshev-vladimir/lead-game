@@ -122,12 +122,15 @@
     import {validateEmail} from '@/utils/validators'
     import saveProgressOnServer from '@/utils/saveProgress'
     import CandidateMethods from "@/api/candidate";
+    import { storeToRefs } from 'pinia'
 
     useMeta({
       title: 'Тестовое задание',
     })
     
     const navigation = useNavigationStore()
+    const { quseStep, taskStep: savedTaskStep } = storeToRefs(navigation)
+
     const user = useUserStore()
     const penalty = 30
 
@@ -380,11 +383,10 @@
         setTimeout(() => {
             isCustomerCall.value = true
         }, 1000)
-
-        quizeStep.value = +localStorage.getItem('quizeStep') || 0
-        taskStep.value = +localStorage.getItem('taskStep') || 0
+        
+        quizeStep.value = quseStep.value || +localStorage.getItem('quizeStep') || 0
+        taskStep.value = savedTaskStep.value || +localStorage.getItem('taskStep') || 0
         // user.addMany(+localStorage.getItem('userMany') || 0)
-
         if (quizeStep.value >= totalQuizeStep) navigation.stepForward()
     }) 
 </script>

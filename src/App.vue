@@ -13,7 +13,7 @@ const user = useUserStore()
 const navigation = useNavigationStore()
 const savedUserName = localStorage.getItem("userName")
 const { userName, many } = storeToRefs(user)
-const { currentStep} = storeToRefs(navigation)
+const { currentStep, quseStep, taskStep, } = storeToRefs(navigation)
 
 userName.value = savedUserName
 useMeta({
@@ -35,6 +35,8 @@ onMounted( async () => {
   try {
     await user.restoreProgress()
     currentStep.value = +localStorage.step || -1
+    quseStep.value = +localStorage.quizeStep || 0
+    taskStep.value = +localStorage.taskStep || 0
     userName.value = localStorage.userName || ''
     many.value = +localStorage.userMany || 0
 

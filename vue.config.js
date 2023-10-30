@@ -2,9 +2,9 @@ const { defineConfig } = require("@vue/cli-service");
 
 const getPublikPath = () => {
   if (process.env.FOR_PAGES === "true") {
-    return "/test/lid-game/";
+    return "/test/its_game/";
   } else if (process.env.NODE_ENV === "production") {
-    return "/lid-game/";
+    return "/its_game/";
   }
   return "/";
 };

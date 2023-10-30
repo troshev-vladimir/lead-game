@@ -3,7 +3,9 @@ import { ref } from "vue";
 import saveProgressOnServer from "@/utils/saveProgress";
 
 export const useNavigationStore = defineStore("navigation", () => {
-  const currentStep = ref(14);
+  const currentStep = ref(-1);
+  const quseStep = ref(0);
+  const taskStep = ref(0);
   const totalSteps = 18;
 
   async function stepForward() {
@@ -22,5 +24,7 @@ export const useNavigationStore = defineStore("navigation", () => {
     currentStep,
     stepForward,
     stepBackward,
+    quseStep,
+    taskStep,
   };
 });
