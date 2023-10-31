@@ -26,7 +26,7 @@ const unauthorisedHandler = (e) =>  {
   } else if (process.env.NODE_ENV === "production") {
     window.location.href = "/configurator/auth?unauthorised=true";
   } else {
-    console.log("to game");
+    console.log("to auth 401");
   }
 }
 onMounted( async () => {
@@ -34,6 +34,7 @@ onMounted( async () => {
 
   try {
     await user.restoreProgress()
+  
     currentStep.value = +localStorage.step || -1
     quseStep.value = +localStorage.quizeStep || 0
     taskStep.value = +localStorage.taskStep || 0
@@ -49,6 +50,16 @@ onMounted( async () => {
       window.location.href = '/configurator/auth?unauthorised=true';
     } else {
       console.log('go to auth');
+    }
+
+    if (+localStorage.step === 18) {
+      if (process.env.FOR_PAGES === 'true') {
+        window.location.href = '/test/configurator/';
+      } else if (process.env.NODE_ENV === 'production') {
+        window.location.href = '/configurator/';
+      } else {
+        console.log('go to configurator');
+      }
     }
   } catch (error) {
     console.log(error);

@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL:
-    process.env.NODE_ENV === "development"
-      ? "https://max43.ru:12244/ka_uprbase2/ru_RU/hs/education/v1"
-      : "https://max43.ru:12233/ka_uprbase2/ru_RU/hs/education/v1",
+  baseURL: "https://max43.ru:12233/ka_uprbase2/ru_RU/hs/education/v1",
+  // process.env.NODE_ENV === "development"
+  //   ? "https://max43.ru:12244/ka_uprbase2/ru_RU/hs/education/v1"
+  //   : "https://max43.ru:12233/ka_uprbase2/ru_RU/hs/education/v1",
   timeout: 10000,
   headers: {
     Accept: "application/json",
@@ -14,16 +14,16 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   function (response) {
-    if (response.status === 401) {
-      window.dispatchEvent(
-        new CustomEvent("unauthorized", {
-          detail: { message: response.data.error.message },
-        })
-      );
-    }
     return response;
   },
   function (error) {
+    if (error.response.status === 401) {
+      window.dispatchEvent(
+        new CustomEvent("unauthorized", {
+          detail: { message: error.response.data.error.message },
+        })
+      );
+    }
     return Promise.reject(error.response.data);
   }
 );

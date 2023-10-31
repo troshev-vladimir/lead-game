@@ -220,7 +220,6 @@
         localStorage.setItem('quizeStep', quizeStep.value + !isTaskStep) 
         localStorage.setItem('taskStep', taskStep.value + isTaskStep) 
         localStorage.setItem('userMany', user.many)
-        console.log(quizeStep.value, taskStep.value);
         saveProgressOnServer(isFinal)
     }
 
@@ -230,7 +229,6 @@
         if (quizeStep.value + 1 === quizeReactive.length && isCongrates.value) { 
             // последний таск после позравлений
             navigation.stepForward()
-            saveCurrentQuizeStep(true)
         }
 
         if (isCongrates.value) {
@@ -305,24 +303,20 @@
     const increaseTaskStep = () => {
         if(taskStep.value + 1 < currentQuizeStep.value.content.quest.length) {
             // Закончили вопрос 
-            setTimeout(() => {
-                currentExplanation.value = ''
-                saveCurrentQuizeStep(false, true)
-                taskStep.value++
-                isButtonDisabled.value = false
-                video.value.addEventListener("canplaythrough", videoPlay)
-            }, 500)
+            currentExplanation.value = ''
+            saveCurrentQuizeStep(false, true)
+            taskStep.value++
+            isButtonDisabled.value = false
+            video.value.addEventListener("canplaythrough", videoPlay)
             
         } else {
             // Закончили задание 
             video.value.removeEventListener("canplaythrough", videoPlay)
-            setTimeout(() => {
-                taskStep.value = 0
-                stopTimer()
-                saveCurrentQuizeStep(false, false)
-                increaseQuizeStep()
-                isButtonDisabled.value = false
-            }, 2000)
+            taskStep.value = 0
+            stopTimer()
+            saveCurrentQuizeStep(quizeStep.value === 5, false)
+            increaseQuizeStep()
+            isButtonDisabled.value = false
         }
     }
 
