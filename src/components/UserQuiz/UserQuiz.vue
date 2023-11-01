@@ -41,6 +41,13 @@
                         :placeholder="currentTaskStep.usersAnswer.placeholder"
                         :error-text="usersAnswerError"
                     ></UserInput>
+                    <div
+                        class="skip-email"
+                        v-if="currentTaskStep.usersAnswer"
+                        @click="navigation.stepForward"
+                    >
+                        Я не хочу проверять и получать дополнительную награду.
+                    </div>
                     <template v-else>
                         <div 
                             class="answer"
@@ -622,6 +629,34 @@
 
         @media screen and (max-width: 1200px) {
             padding: 16px;
+        }
+    }
+
+    .skip-email {
+        cursor: pointer;
+        border-radius: 16px;    
+        border: 1px solid #CCC;
+        background: #FFF;
+        padding: 30px 50px;
+        display: inline-block;
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 130%; 
+        width: fit-content;
+        margin: 0 auto;
+
+        @media screen and (max-width: 1200px) {
+            padding: 16px;
+        }
+        
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background-color: #eee;
+                transition: all ease .2s;
+                color: #0075EB;
+                box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.30);
+            }
         }
     }
 }
