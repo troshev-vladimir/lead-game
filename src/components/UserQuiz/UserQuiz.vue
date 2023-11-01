@@ -139,7 +139,6 @@
     const { quseStep, taskStep: savedTaskStep } = storeToRefs(navigation)
 
     const user = useUserStore()
-    const penalty = 30
 
     const quizeReactive = reactive(quize)
     const quizeStep = ref(0)
@@ -337,6 +336,11 @@
     const checkAnswer = (answer) => {
         answer.isChecked = true
         currentExplanation.value = answer.explanation
+        try {
+            video.value.pause()
+        } catch (error) {
+            console.log(error);
+        }
         if (answer.isRight) {
             addMany()
             isButtonDisabled.value = true

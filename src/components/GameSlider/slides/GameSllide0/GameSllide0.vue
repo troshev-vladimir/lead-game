@@ -29,7 +29,7 @@
 <script setup>
 import { useUserStore } from '@/store/user'
 import { storeToRefs } from 'pinia'
-import { onMounted, nextTick, ref } from 'vue'
+import { onMounted, nextTick, ref, onBeforeUnmount } from 'vue'
 import bg from "@/assets/slides-images/first/bg.webp"
 import { useNavigationStore } from '@/store/navigation'
 import ann from './assets/ann.mp3'
@@ -58,6 +58,14 @@ const goFurther = () => {
     }
 }
 
+const callback = () => {
+    (e) => {
+        if (e.key === 'Enter') {
+            goFurther()
+        }
+    }
+}
+
 onMounted(async () => {
     await nextTick()
     const text1 = document.querySelector('#text-1')
@@ -65,11 +73,7 @@ onMounted(async () => {
     setTimeout(() => {
         isInput.value = true
 
-        document.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                goFurther()
-            }
-        })
+        document.addEventListener('keypress', callback)
     }, 1000)
     
     setTimeout(() => {
@@ -81,6 +85,10 @@ onMounted(async () => {
     //     emit('question')
     // }, 1000)
 })
+
+onBeforeUnmount(() => {
+    document.removeEventListener('keypress', callback)
+}) 
 </script>
 
 <style lang="scss" scoped>
