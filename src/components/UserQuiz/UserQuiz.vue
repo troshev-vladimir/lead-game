@@ -103,7 +103,7 @@
             </CustomerModalTask>
             <SkipQuizeModal 
                 v-if="isSkipModal" 
-                @accept="navigation.stepForward"
+                @accept="skipHandler"
                 @cancle="isSkipModal = false"
             ></SkipQuizeModal>
         </transition-group>
@@ -148,6 +148,15 @@
     const time = ref(0)
     let timer
     const currentExplanation = ref('')
+
+    const skipHandler = () => {
+        navigation.stepForward()
+        try {
+            saveProgressOnServer(true)
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const currentQuizeStep = computed(() => {
         const step = quizeStep.value
