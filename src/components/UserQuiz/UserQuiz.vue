@@ -44,7 +44,7 @@
                     <div
                         class="skip-email"
                         v-if="currentTaskStep.usersAnswer"
-                        @click="skipHandler"
+                        @click="skipemail"
                     >
                         Я не хочу проверять и получать дополнительную награду.
                     </div>
@@ -239,7 +239,7 @@
         if (isFinal) {
             localStorage.setItem('gameComleted', 'true')
         }
-        
+
         saveProgressOnServer(isFinal)
     }
 
@@ -368,6 +368,12 @@
             currentMistakes += 1
             failSoundRef.value.play()
         }
+    }
+
+    const skipemail = () => {
+        isButtonDisabled.value = true
+        usersAnswerError.value = ''
+        increaseTaskStep()
     }
 
     const checkUsersCustomAnswer = () => {

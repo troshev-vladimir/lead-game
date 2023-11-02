@@ -62,8 +62,6 @@ onBeforeUnmount(() => {
 
 </script>
 <style lang="scss" scoped>
-
-
 .customer-modal-task {
     z-index: 1000;
     overflow: hidden;
