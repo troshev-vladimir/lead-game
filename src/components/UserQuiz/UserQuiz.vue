@@ -44,7 +44,7 @@
                     <div
                         class="skip-email"
                         v-if="currentTaskStep.usersAnswer"
-                        @click="navigation.stepForward"
+                        @click="skipHandler"
                     >
                         Я не хочу проверять и получать дополнительную награду.
                     </div>
@@ -329,7 +329,8 @@
             video.value.removeEventListener("canplaythrough", videoPlay)
             taskStep.value = 0
             stopTimer()
-            saveCurrentQuizeStep(quizeStep.value === 5, false)
+            console.log(quizeStep.value);
+            saveCurrentQuizeStep(quizeStep.value === 4, false)
             increaseQuizeStep()
             isButtonDisabled.value = false
         }

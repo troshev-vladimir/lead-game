@@ -43,16 +43,10 @@ let text2
 let text3 
 let text4 
 
-// const currentSound = computed(() => {
-//     switch (replicStep.value) {
-//         case 1:
-//             return sound2
-//         default:
-//             return sound
-//     }
-// })
+const isMounted = ref(false)
 
 const nextStep = () => {
+    if (!isMounted.value) return 
     replicStepAskWaiting.value = false
     replicStep.value += 1
 }
@@ -111,7 +105,7 @@ onMounted(async () => {
     await nextTick()
 
     document.addEventListener('nextReplic', () => {
-        if (!replicStepAskWaiting.value) {
+        if (!replicStepAskWaiting.value && isMounted.value) {
             replicStep.value += 1
         }
     })
@@ -124,7 +118,9 @@ onMounted(async () => {
     setTimeout(() => { // первый текст
         text1.classList.add('visible')
         audioAnn.play()
+        isMounted.value = true
     }, 1500)
+
 })
 
 onBeforeUnmount(() => {
