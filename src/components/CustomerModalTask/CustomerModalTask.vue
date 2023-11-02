@@ -83,7 +83,6 @@ onBeforeUnmount(() => {
         width: 90vw;
     }
     
-
     .video-container {
         width: 100%;
         height: 0;

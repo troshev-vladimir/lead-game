@@ -29,11 +29,26 @@ const unauthorisedHandler = (e) =>  {
     console.log("to auth 401");
   }
 }
+
+const goToConfigurator = () =>  {
+  if (process.env.FOR_PAGES === 'true') {
+    window.location.href = '/test/configurator/';
+  } else if (process.env.NODE_ENV === 'production') {
+    window.location.href = '/configurator/';
+  } else {
+    console.log('go to configurator');
+  }
+}
+
 onMounted( async () => {
   window.addEventListener("unauthorized", unauthorisedHandler);
 
   try {
     await user.restoreProgress()
+
+    if (localStorage.gameComleted === 'true') {
+      goToConfigurator()
+    }
   
     currentStep.value = +localStorage.step || -1
     quseStep.value = +localStorage.quizeStep || 0
@@ -44,22 +59,18 @@ onMounted( async () => {
     const id = localStorage.getItem("userPhone") || "";
     const token = localStorage.getItem("userToken") || "";
 
-    if (process.env.FOR_PAGES === 'true') {
-      window.location.href = '/test/configurator/auth?unauthorised=true';
-    } else if ((!id || !token) && process.env.NODE_ENV === 'production') {
-      window.location.href = '/configurator/auth?unauthorised=true';
-    } else {
-      console.log('go to auth');
+    if (!id || !token) {
+      if (process.env.NODE_ENV === 'production') {
+        window.location.href = '/configurator/auth?unauthorised=true';
+      } else if (process.env.FOR_PAGES === 'true') {
+        window.location.href = '/test/configurator/auth?unauthorised=true';
+      } else {
+        console.log('go to auth');
+      }
     }
 
     if (+localStorage.step === 18) {
-      if (process.env.FOR_PAGES === 'true') {
-        window.location.href = '/test/configurator/';
-      } else if (process.env.NODE_ENV === 'production') {
-        window.location.href = '/configurator/';
-      } else {
-        console.log('go to configurator');
-      }
+      goToConfigurator()
     }
   } catch (error) {
     console.log(error);

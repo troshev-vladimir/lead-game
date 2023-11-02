@@ -235,6 +235,11 @@
         localStorage.setItem('quizeStep', quizeStep.value + !isTaskStep) 
         localStorage.setItem('taskStep', taskStep.value + isTaskStep) 
         localStorage.setItem('userMany', user.many)
+
+        if (isFinal) {
+            localStorage.setItem('gameComleted', 'true')
+        }
+        
         saveProgressOnServer(isFinal)
     }
 
