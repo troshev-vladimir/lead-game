@@ -1,7 +1,7 @@
 <template>
   <div class="skip-quize">
       <div class="content">
-          <p>Ты уже проделал такой путь, если завершишь игру сейчас, то не сможешь получить заработанное.</p>
+          <p>Ты уверен? Ты можешь заработать еще больше.</p>
       </div>
       <div class="buttons">
           <button @click="emit('accept')">Все равно завершить игру</button>
