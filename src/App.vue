@@ -21,6 +21,8 @@ useMeta({
 })
 
 const unauthorisedHandler = (e) =>  {
+  localStorage.removeItem("userToken");
+
   if (process.env.FOR_PAGES === "true") {
     window.location.href = "/test/configurator/auth?unauthorised=true";
   } else if (process.env.NODE_ENV === "production") {
