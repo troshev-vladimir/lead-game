@@ -4,8 +4,8 @@
         <div class="customer-call">
             <div class="customer-call__img">
                 <picture>
-                    <source srcset="./img/1.webp" />
-                    <img src="./img/1.png" alt="Заказчик">
+                    <source :srcset="`/assets/customerCall/${currentData.img}.webp`" />
+                    <img  :src="`/assets/customerCall/${currentData.img}.png`" alt="Заказчик">
                 </picture>
             </div>
 
@@ -15,7 +15,7 @@
                 <p class="customer-call__company">{{currentData.conmpany}}</p>
             </div>
             <button class="customer-call__button" @click="emit('further')">
-                <img width="50" height="50" src="./img/phone.svg" alt="phone">
+                <img width="50" height="50" src="/assets/customerCall/phone.svg" alt="phone">
             </button>
             <audio ref="ringingRef" :src="ringing" loop>
             </audio>
@@ -27,6 +27,7 @@
 <script setup>
 import { onMounted, defineEmits, defineProps, ref, computed } from 'vue';
 import ringing from '@/assets/audio/ringing.mp3';
+
 const emit = defineEmits(['further']);
 const ringingRef = ref(null)
 const props = defineProps({
@@ -41,15 +42,17 @@ const currentData = computed(() => {
 }) 
 
 const data = {
-    1: {
+    0: {
         name: 'Аркадий Николаевич',
         conmpany: 'Компания «Сантехмир»',
-        position: 'Руководитель'
+        position: 'Руководитель',
+        img: '0'
     },
-    0: {
+    1: {
         name: 'Антон Юрьевич',
         position: 'Руководитель',
-        conmpany: 'Компания «СпортОпт»'
+        conmpany: 'Компания «СпортОпт»',
+        img: '1'
     }
 }
 
