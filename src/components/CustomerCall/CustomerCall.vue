@@ -41,12 +41,12 @@ const currentData = computed(() => {
 }) 
 
 const data = {
-    0: {
+    1: {
         name: 'Аркадий Николаевич',
         conmpany: 'Компания «Сантехмир»',
         position: 'Руководитель'
     },
-    1: {
+    0: {
         name: 'Антон Юрьевич',
         position: 'Руководитель',
         conmpany: 'Компания «СпортОпт»'
