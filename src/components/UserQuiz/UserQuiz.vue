@@ -383,16 +383,16 @@
             isButtonDisabled.value = true
             usersAnswerError.value = ''
             addMany()
-            setTimeout(() => {
-                increaseTaskStep()
+            setTimeout(async () => {
                 const id = localStorage.getItem("userPhone") || "";
                 const token = localStorage.getItem("userToken") || "";
                 localStorage.setItem('userEmail', usersAnswerValue.value)
-                CandidateMethods.candidateUpdate({
+                await CandidateMethods.candidateUpdate({
                     id,
                     token,
                     Email: usersAnswerValue.value
                 });
+                increaseTaskStep()
             }, 500)
         } else {
             usersAnswerError.value = 'Введите корректный email'
