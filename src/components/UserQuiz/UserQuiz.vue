@@ -387,7 +387,7 @@
                 increaseTaskStep()
                 const id = localStorage.getItem("userPhone") || "";
                 const token = localStorage.getItem("userToken") || "";
-
+                localStorage.setItem('userEmail', usersAnswerValue.value)
                 CandidateMethods.candidateUpdate({
                     id,
                     token,

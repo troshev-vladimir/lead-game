@@ -4,8 +4,8 @@
         <div class="customer-call">
             <div class="customer-call__img">
                 <picture>
-                    <source :srcset="`/assets/customerCall/${currentData.img}.webp`" />
-                    <img  :src="`/assets/customerCall/${currentData.img}.png`" alt="Заказчик">
+                    <source :srcset="currentData.img.webp" />
+                    <img  :src="currentData.img.png" alt="Заказчик">
                 </picture>
             </div>
 
@@ -15,7 +15,7 @@
                 <p class="customer-call__company">{{currentData.conmpany}}</p>
             </div>
             <button class="customer-call__button" @click="emit('further')">
-                <img width="50" height="50" src="/assets/customerCall/phone.svg" alt="phone">
+                <img width="50" height="50" :src="phone" alt="phone">
             </button>
             <audio ref="ringingRef" :src="ringing" loop>
             </audio>
@@ -27,6 +27,11 @@
 <script setup>
 import { onMounted, defineEmits, defineProps, ref, computed } from 'vue';
 import ringing from '@/assets/audio/ringing.mp3';
+const imageUrl1webp = new URL(`./img/1.webp`, import.meta.url).href
+const imageUrl1png = new URL(`./img/1.png`, import.meta.url).href
+const imageUrl0webp = new URL(`./img/0.webp`, import.meta.url).href
+const imageUrl0png = new URL(`./img/0.png`, import.meta.url).href
+const phone = new URL(`./img/phone.svg`, import.meta.url).href
 
 const emit = defineEmits(['further']);
 const ringingRef = ref(null)
@@ -46,13 +51,20 @@ const data = {
         name: 'Аркадий Николаевич',
         conmpany: 'Компания «Сантехмир»',
         position: 'Руководитель',
-        img: '0'
+        img: {
+            png: imageUrl0webp,
+            webp: imageUrl0png
+        }
     },
     1: {
         name: 'Антон Юрьевич',
         position: 'Руководитель',
         conmpany: 'Компания «СпортОпт»',
-        img: '1'
+        img: {
+            png: imageUrl1png,
+            webp: imageUrl1webp
+        }
+        
     }
 }
 

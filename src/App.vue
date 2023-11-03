@@ -24,9 +24,9 @@ const unauthorisedHandler = (e) =>  {
   localStorage.removeItem("userToken");
 
   if (process.env.FOR_PAGES === "true") {
-    window.location.href = "/test/configurator/auth?unauthorised=true";
+    window.location.replace("/test/configurator/auth?unauthorised=true")
   } else if (process.env.NODE_ENV === "production") {
-    window.location.href = "/configurator/auth?unauthorised=true";
+    window.location.replace("/configurator/auth?unauthorised=true")
   } else {
     console.log("to auth 401");
   }
@@ -34,9 +34,9 @@ const unauthorisedHandler = (e) =>  {
 
 const goToConfigurator = () =>  {
   if (process.env.FOR_PAGES === 'true') {
-    window.location.href = '/test/configurator/';
+    window.location.replace('/test/configurator/');
   } else if (process.env.NODE_ENV === 'production') {
-    window.location.href = '/configurator/';
+    window.location.replace('/configurator/') 
   } else {
     console.log('go to configurator');
   }
@@ -63,9 +63,9 @@ onMounted( async () => {
 
     if (!id || !token) {
       if (process.env.NODE_ENV === 'production') {
-        window.location.href = '/configurator/auth?unauthorised=true';
+        window.location.replace('/configurator/auth?unauthorised=true');
       } else if (process.env.FOR_PAGES === 'true') {
-        window.location.href = '/test/configurator/auth?unauthorised=true';
+        window.location.replace('/test/configurator/auth?unauthorised=true');
       } else {
         console.log('go to auth');
       }
