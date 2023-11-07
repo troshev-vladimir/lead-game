@@ -1,7 +1,15 @@
 <template>
 <!-- controls -->
-<video ref="video" >
-    <source src="https://dl.dropbox.com/s/tlcs552gbci26m4823v9s/_-_-_-_-_-_.mp4?rlkey=fgxdklc67tunpx6wmnvex2yu9&dl=0" type="video/mp4">
+<q-circular-progress
+      indeterminate
+      rounded
+      size="50px"
+      color="while"
+      class="q-ma-md"
+      v-if="isLoadding"
+    />
+<video ref="video" v-if="!isLoadding">
+    <source src="https://dl.dropbox.com/s/tlcs552gbci26m4823v9s/_-_-_-_-_-_.mp4?rlkey=fgxdklc67tunpx6wmnvex2yu9&raw=1" type="video/mp4">
 </video>
 </template>
 
@@ -12,13 +20,15 @@ const emit = defineEmits(['nextSlide'])
 
 const video = ref(null)
 
-onMounted(() => {
-    video.value.play()
+const loadding = ref(true)
 
+onMounted(() => {   
+    video.value.play()
     video.value.addEventListener('ended', () => {
         emit('nextSlide')
     });
-}) 
+})
+
 </script>
 
 <style lang="scss">

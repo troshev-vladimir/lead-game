@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <div class="customer-modal-task">
-        <div class="video-container">
+        <div class="video-container">            
             <video ref="video" preload autoplay :poster="customer ? customer2 : customer1">
                 <source :src="videoLink" type="video/mp4">
             </video>
@@ -77,8 +77,8 @@ onBeforeUnmount(() => {
     flex-direction: column;
 
     @media screen and (max-width: 1200px) {
-        max-width: 400px;
-        width: 90vw;
+        width: 80vw;
+        max-height: 75vh;
     }
     
     .video-container {
