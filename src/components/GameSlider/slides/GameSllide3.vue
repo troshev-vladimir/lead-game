@@ -1,15 +1,6 @@
 <template>
 <!-- controls -->
-<q-circular-progress
-    :active="show=true"
-    indeterminate
-    rounded
-    size="50px"
-    color="lime"
-    class="q-ma-md"
-    ref="isLoadding"
-/>
-<video ref="video">
+<video ref="video" >
     <source src="https://dl.dropbox.com/s/sho9ksrlzq2uj0wjfi40o/1.mp4?rlkey=m6ld6qkrkv44rjye6pk13lf5z&raw=1" type="video/mp4">
 </video>
 </template>
@@ -19,16 +10,15 @@ import { onMounted, ref } from 'vue'
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['nextSlide'])
 
+
 const video = ref(null)
-const isLoadding = ref(null)
 
 onMounted(() => {
-    isLoadding.value = true
-    // video.value.play()
+    video.value.play()
 
-    // video.value.addEventListener('ended', () => {
-    //     emit('nextSlide')
-    // });
+    video.value.addEventListener('ended', () => {
+        emit('nextSlide')
+    });
 }) 
 </script>
 

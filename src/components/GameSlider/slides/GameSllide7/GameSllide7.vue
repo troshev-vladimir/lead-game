@@ -50,8 +50,6 @@ const replicStepAskWaiting = ref(true)
 const audioVitaly1 = new Audio(vitaly)
 const audioVitaly2 = new Audio(vitaly2)
 
-let isLoadding = ref(true)
-
 let text3
 let text4
 useFurtherButton()
