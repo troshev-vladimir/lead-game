@@ -81,6 +81,7 @@
                     :src="currentTipVideo" 
                     controls 
                     preload 
+                    playsinline
                     poster="@/assets/video-posters/vitaly.jpg"
                     controlslist="nodownload noremoteplayback noplaybackrate"
                 ></video>

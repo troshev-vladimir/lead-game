@@ -2,7 +2,7 @@
 <template>
     <div class="customer-modal-task">
         <div class="video-container">            
-            <video ref="video" playsinline preload autoplay :poster="customer ? customer2 : customer1">
+            <video ref="video" playsinline autoplay :poster="customer ? customer2 : customer1">
                 <source :src="videoLink" type="video/mp4">
             </video>
         </div>
@@ -47,7 +47,6 @@ const videoEndHandler = () => {
 }
 
 onMounted(() => {
-    video.value.play()
     video.value.addEventListener('ended', videoEndHandler);
 
     if (process.env.NODE_ENV === 'development') {
