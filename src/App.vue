@@ -87,7 +87,9 @@ onBeforeUnmount(() => {
 <style lang='scss'>
 @font-face {
     font-family: "Gogh";
-    src: url("/src/assets/fonts/Gogh-Medium.ttf");
+    src:
+      url("/src/assets/fonts/Gogh-Medium.ttf"),
+      url("/src/assets/fonts/Gogh-Medium.svg"); 
 }
 
 body {
