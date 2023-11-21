@@ -76,8 +76,8 @@ onBeforeUnmount(() => {
     flex-direction: column;
 
     @media screen and (max-width: 1200px) {
-        width: 80vw;
-        max-height: 75vh;
+        max-width: 400px;
+        width: 90vw;
     }
     
     .video-container {
