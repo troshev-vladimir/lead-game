@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
     <div class="customer-modal-task">
-        <div class="video-container">
-            <video ref="video" preload autoplay :poster="customer ? customer2 : customer1">
+        <div class="video-container">            
+            <video ref="video" playsinline autoplay :poster="customer ? customer2 : customer1">
                 <source :src="videoLink" type="video/mp4">
             </video>
         </div>
@@ -47,7 +47,6 @@ const videoEndHandler = () => {
 }
 
 onMounted(() => {
-    video.value.play()
     video.value.addEventListener('ended', videoEndHandler);
 
     if (process.env.NODE_ENV === 'development') {
@@ -77,8 +76,8 @@ onBeforeUnmount(() => {
     flex-direction: column;
 
     @media screen and (max-width: 1200px) {
-        max-width: 400px;
-        width: 90vw;
+        width: 80vw;
+        max-height: 75vh;
     }
     
     .video-container {
