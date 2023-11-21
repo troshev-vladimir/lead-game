@@ -2,7 +2,7 @@
 <template>
     <div class="customer-modal-task">
         <div class="video-container">            
-            <video ref="video" preload autoplay :poster="customer ? customer2 : customer1">
+            <video ref="video" playsinline preload autoplay :poster="customer ? customer2 : customer1">
                 <source :src="videoLink" type="video/mp4">
             </video>
         </div>
