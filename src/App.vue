@@ -96,7 +96,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Gogh', sans-serif;
-  font-weight: 800;
+  font-weight: inherit;
+}
+
+#app {
+  position: relative;
 }
 
 [id|=text] {

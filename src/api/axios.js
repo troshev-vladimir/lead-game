@@ -20,7 +20,7 @@ instance.interceptors.response.use(
     if (error.response.status === 401) {
       window.dispatchEvent(
         new CustomEvent("unauthorized", {
-          detail: { message: error.response.data.error.message },
+          detail: { message: "unauthorized" }, //error.response.data.error.message },
         })
       );
     }
