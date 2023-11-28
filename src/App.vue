@@ -86,10 +86,10 @@ onBeforeUnmount(() => {
 
 <style lang='scss'>
 @font-face {
-    font-family: "Gogh";
-    src:
-      url("/src/assets/fonts/Gogh-Medium.ttf"),
-      url("/src/assets/fonts/Gogh-Medium.svg"); 
+  font-family: "Gogh";
+  src:
+    url("/src/assets/fonts/Gogh-Medium.ttf"),
+    url("/src/assets/fonts/Gogh-Medium.svg"); 
 }
 
 body {
@@ -97,6 +97,10 @@ body {
   padding: 0;
   font-family: 'Gogh', sans-serif;
   font-weight: inherit;
+
+  @media only screen and (max-device-width: 480px) {      
+    -webkit-text-size-adjust: 100%;
+  }
 }
 
 #app {
