@@ -296,6 +296,11 @@ onMounted(() => {
   bottom: 20px;
   left: 90px;
   transition: all ease .4s;
+
+  @media screen and (max-width: 1200px) {
+    bottom: 10px;
+    left: 10px;
+  }
 }
 
 .hidden {
