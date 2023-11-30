@@ -129,9 +129,9 @@ const imageName = computed(() => {
   overflow: hidden;
   cursor: pointer;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1200px), screen and (max-height: 750px) {
     border-radius: 5px;
-    width: 240px;
+    width: 220px;
   }
 
   &:hover {
@@ -141,23 +141,20 @@ const imageName = computed(() => {
   }
 
   &--prev {
-
     .arrow {
       transform: rotate(180deg);
       margin-right: 25px;
       margin-left: 0;
 
-      @media screen and (max-width: 1200px) {
+      @media screen and (max-width: 1200px), screen and (max-height: 750px) {
         margin-right: 10px;
       }
-    }
-    span {
     }
   }
 
   .arrow {
     svg {
-      @media screen and (max-width: 1200px) {
+      @media screen and (max-width: 1200px), screen and (max-height: 750px) {
         width: 30px;
       }
     }
@@ -167,7 +164,7 @@ const imageName = computed(() => {
     .arrow {
       margin-left: 25px;
 
-      @media screen and (max-width: 1200px) {
+      @media screen and (max-width: 1200px), screen and (max-height: 750px) {
         margin-left: 10px;
       }
     }
@@ -183,9 +180,10 @@ const imageName = computed(() => {
     width: 100%;
     height: 250px;
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1200px), 
+          screen and (max-height: 750px) {
       object-fit: cover;
-      height: 150px;
+      height: 130px;
     }
   }
 
@@ -200,7 +198,7 @@ const imageName = computed(() => {
     align-items: center;
     justify-content: space-between;
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1200px), screen and (max-height: 750px) {
       padding: 12px;
       font-size: 12px;
     }

@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const username = "REST_API";
+const password = "IPA_TSER";
+
 const instance = axios.create({
   baseURL: "https://max43.ru:12233/ka_uprbase2/ru_RU/hs/education/v1",
   // process.env.NODE_ENV === "development"
@@ -9,6 +12,10 @@ const instance = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json;charset=UTF-8",
+  },
+  auth: {
+    username: username,
+    password: password,
   },
 });
 
