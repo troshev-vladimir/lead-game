@@ -308,9 +308,10 @@ onMounted(() => {
   top: 90px;
   left: 90px;
 
-  // @media screen and (max-width: 1200px) {
-  //   top: 10px;
-  //   left: 10px;
-  // }
+  @media screen and (max-width: 1200px), 
+          screen and (max-height: 750px) {
+    top: 10px;
+    left: 10px;
+  }
 }
 </style>
