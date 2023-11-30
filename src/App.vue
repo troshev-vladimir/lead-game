@@ -44,7 +44,7 @@ const goToConfigurator = () =>  {
 
 onMounted( async () => {
   window.addEventListener("unauthorized", unauthorisedHandler);
-
+  screen.orientation.lock(); 
   try {
     await user.restoreProgress()
 
@@ -90,6 +90,13 @@ onBeforeUnmount(() => {
   src:
     url("/src/assets/fonts/Gogh-Medium.ttf"),
     url("/src/assets/fonts/Gogh-Medium.svg"); 
+}
+
+@media only screen and (orientation:portrait) {
+  body {
+    height: 100vw;
+    transform: rotate(90deg);
+  }
 }
 
 body {
