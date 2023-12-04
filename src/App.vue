@@ -44,7 +44,6 @@ const goToConfigurator = () =>  {
 
 onMounted( async () => {
   window.addEventListener("unauthorized", unauthorisedHandler);
-  screen.orientation.lock(); 
   try {
     await user.restoreProgress()
 
@@ -94,7 +93,6 @@ onBeforeUnmount(() => {
 
 @media only screen and (orientation:portrait) {
   body {
-    height: 100vw;
     transform: rotate(90deg);
   }
 }
@@ -104,10 +102,8 @@ body {
   padding: 0;
   font-family: 'Gogh', sans-serif;
   font-weight: inherit;
-
-  @media only screen and (max-device-width: 480px) {      
-    -webkit-text-size-adjust: 100%;
-  }
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 #app {

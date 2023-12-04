@@ -98,8 +98,8 @@
                 v-if="isCustomerTask" 
                 :is-congrates="isCongrates"
                 @further="showQuizeDescription"
-                :video-link="isCongrates ? currentQuizeStep.congrates.video : currentQuizeStep.task.video"
-                :text="isCongrates ? currentQuizeStep.congrates.text : currentQuizeStep.task.text"
+                :video-link="isCongrates ? currentQuizeStep.congrates.video : currentQuizeStep?.task.video"
+                :text="isCongrates ? currentQuizeStep.congrates.text : currentQuizeStep?.task.text"
             >
             </CustomerModalTask>
             <SkipQuizeModal 
@@ -137,7 +137,7 @@
     })
     
     const navigation = useNavigationStore()
-    const { quseStep, taskStep: savedTaskStep } = storeToRefs(navigation)
+    const { taskStep: savedTaskStep } = storeToRefs(navigation)
 
     const user = useUserStore()
 
@@ -166,7 +166,7 @@
 
     const totalCurrentQuizeStep = computed(() => {
         if (currentQuizeStep.value) {
-            return currentQuizeStep.value.content.quest.length
+            return currentQuizeStep.value?.content.quest.length
         } else {
             return 0
         }
@@ -193,7 +193,7 @@
         const step = taskStep.value
 
         if(currentQuizeStep.value) {
-            return currentQuizeStep.value.content.quest[step]
+            return currentQuizeStep.value?.content.quest[step]
         } else {
             return {}
         }
@@ -203,7 +203,7 @@
         if(currentTaskStep.value.questionDescription?.text) {
             return currentTaskStep.value.questionDescription?.text
         }
-        return currentQuizeStep.value.content.taskDescription.text
+        return currentQuizeStep.value?.content.taskDescription.text
     })
 
     const currentTipVideo = computed(() => {
@@ -322,7 +322,7 @@
     }
 
     const increaseTaskStep = () => {
-        if(taskStep.value + 1 < currentQuizeStep.value.content.quest.length) {
+        if(taskStep.value + 1 < currentQuizeStep.value?.content.quest.length) {
             // Закончили вопрос 
             currentExplanation.value = ''
             saveCurrentQuizeStep(false, true)
@@ -388,11 +388,15 @@
                 const id = localStorage.getItem("userPhone") || "";
                 const token = localStorage.getItem("userToken") || "";
                 localStorage.setItem('userEmail', usersAnswerValue.value)
-                await CandidateMethods.candidateUpdate({
-                    id,
-                    token,
-                    Email: usersAnswerValue.value
-                });
+                try {
+                    await CandidateMethods.candidateUpdate({
+                        id,
+                        token,
+                        Email: usersAnswerValue.value
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
                 increaseTaskStep()
             }, 500)
         } else {
@@ -411,10 +415,11 @@
             isCustomerCall.value = true
         }, 1000)
         
-        quizeStep.value = quseStep.value || +localStorage.getItem('quizeStep') || 0
+        quizeStep.value = quizeStep.value || +localStorage.getItem('quizeStep') || 0
         taskStep.value = savedTaskStep.value || +localStorage.getItem('taskStep') || 0
+        if (quizeStep.value > 4 ) navigation.stepForward()
         // user.addMany(+localStorage.getItem('userMany') || 0)
-        if (quizeStep.value >= totalQuizeStep) navigation.stepForward()
+        // if (quizeStep.value >= totalQuizeStep) navigation.stepForward()
     }) 
 </script>
 

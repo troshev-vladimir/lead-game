@@ -4,7 +4,6 @@ import saveProgressOnServer from "@/utils/saveProgress";
 
 export const useNavigationStore = defineStore("navigation", () => {
   const currentStep = ref(-1);
-  const quseStep = ref(0);
   const taskStep = ref(0);
   const totalSteps = 18;
 
@@ -24,7 +23,6 @@ export const useNavigationStore = defineStore("navigation", () => {
     currentStep,
     stepForward,
     stepBackward,
-    quseStep,
     taskStep,
   };
 });
