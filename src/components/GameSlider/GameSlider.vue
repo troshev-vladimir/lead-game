@@ -1,110 +1,107 @@
 <template>
-<div class="slider" :class="{'phone-slider': isPhone}">
-  <transition name="fade" :mode="mode">
-    <component
-      ref="slide"
-      :is="currentSlide"
-      @next-slide="navigation.stepForward"
-      @continue="emit('continue')"
-      @show-cash-counter="emit('showCashCounter')"
-      @question="emit('question')"
-      @skip="skipSlide"
-    />
-  </transition>
-</div>
+  <div class="slider" :class="{ 'phone-slider': isPhone }">
+    <transition name="fade" :mode="mode">
+      <component
+        ref="slide"
+        :is="currentSlide"
+        @next-slide="navigation.stepForward"
+        @continue="emit('continue')"
+        @show-cash-counter="emit('showCashCounter')"
+        @question="emit('question')"
+        @skip="skipSlide"
+      />
+    </transition>
+  </div>
 </template>
 
 <script setup>
-import { useNavigationStore } from '@/store/navigation'
-import { storeToRefs } from 'pinia';
+import { useNavigationStore } from "@/store/navigation";
+import { storeToRefs } from "pinia";
 import { computed, onMounted, ref } from "vue";
-const navigation = useNavigationStore()
-const { currentStep } = storeToRefs(navigation)
+const navigation = useNavigationStore();
+const { currentStep } = storeToRefs(navigation);
 // eslint-disable-next-line no-undef
-const emit = defineEmits(['continue', 'showCashCounter']) 
+const emit = defineEmits(["continue", "showCashCounter"]);
 
-const slide = ref(null)
+const slide = ref(null);
 
 const mode = computed(() => {
-  const fukingSlides = [4, 7, 17]
-  if (fukingSlides.includes(currentStep.value) ) {
-    return ''
+  const fukingSlides = [4, 7, 17];
+  if (fukingSlides.includes(currentStep.value)) {
+    return "";
   }
-  return ''
-})
+  return "";
+});
 
 // eslint-disable-next-line no-undef
 defineExpose({
-  slide
-})
+  slide,
+});
 
 const currentSlide = computed(() => {
-    if (currentStep.value === -1 ) {
-      return 'initialSlide'
-    }
+  if (currentStep.value === -1) {
+    return "initialSlide";
+  }
 
-    console.log('GameSllide' + ' ' + currentStep.value);
-    return 'GameSllide' + currentStep.value
-})
+  console.log("GameSllide" + " " + currentStep.value);
+  return "GameSllide" + currentStep.value;
+});
 
 const skipSlide = () => {
-  navigation.stepForward()
-}
+  navigation.stepForward();
+};
 
-const isPhone = ref(false)
+const isPhone = ref(false);
 
-
-onMounted(() => {
-
-})
+onMounted(() => {});
 </script>
 <script>
-import initialSlide from './slides/initialSlide.vue'
-import GameSllide0 from './slides/GameSllide0'
-import GameSllide1 from './slides/GameSllide1'
-import GameSllide2 from './slides/GameSllide2'
-import GameSllide3 from './slides/GameSllide3.vue'
-import GameSllide4 from './slides/GameSllide4'
-import GameSllide5 from './slides/GameSllide5'
-import GameSllide6 from './slides/GameSllide6'
-import GameSllide7 from './slides/GameSllide7'
-import GameSllide8 from './slides/GameSllide8'
-import GameSllide9 from './slides/GameSllide9'
-import GameSllide10 from './slides/GameSllide10'
-import GameSllide11 from './slides/GameSllide11'
-import GameSllide12 from './slides/GameSllide12'
-import GameSllide13 from './slides/GameSllide13.vue'
-import GameSllide14 from './slides/GameSllide14.vue' // 1с
+import initialSlide from "./slides/initialSlide.vue";
+import GameSllide0 from "./slides/GameSllide0";
+import GameSllide1 from "./slides/GameSllide1";
+import GameSllide2 from "./slides/GameSllide2";
+import GameSllide3 from "./slides/GameSllide3.vue";
+import GameSllide4 from "./slides/GameSllide4";
+import GameSllide5 from "./slides/GameSllide5";
+import GameSllide6 from "./slides/GameSllide6";
+import GameSllide7 from "./slides/GameSllide7";
+import GameSllide8 from "./slides/GameSllide8";
+import GameSllide9 from "./slides/GameSllide9";
+import GameSllide10 from "./slides/GameSllide10";
+import GameSllide11 from "./slides/GameSllide11";
+import GameSllide12 from "./slides/GameSllide12";
+import GameSllide13 from "./slides/GameSllide13.vue";
+import GameSllide14 from "./slides/GameSllide14.vue"; // 1с
 // const GameSllide14 = () => import('./slides/GameSllide14.vue')
-import GameSllide15 from './slides/GameSllide15'
-import GameSllide16 from './slides/GameSllide16'
-import GameSllide17 from './slides/GameSllide17'
-import GameSllide18 from './slides/GameSllide18'
+import GameSllide15 from "./slides/GameSllide15";
+import GameSllide16 from "./slides/GameSllide16";
+import GameSllide17 from "./slides/GameSllide17";
+import GameSllide18 from "./slides/GameSllide18";
 
 export default {
-    components: { 
-      initialSlide,
-      GameSllide0,
-      GameSllide1,
-      GameSllide2,
-      GameSllide3,
-      GameSllide4,
-      GameSllide5,
-      GameSllide6,
-      GameSllide7,
-      GameSllide8,
-      GameSllide9,
-      GameSllide10,
-      GameSllide11,
-      GameSllide12,
-      GameSllide13,
-      GameSllide14,
-      GameSllide15,
-      GameSllide16,
-      GameSllide17,
-      GameSllide18,
-    }
-}
+  components: {
+    initialSlide,
+    GameSllide0,
+    GameSllide1,
+    GameSllide2,
+    GameSllide3,
+    GameSllide4,
+    GameSllide5,
+    GameSllide6,
+    GameSllide7,
+    GameSllide8,
+    GameSllide9,
+    GameSllide10,
+    GameSllide11,
+    GameSllide12,
+    GameSllide13,
+    GameSllide14,
+    GameSllide15,
+    GameSllide16,
+    GameSllide17,
+    GameSllide18,
+  },
+};
 </script>
 
 <style lang="scss">
@@ -112,7 +109,7 @@ export default {
   cursor: pointer;
 }
 
-.slider{
+.slider {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -131,7 +128,8 @@ export default {
     transform: translate(0, -50%);
   }
 
-  svg, video {
+  svg,
+  video {
     position: absolute;
     top: 0;
     left: 0;
@@ -152,5 +150,4 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>

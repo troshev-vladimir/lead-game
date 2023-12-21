@@ -4,12 +4,12 @@
 
 <script>
 // @ is an alias to /src
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import DefaultLayout from "@/layouts/DefaultLayout.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    DefaultLayout
-  }
-}
+    DefaultLayout,
+  },
+};
 </script>

@@ -1,13 +1,13 @@
 import { onMounted } from "vue";
 
 export default function useFurtherButton() {
-	onMounted(() => {
-		const furtherBtn = document.querySelector("#further-btn");
+  onMounted(() => {
+    const furtherBtn = document.querySelector("#further-btn");
 
-		if (!furtherBtn) return;
+    if (!furtherBtn) return;
 
-		setTimeout(() => {
-			furtherBtn.classList.add("visible");
-		}, 2000);
-	});
+    setTimeout(() => {
+      furtherBtn.classList.add("visible");
+    }, 2000);
+  });
 }
