@@ -104,6 +104,29 @@
       url("/src/assets/fonts/Gogh-Medium.svg");
   }
 
+  .rotate-mobile {
+    display: none;
+    pointer-events: none;
+  }
+  
+  @media screen and (orientation: portrait) and (hover: none) and (pointer: coarse),
+    screen and (max-width: 1024px) and (hover: none) and (pointer: coarse) {
+    .rotate-mobile {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      z-index: 9999;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      text-align: center;
+      color: #fff;
+      font-size: 32px;
+    }
+  }
+
   body {
     margin: 0;
     padding: 0;
