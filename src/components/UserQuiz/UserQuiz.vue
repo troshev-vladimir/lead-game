@@ -241,7 +241,10 @@
             localStorage.setItem('gameComleted', 'true')
         }
 
-        saveProgressOnServer(isFinal)
+        if (isFinal) {
+            saveProgressOnServer(isFinal)
+        }
+
     }
 
     const showQuizeDescription = () => {
@@ -385,18 +388,7 @@
             usersAnswerError.value = ''
             addMany()
             setTimeout(async () => {
-                const id = localStorage.getItem("userPhone") || "";
-                const token = localStorage.getItem("userToken") || "";
                 localStorage.setItem('userEmail', usersAnswerValue.value)
-                try {
-                    await CandidateMethods.candidateUpdate({
-                        id,
-                        token,
-                        Email: usersAnswerValue.value
-                    });
-                } catch (error) {
-                    console.log(error);
-                }
                 increaseTaskStep()
             }, 500)
         } else {

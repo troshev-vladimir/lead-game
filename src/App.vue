@@ -28,7 +28,7 @@ const user = useUserStore();
 const navigation = useNavigationStore();
 const savedUserName = localStorage.getItem("userName");
 const { userName, many } = storeToRefs(user);
-const { currentStep, quseStep, taskStep } = storeToRefs(navigation);
+const { currentStep, taskStep } = storeToRefs(navigation);
 
 userName.value = savedUserName
 useMeta({
@@ -36,6 +36,7 @@ useMeta({
 });
 
 const unauthorisedHandler = (e) => {
+  if (currentStep.value < 14)  return
   localStorage.removeItem("userToken");
 
   if (process.env.FOR_PAGES === "true") {
@@ -66,8 +67,8 @@ onMounted(async () => {
       goToConfigurator();
     }
 
+
     currentStep.value = +localStorage.step || -1;
-    quseStep.value = +localStorage.quizeStep || 0;
     taskStep.value = +localStorage.taskStep || 0;
     userName.value = localStorage.userName || "";
     many.value = +localStorage.userMany || 0;
@@ -76,6 +77,7 @@ onMounted(async () => {
     const token = localStorage.getItem("userToken") || "";
 
     if (!id || !token) {
+      if (currentStep.value < 14)  return
       if (process.env.NODE_ENV === "production") {
         window.location.replace("/configurator/auth?unauthorised=true");
       } else if (process.env.FOR_PAGES === "true") {

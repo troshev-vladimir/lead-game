@@ -8,6 +8,7 @@ export default async function saveProgressOnServer(isFinal = false) {
   const taskStep = +localStorage.getItem("taskStep") || 0;
   const id = localStorage.getItem("userPhone") || "";
   const token = localStorage.getItem("userToken") || "";
+  const email = localStorage.getItem("userEmail") || "";
   const userName = localStorage.getItem("userName") || "";
   const finalstep = isFinal;
 
@@ -28,11 +29,12 @@ export default async function saveProgressOnServer(isFinal = false) {
   }
 
   try {
-    if (userName.length && step <= 1)
+    if (userName.length && step == 15)
       CandidateMethods.candidateUpdate({
         id,
         token,
         Name: userName,
+        Email: email
       });
   } catch (error) {
     console.log(error);

@@ -211,6 +211,7 @@
           navigationCallback = () => {
             slider.value.slide.nextStep();
             navigationMapControl.value = false;
+            window.location.replace("/configurator/auth");
           };
           break;
         case 16:

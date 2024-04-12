@@ -6,12 +6,16 @@ export const useNavigationStore = defineStore("navigation", () => {
   const currentStep = ref(-1);
   const taskStep = ref(0);
   const totalSteps = 18;
+  
 
   async function stepForward() {
     if (currentStep.value === totalSteps) return;
     currentStep.value++;
     localStorage.setItem("step", String(currentStep.value) || -1);
-    saveProgressOnServer();
+
+    if (currentStep.value > 14) {
+      saveProgressOnServer();
+    }
   }
 
   function stepBackward() {
