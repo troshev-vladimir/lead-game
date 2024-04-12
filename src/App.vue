@@ -36,7 +36,7 @@ useMeta({
 });
 
 const unauthorisedHandler = (e) => {
-  if (currentStep.value < 14)  return
+  if (currentStep.value <= 14)  return
   localStorage.removeItem("userToken");
 
   if (process.env.FOR_PAGES === "true") {
@@ -77,7 +77,7 @@ onMounted(async () => {
     const token = localStorage.getItem("userToken") || "";
 
     if (!id || !token) {
-      if (currentStep.value < 14)  return
+      if (currentStep.value <= 14) return
       if (process.env.NODE_ENV === "production") {
         window.location.replace("/configurator/auth?unauthorised=true");
       } else if (process.env.FOR_PAGES === "true") {
