@@ -23,6 +23,7 @@ import { useUserStore } from "@/store/user";
 import { useNavigationStore } from "@/store/navigation";
 import { storeToRefs } from "pinia";
 import { useMeta } from "vue-meta";
+import saveProgressOnServer from "./utils/saveProgress";
 
 const user = useUserStore();
 const navigation = useNavigationStore();
@@ -36,13 +37,14 @@ useMeta({
 });
 
 const unauthorisedHandler = (e) => {
+  console.log(currentStep.value);
   if (currentStep.value <= 15)  return
   localStorage.removeItem("userToken");
 
   if (process.env.FOR_PAGES === "true") {
-    window.location.replace("/test/configurator/auth?unauthorised=true");
+    window.location.replace("/test/configurator/auth");
   } else if (process.env.NODE_ENV === "production") {
-    window.location.replace("/configurator/auth?unauthorised=true");
+    window.location.replace("/configurator/auth");
   } else {
     console.log("to auth 401");
   }
@@ -61,12 +63,11 @@ const goToConfigurator = () => {
 onMounted(async () => {
   window.addEventListener("unauthorized", unauthorisedHandler);
   try {
-    await user.restoreProgress();
+    await saveProgressOnServer()
 
-    if (localStorage.gameComleted === "true") {
-      goToConfigurator();
-    }
-
+    // if (localStorage.gameComleted === "true") {
+    //   goToConfigurator();
+    // }
 
     currentStep.value = +localStorage.step || -1;
     taskStep.value = +localStorage.taskStep || 0;
@@ -79,9 +80,9 @@ onMounted(async () => {
     if (!id || !token) {
       if (currentStep.value <= 15) return
       if (process.env.NODE_ENV === "production") {
-        window.location.replace("/configurator/auth?unauthorised=true");
+        window.location.replace("/configurator/auth");
       } else if (process.env.FOR_PAGES === "true") {
-        window.location.replace("/test/configurator/auth?unauthorised=true");
+        window.location.replace("/test/configurator/auth");
       } else {
         console.log("go to auth");
       }

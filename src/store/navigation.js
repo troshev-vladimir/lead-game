@@ -13,7 +13,7 @@ export const useNavigationStore = defineStore("navigation", () => {
     currentStep.value++;
     localStorage.setItem("step", String(currentStep.value) || -1);
 
-    if (currentStep.value > 14) {
+    if (currentStep.value >= 14) {
       saveProgressOnServer();
     }
   }

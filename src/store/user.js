@@ -18,50 +18,50 @@ export const useUserStore = defineStore("user", () => {
     }, 50);
   }
 
-  async function restoreProgress() {
-    let currentProgress = []
-    try {
-      currentProgress = await game.restoreProgress();
+  // async function restoreProgress() {
+  //   let currentProgress = []
+  //   try {
+  //     currentProgress = await game.restoreProgress();
     
-    } catch (error) {
-      console.log(error);
-    }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 
 
-    let step;
+  //   let step;
       
-    if (currentProgress[0]?.step === 3 || currentProgress[0]?.step === 6) {
-      step = currentProgress[0]?.step - 1;
-    } else {
-      step = currentProgress[0]?.step;
-    }
+  //   if (currentProgress[0]?.step === 3 || currentProgress[0]?.step === 6) {
+  //     step = currentProgress[0]?.step - 1;
+  //   } else {
+  //     step = currentProgress[0]?.step;
+  //   }
 
-    localStorage.setItem(
-      "userMany",
-      currentProgress[0]?.sum ?? +localStorage.userMany ?? 0
-    );
+  //   localStorage.setItem(
+  //     "userMany",
+  //     currentProgress[0]?.sum ?? +localStorage.userMany ?? 0
+  //   );
 
-    localStorage.setItem(
-      "userName",
-      currentProgress[0]?.name ?? localStorage.userName ?? ""
-    );
+  //   localStorage.setItem(
+  //     "userName",
+  //     currentProgress[0]?.name ?? localStorage.userName ?? ""
+  //   );
 
-    localStorage.setItem("step", step ?? String(localStorage.step) ?? -1);
-    localStorage.setItem(
-      "quizeStep",
-      currentProgress[0]?.quizestep ?? localStorage.quizeStep ?? 0
-    );
+  //   localStorage.setItem("step", step ?? String(localStorage.step) ?? -1);
+  //   localStorage.setItem(
+  //     "quizeStep",
+  //     currentProgress[0]?.quizestep ?? localStorage.quizeStep ?? 0
+  //   );
 
-    localStorage.setItem(
-      "taskStep",
-      currentProgress[0]?.taskstep ?? localStorage.taskStep ?? 0
-    );
-  }
+  //   localStorage.setItem(
+  //     "taskStep",
+  //     currentProgress[0]?.taskstep ?? localStorage.taskStep ?? 0
+  //   );
+  // }
 
   return {
     userName,
     many,
     addMany,
-    restoreProgress,
+    // restoreProgress,
   };
 });

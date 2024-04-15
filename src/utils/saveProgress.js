@@ -23,6 +23,7 @@ export default async function saveProgressOnServer(isFinal = false) {
   };
 
   try {
+    console.log(progres);
     await game.saveProgress(progres);
   } catch (error) {
     console.log(error);
