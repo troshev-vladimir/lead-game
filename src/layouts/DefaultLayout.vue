@@ -106,7 +106,7 @@
     if (process.env.FOR_PAGES === "true") {
       window.location.replace("/test/configurator/");
     } else if (process.env.NODE_ENV === "production") {
-      window.location.replace("/");
+      window.location.replace("/" + window.location.search);
     } else {
       console.log("go to configurator");
     }
@@ -212,7 +212,7 @@
             slider.value.slide.nextStep();
             navigationMapControl.value = false;
             navigation.stepForward();
-            window.location.replace("/configurator/auth");
+            window.location.replace("/configurator/auth" + window.location.search);
           };
           break;
         case 16:

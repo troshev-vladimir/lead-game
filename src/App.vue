@@ -44,7 +44,7 @@ const unauthorisedHandler = (e) => {
   if (process.env.FOR_PAGES === "true") {
     window.location.replace("/test/configurator/auth");
   } else if (process.env.NODE_ENV === "production") {
-    window.location.replace("/configurator/auth");
+    window.location.replace("/configurator/auth" + window.location.search);
   } else {
     console.log("to auth 401");
   }
@@ -54,7 +54,7 @@ const goToConfigurator = () => {
   if (process.env.FOR_PAGES === "true") {
     window.location.replace("/test/configurator/");
   } else if (process.env.NODE_ENV === "production") {
-    window.location.replace("/configurator/");
+    window.location.replace("/configurator/" + window.location.search);
   } else {
     console.log("go to configurator");
   }
@@ -80,9 +80,9 @@ onMounted(async () => {
     if (!id || !token) {
       if (currentStep.value <= 15) return
       if (process.env.NODE_ENV === "production") {
-        window.location.replace("/configurator/auth");
+        window.location.replace("/configurator/auth" + window.location.search);
       } else if (process.env.FOR_PAGES === "true") {
-        window.location.replace("/test/configurator/auth");
+        window.location.replace("/test/configurator/auth" + window.location.search);
       } else {
         console.log("go to auth");
       }
